@@ -12,13 +12,21 @@ namespace ClientSystem.Models
 
     class UserAccess
     {
+        public UserAccess()
+        {
+            this.Employees = new HashSet<Employees>();
+        }
+
         public int id { get; set; }
         public string login { get; set; }
         public string password { get; set; }
         public string type { get; set; }
-        public string date_up { get; set; }
-        public int id_subsidiary_companies_region { get; set; }
+        public Nullable<int> id_subsidiary_companies_region { get; set; }
+        public System.DateTime date_up { get; set; }
         public string status { get; set; }
+
+        
+        public virtual ICollection<Employees> Employees { get; set; }
 
 
 

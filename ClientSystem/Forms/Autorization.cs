@@ -26,6 +26,12 @@ namespace ClientSystem.Forms
 
             using (ConnectContext db = new ConnectContext((new ConfigJson()).StringConnecting()))
             {
+                List<Employees> y = db.UserAccess.SelectMany(c => c.Employees).ToList();
+                foreach (Employees item in y)
+                {
+                    MessageBox.Show(item.first_name);
+                }
+
                 IEnumerable<UserAccess> user = db.UserAccess.Where(u => (u.login == login.Text && u.password == password.Text));
                 user.ToList();
 
