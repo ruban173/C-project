@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище PAOModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="first_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="middle__name" Type="nvarchar" MaxLength="50" />
+    <Property Name="last_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="id_user_access" Type="int" />
+    <Property Name="birthday" Type="date" />
+    <Property Name="position" Type="nvarchar" MaxLength="50" />
+    <Property Name="id_subsidiary_companies_region" Type="int" />
+    <Property Name="id_education" Type="int" />
+    <Property Name="foto" Type="image" />
+    <Property Name="expiriens" Type="nvarchar" MaxLength="10" />
+    <Property Name="date_begin" Type="date" />
+    <Property Name="date_up" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="date_end" Type="date" />
+  </EntityType>
+  <EntityType Name="Goods">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="id_goods_category" Type="int" />
+    <Property Name="id_subsidiary_companies_region" Type="int" />
+    <Property Name="shelf_life" Type="int" />
+    <Property Name="date_create" Type="date" />
+    <Property Name="code" Type="nvarchar" MaxLength="30" />
+    <Property Name="status" Type="nvarchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="Goods_category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="date_up" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Subsidiary_companies">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="100" />
+    <Property Name="description" Type="text" />
+    <Property Name="activity" Type="nvarchar" MaxLength="150" />
+    <Property Name="date_up" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Subsidiary_companies_region">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_subsidiary_companies" Type="int" />
+    <Property Name="country" Type="nvarchar" MaxLength="15" />
+    <Property Name="region" Type="nvarchar" MaxLength="30" />
+    <Property Name="settlement" Type="nvarchar" MaxLength="50" />
+    <Property Name="street" Type="nvarchar" MaxLength="70" />
+    <Property Name="home" Type="int" />
+    <Property Name="number" Type="int" />
+    <Property Name="structure" Type="int" />
+  </EntityType>
+  <EntityType Name="User_access">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="login" Type="nvarchar" MaxLength="64" />
+    <Property Name="password" Type="nvarchar" MaxLength="128" />
+    <Property Name="type" Type="nvarchar" MaxLength="20" />
+    <Property Name="id_subsidiary_companies_region" Type="int" />
+    <Property Name="date_up" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="status" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <Association Name="FK_Employees_User_access1">
+    <End Role="User_access" Type="Self.User_access" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_access">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="id_user_access" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Goods_Goods_category">
+    <End Role="Goods_category" Type="Self.Goods_category" Multiplicity="0..1" />
+    <End Role="Goods" Type="Self.Goods" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Goods_category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Goods">
+        <PropertyRef Name="id_goods_category" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Goods_Subsidiary_companies_region">
+    <End Role="Subsidiary_companies_region" Type="Self.Subsidiary_companies_region" Multiplicity="0..1" />
+    <End Role="Goods" Type="Self.Goods" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subsidiary_companies_region">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Goods">
+        <PropertyRef Name="id_subsidiary_companies_region" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Subsidiary_companies_region_Subsidiary_companies">
+    <End Role="Subsidiary_companies" Type="Self.Subsidiary_companies" Multiplicity="0..1" />
+    <End Role="Subsidiary_companies_region" Type="Self.Subsidiary_companies_region" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subsidiary_companies">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Subsidiary_companies_region">
+        <PropertyRef Name="id_subsidiary_companies" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище PAOModelContainer">
+    <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Goods" EntityType="Self.Goods" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Goods_category" EntityType="Self.Goods_category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Subsidiary_companies" EntityType="Self.Subsidiary_companies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Subsidiary_companies_region" EntityType="Self.Subsidiary_companies_region" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User_access" EntityType="Self.User_access" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Employees_User_access1" Association="Self.FK_Employees_User_access1">
+      <End Role="User_access" EntitySet="User_access" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Goods_Goods_category" Association="Self.FK_Goods_Goods_category">
+      <End Role="Goods_category" EntitySet="Goods_category" />
+      <End Role="Goods" EntitySet="Goods" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Goods_Subsidiary_companies_region" Association="Self.FK_Goods_Subsidiary_companies_region">
+      <End Role="Subsidiary_companies_region" EntitySet="Subsidiary_companies_region" />
+      <End Role="Goods" EntitySet="Goods" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Subsidiary_companies_region_Subsidiary_companies" Association="Self.FK_Subsidiary_companies_region_Subsidiary_companies">
+      <End Role="Subsidiary_companies" EntitySet="Subsidiary_companies" />
+      <End Role="Subsidiary_companies_region" EntitySet="Subsidiary_companies_region" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

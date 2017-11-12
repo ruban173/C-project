@@ -34,3 +34,5 @@ C:\Users\Axandr\Documents\Visual Studio 2015\Projects\ClientSystem\ClientSystem\
 C:\Users\Axandr\Documents\Visual Studio 2015\Projects\ClientSystem\ClientSystem\obj\Debug\ClientSystem.Forms.Seller.resources
 C:\Users\Axandr\Documents\Visual Studio 2015\Projects\ClientSystem\ClientSystem\obj\Debug\ClientSystem.Properties.Resources.resources
 C:\Users\Axandr\Documents\Visual Studio 2015\Projects\ClientSystem\ClientSystem\obj\Debug\ClientSystem.csproj.GenerateResource.Cache
+C:\Users\Axandr\Documents\Visual Studio 2015\Projects\ClientSystem\ClientSystem\obj\Debug\ClientSystem.Forms.AddCategoryGoods.resources
+C:\Users\Axandr\Documents\Visual Studio 2015\Projects\ClientSystem\ClientSystem\obj\Debug\ClientSystem.Forms.AddGoods.resources

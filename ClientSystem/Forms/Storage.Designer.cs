@@ -35,7 +35,9 @@
             this.button_payment_card = new System.Windows.Forms.Button();
             this.button_cash = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button_product = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button_category_goods = new System.Windows.Forms.Button();
+            this.button_goods = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.listBox2 = new System.Windows.Forms.ListBox();
@@ -50,6 +52,7 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
@@ -86,7 +89,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(643, 135);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(643, 155);
             this.tableLayoutPanel2.TabIndex = 0;
             this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
             // 
@@ -97,7 +100,7 @@
             this.groupBox1.Controls.Add(this.button_payment_card);
             this.groupBox1.Controls.Add(this.button_cash);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Location = new System.Drawing.Point(3, 54);
+            this.groupBox1.Location = new System.Drawing.Point(3, 89);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(637, 76);
             this.groupBox1.TabIndex = 5;
@@ -133,27 +136,49 @@
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.button_product);
+            this.flowLayoutPanel1.Controls.Add(this.groupBox2);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(637, 45);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(637, 80);
             this.flowLayoutPanel1.TabIndex = 4;
             // 
-            // button_product
+            // groupBox2
             // 
-            this.button_product.Location = new System.Drawing.Point(3, 3);
-            this.button_product.Name = "button_product";
-            this.button_product.Size = new System.Drawing.Size(75, 36);
-            this.button_product.TabIndex = 4;
-            this.button_product.Text = "Товары";
-            this.button_product.UseVisualStyleBackColor = true;
+            this.groupBox2.Controls.Add(this.button_category_goods);
+            this.groupBox2.Controls.Add(this.button_goods);
+            this.groupBox2.Location = new System.Drawing.Point(3, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(555, 64);
+            this.groupBox2.TabIndex = 0;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Управление";
+            // 
+            // button_category_goods
+            // 
+            this.button_category_goods.Location = new System.Drawing.Point(119, 19);
+            this.button_category_goods.Name = "button_category_goods";
+            this.button_category_goods.Size = new System.Drawing.Size(86, 39);
+            this.button_category_goods.TabIndex = 1;
+            this.button_category_goods.Text = "Категории";
+            this.button_category_goods.UseVisualStyleBackColor = true;
+            this.button_category_goods.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button_goods
+            // 
+            this.button_goods.Location = new System.Drawing.Point(6, 19);
+            this.button_goods.Name = "button_goods";
+            this.button_goods.Size = new System.Drawing.Size(91, 39);
+            this.button_goods.TabIndex = 0;
+            this.button_goods.Text = "Товары";
+            this.button_goods.UseVisualStyleBackColor = true;
+            this.button_goods.Click += new System.EventHandler(this.button_goods_Click);
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(4, 146);
+            this.dataGridView1.Location = new System.Drawing.Point(4, 166);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(643, 298);
             this.dataGridView1.TabIndex = 3;
@@ -169,7 +194,7 @@
             this.tableLayoutPanel3.Controls.Add(this.label7, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.listBox1, 0, 3);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(654, 146);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(654, 166);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 6;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -266,6 +291,7 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
@@ -280,8 +306,6 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button button_product;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label6;
@@ -296,5 +320,9 @@
         private System.Windows.Forms.Button button_add;
         private System.Windows.Forms.Button button_payment_card;
         private System.Windows.Forms.Button button_cash;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button button_category_goods;
+        private System.Windows.Forms.Button button_goods;
     }
 }

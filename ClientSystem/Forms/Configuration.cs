@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClientSystem.Lib;
+using ClientSystem;
 
 namespace ClientSystem.Forms
 {
@@ -49,6 +50,7 @@ namespace ClientSystem.Forms
             {
 
                 ConnectContext connect = new ConnectContext(strConnect);
+
                 connect.Database.Connection.Open();
 
             }

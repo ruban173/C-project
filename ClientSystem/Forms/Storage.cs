@@ -31,5 +31,20 @@ namespace ClientSystem.Forms
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            (new AddCategoryGoods()).Show();
+        }
+
+        private void button_goods_Click(object sender, EventArgs e)
+        {
+            (new AddGoods()).Show();
+        }
     }
 }

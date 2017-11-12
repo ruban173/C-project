@@ -75,8 +75,13 @@ namespace ClientSystem.Lib
             string strConnect = "Data Source=" + this.server + ";Initial Catalog=" + this.db + ";User ID=" + this.user + ";Password=" + this.password;
             return strConnect;
         }
+        // написать метод
+        public int SubsidiaryCompaniesRegion()
+        {
+            return 1;
+        }
 
-
+       
 
     }
 }

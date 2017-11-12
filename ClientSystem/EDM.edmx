@@ -1,0 +1,427 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище PAOModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="first_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="middle__name" Type="nvarchar" MaxLength="50" />
+          <Property Name="last_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="id_user_access" Type="int" />
+          <Property Name="birthday" Type="date" />
+          <Property Name="position" Type="nvarchar" MaxLength="50" />
+          <Property Name="id_subsidiary_companies_region" Type="int" />
+          <Property Name="id_education" Type="int" />
+          <Property Name="foto" Type="image" />
+          <Property Name="expiriens" Type="nvarchar" MaxLength="10" />
+          <Property Name="date_begin" Type="date" />
+          <Property Name="date_up" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="date_end" Type="date" />
+        </EntityType>
+        <EntityType Name="Goods">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" />
+          <Property Name="id_goods_category" Type="int" />
+          <Property Name="id_subsidiary_companies_region" Type="int" />
+          <Property Name="shelf_life" Type="int" />
+          <Property Name="date_create" Type="date" />
+          <Property Name="code" Type="nvarchar" MaxLength="30" />
+          <Property Name="status" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Goods_category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" />
+          <Property Name="date_up" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subsidiary_companies">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="100" />
+          <Property Name="description" Type="text" />
+          <Property Name="activity" Type="nvarchar" MaxLength="150" />
+          <Property Name="date_up" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subsidiary_companies_region">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_subsidiary_companies" Type="int" />
+          <Property Name="country" Type="nvarchar" MaxLength="15" />
+          <Property Name="region" Type="nvarchar" MaxLength="30" />
+          <Property Name="settlement" Type="nvarchar" MaxLength="50" />
+          <Property Name="street" Type="nvarchar" MaxLength="70" />
+          <Property Name="home" Type="int" />
+          <Property Name="number" Type="int" />
+          <Property Name="structure" Type="int" />
+        </EntityType>
+        <EntityType Name="User_access">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="login" Type="nvarchar" MaxLength="64" />
+          <Property Name="password" Type="nvarchar" MaxLength="128" />
+          <Property Name="type" Type="nvarchar" MaxLength="20" />
+          <Property Name="id_subsidiary_companies_region" Type="int" />
+          <Property Name="date_up" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_Employees_User_access1">
+          <End Role="User_access" Type="Self.User_access" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_access">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="id_user_access" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Goods_Goods_category">
+          <End Role="Goods_category" Type="Self.Goods_category" Multiplicity="0..1" />
+          <End Role="Goods" Type="Self.Goods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goods_category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Goods">
+              <PropertyRef Name="id_goods_category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Goods_Subsidiary_companies_region">
+          <End Role="Subsidiary_companies_region" Type="Self.Subsidiary_companies_region" Multiplicity="0..1" />
+          <End Role="Goods" Type="Self.Goods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subsidiary_companies_region">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Goods">
+              <PropertyRef Name="id_subsidiary_companies_region" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subsidiary_companies_region_Subsidiary_companies">
+          <End Role="Subsidiary_companies" Type="Self.Subsidiary_companies" Multiplicity="0..1" />
+          <End Role="Subsidiary_companies_region" Type="Self.Subsidiary_companies_region" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subsidiary_companies">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Subsidiary_companies_region">
+              <PropertyRef Name="id_subsidiary_companies" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище PAOModelContainer">
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Goods" EntityType="Self.Goods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Goods_category" EntityType="Self.Goods_category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subsidiary_companies" EntityType="Self.Subsidiary_companies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subsidiary_companies_region" EntityType="Self.Subsidiary_companies_region" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_access" EntityType="Self.User_access" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Employees_User_access1" Association="Self.FK_Employees_User_access1">
+            <End Role="User_access" EntitySet="User_access" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Goods_Goods_category" Association="Self.FK_Goods_Goods_category">
+            <End Role="Goods_category" EntitySet="Goods_category" />
+            <End Role="Goods" EntitySet="Goods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Goods_Subsidiary_companies_region" Association="Self.FK_Goods_Subsidiary_companies_region">
+            <End Role="Subsidiary_companies_region" EntitySet="Subsidiary_companies_region" />
+            <End Role="Goods" EntitySet="Goods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subsidiary_companies_region_Subsidiary_companies" Association="Self.FK_Subsidiary_companies_region_Subsidiary_companies">
+            <End Role="Subsidiary_companies" EntitySet="Subsidiary_companies" />
+            <End Role="Subsidiary_companies_region" EntitySet="Subsidiary_companies_region" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PAOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="middle__name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_user_access" Type="Int32" />
+          <Property Name="birthday" Type="DateTime" Precision="0" />
+          <Property Name="position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_subsidiary_companies_region" Type="Int32" />
+          <Property Name="id_education" Type="Int32" />
+          <Property Name="foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="expiriens" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="date_begin" Type="DateTime" Precision="0" />
+          <Property Name="date_up" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+          <Property Name="date_end" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="User_access" Relationship="Self.FK_Employees_User_access1" FromRole="Employees" ToRole="User_access" />
+        </EntityType>
+        <EntityType Name="Goods">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_goods_category" Type="Int32" />
+          <Property Name="id_subsidiary_companies_region" Type="Int32" />
+          <Property Name="shelf_life" Type="Int32" />
+          <Property Name="date_create" Type="DateTime" Precision="0" />
+          <Property Name="code" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Subsidiary_companies_region" Relationship="Self.FK_Goods_Subsidiary_companies_region" FromRole="Goods" ToRole="Subsidiary_companies_region" />
+          <NavigationProperty Name="Goods_category" Relationship="PAOModel.FK_Goods_Goods_category" FromRole="Goods" ToRole="Goods_category" />
+        </EntityType>
+        <EntityType Name="Subsidiary_companies">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="activity" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="date_up" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+          <NavigationProperty Name="Subsidiary_companies_region" Relationship="Self.FK_Subsidiary_companies_region_Subsidiary_companies" FromRole="Subsidiary_companies" ToRole="Subsidiary_companies_region" />
+        </EntityType>
+        <EntityType Name="Subsidiary_companies_region">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_subsidiary_companies" Type="Int32" />
+          <Property Name="country" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="region" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="settlement" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="street" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="home" Type="Int32" />
+          <Property Name="number" Type="Int32" />
+          <Property Name="structure" Type="Int32" />
+          <NavigationProperty Name="Goods" Relationship="Self.FK_Goods_Subsidiary_companies_region" FromRole="Subsidiary_companies_region" ToRole="Goods" />
+          <NavigationProperty Name="Subsidiary_companies" Relationship="Self.FK_Subsidiary_companies_region_Subsidiary_companies" FromRole="Subsidiary_companies_region" ToRole="Subsidiary_companies" />
+        </EntityType>
+        <EntityType Name="User_access">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="id_subsidiary_companies_region" Type="Int32" />
+          <Property Name="date_up" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_User_access1" FromRole="User_access" ToRole="Employees" />
+        </EntityType>
+        <Association Name="FK_Employees_User_access1">
+          <End Role="User_access" Type="Self.User_access" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_access">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="id_user_access" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Goods_Subsidiary_companies_region">
+          <End Role="Subsidiary_companies_region" Type="Self.Subsidiary_companies_region" Multiplicity="0..1" />
+          <End Role="Goods" Type="Self.Goods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subsidiary_companies_region">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Goods">
+              <PropertyRef Name="id_subsidiary_companies_region" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subsidiary_companies_region_Subsidiary_companies">
+          <End Role="Subsidiary_companies" Type="Self.Subsidiary_companies" Multiplicity="0..1" />
+          <End Role="Subsidiary_companies_region" Type="Self.Subsidiary_companies_region" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subsidiary_companies">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Subsidiary_companies_region">
+              <PropertyRef Name="id_subsidiary_companies" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PAOEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Employees" EntityType="Self.Employees" />
+          <EntitySet Name="Goods" EntityType="Self.Goods" />
+          <EntitySet Name="Subsidiary_companies" EntityType="Self.Subsidiary_companies" />
+          <EntitySet Name="Subsidiary_companies_region" EntityType="Self.Subsidiary_companies_region" />
+          <EntitySet Name="User_access" EntityType="Self.User_access" />
+          <AssociationSet Name="FK_Employees_User_access1" Association="Self.FK_Employees_User_access1">
+            <End Role="User_access" EntitySet="User_access" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Goods_Subsidiary_companies_region" Association="Self.FK_Goods_Subsidiary_companies_region">
+            <End Role="Subsidiary_companies_region" EntitySet="Subsidiary_companies_region" />
+            <End Role="Goods" EntitySet="Goods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subsidiary_companies_region_Subsidiary_companies" Association="Self.FK_Subsidiary_companies_region_Subsidiary_companies">
+            <End Role="Subsidiary_companies" EntitySet="Subsidiary_companies" />
+            <End Role="Subsidiary_companies_region" EntitySet="Subsidiary_companies_region" />
+          </AssociationSet>
+          <EntitySet Name="Goods_category" EntityType="PAOModel.Goods_category" />
+          <AssociationSet Name="FK_Goods_Goods_category" Association="PAOModel.FK_Goods_Goods_category">
+            <End Role="Goods_category" EntitySet="Goods_category" />
+            <End Role="Goods" EntitySet="Goods" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Goods_category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="date_up" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+          <NavigationProperty Name="Goods" Relationship="PAOModel.FK_Goods_Goods_category" FromRole="Goods_category" ToRole="Goods" />
+        </EntityType>
+        <Association Name="FK_Goods_Goods_category">
+          <End Type="PAOModel.Goods_category" Role="Goods_category" Multiplicity="0..1" />
+          <End Type="PAOModel.Goods" Role="Goods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goods_category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Goods">
+              <PropertyRef Name="id_goods_category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище PAOModelContainer" CdmEntityContainer="PAOEntities">
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="PAOModel.Employees">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="middle__name" ColumnName="middle__name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="id_user_access" ColumnName="id_user_access" />
+                <ScalarProperty Name="birthday" ColumnName="birthday" />
+                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="id_subsidiary_companies_region" ColumnName="id_subsidiary_companies_region" />
+                <ScalarProperty Name="id_education" ColumnName="id_education" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
+                <ScalarProperty Name="expiriens" ColumnName="expiriens" />
+                <ScalarProperty Name="date_begin" ColumnName="date_begin" />
+                <ScalarProperty Name="date_up" ColumnName="date_up" />
+                <ScalarProperty Name="date_end" ColumnName="date_end" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Goods">
+            <EntityTypeMapping TypeName="PAOModel.Goods">
+              <MappingFragment StoreEntitySet="Goods">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id_goods_category" ColumnName="id_goods_category" />
+                <ScalarProperty Name="id_subsidiary_companies_region" ColumnName="id_subsidiary_companies_region" />
+                <ScalarProperty Name="shelf_life" ColumnName="shelf_life" />
+                <ScalarProperty Name="date_create" ColumnName="date_create" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subsidiary_companies">
+            <EntityTypeMapping TypeName="PAOModel.Subsidiary_companies">
+              <MappingFragment StoreEntitySet="Subsidiary_companies">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="activity" ColumnName="activity" />
+                <ScalarProperty Name="date_up" ColumnName="date_up" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subsidiary_companies_region">
+            <EntityTypeMapping TypeName="PAOModel.Subsidiary_companies_region">
+              <MappingFragment StoreEntitySet="Subsidiary_companies_region">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_subsidiary_companies" ColumnName="id_subsidiary_companies" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="region" ColumnName="region" />
+                <ScalarProperty Name="settlement" ColumnName="settlement" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="home" ColumnName="home" />
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="structure" ColumnName="structure" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_access">
+            <EntityTypeMapping TypeName="PAOModel.User_access">
+              <MappingFragment StoreEntitySet="User_access">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="id_subsidiary_companies_region" ColumnName="id_subsidiary_companies_region" />
+                <ScalarProperty Name="date_up" ColumnName="date_up" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Goods_category">
+            <EntityTypeMapping TypeName="PAOModel.Goods_category">
+              <MappingFragment StoreEntitySet="Goods_category">
+                <ScalarProperty Name="date_up" ColumnName="date_up" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

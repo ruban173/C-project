@@ -8,36 +8,29 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClientSystem.Lib;
-using ClientSystem.Models;
+
 
 
 namespace ClientSystem.Forms
 {
     public partial class Autorization : Form
     {
-
+        ConnectContext db;
+        IEnumerable<User_access> user;
         public Autorization()
         {
             InitializeComponent();
+             db = new ConnectContext((new ConfigJson()).StringConnecting());
+            user = db.User_access.Where(u => (u.login == login.Text && u.password == password.Text));
+            user.ToList();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            using (ConnectContext db = new ConnectContext((new ConfigJson()).StringConnecting()))
-            {
-                List<Employees> y = db.UserAccess.SelectMany(c => c.Employees).ToList();
-                foreach (Employees item in y)
-                {
-                    MessageBox.Show(item.first_name);
-                }
-
-                IEnumerable<UserAccess> user = db.UserAccess.Where(u => (u.login == login.Text && u.password == password.Text));
-                user.ToList();
-
+         
                 if (user.Count() == 1)
                 {
-                    foreach (UserAccess u in user)
+                    foreach (User_access u in user)
                     {
                         MessageBox.Show(u.type);
                         switch (u.type)
@@ -55,8 +48,11 @@ namespace ClientSystem.Forms
                     MessageBox.Show("Пользователь с такими данными не зарегистрирован!");
                 }
 
-            }
         }
 
+        private void Autorization_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
