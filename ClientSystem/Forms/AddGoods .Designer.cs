@@ -31,6 +31,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.groupGoods = new System.Windows.Forms.GroupBox();
+            this.categoryBox = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.id = new System.Windows.Forms.TextBox();
             this.date_create = new System.Windows.Forms.DateTimePicker();
@@ -54,7 +55,12 @@
             this.gridCategoryGoods = new System.Windows.Forms.DataGridView();
             this.gridGoods = new System.Windows.Forms.DataGridView();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.categoryBox = new System.Windows.Forms.ComboBox();
+            this.price = new System.Windows.Forms.TextBox();
+            this.discont = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.measurement = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.groupGoods.SuspendLayout();
@@ -97,6 +103,9 @@
             // 
             // groupGoods
             // 
+            this.groupGoods.Controls.Add(this.measurement);
+            this.groupGoods.Controls.Add(this.discont);
+            this.groupGoods.Controls.Add(this.price);
             this.groupGoods.Controls.Add(this.categoryBox);
             this.groupGoods.Controls.Add(this.label7);
             this.groupGoods.Controls.Add(this.id);
@@ -104,8 +113,11 @@
             this.groupGoods.Controls.Add(this.status);
             this.groupGoods.Controls.Add(this.label5);
             this.groupGoods.Controls.Add(this.label6);
+            this.groupGoods.Controls.Add(this.label10);
             this.groupGoods.Controls.Add(this.code);
+            this.groupGoods.Controls.Add(this.label9);
             this.groupGoods.Controls.Add(this.label4);
+            this.groupGoods.Controls.Add(this.label8);
             this.groupGoods.Controls.Add(this.label3);
             this.groupGoods.Controls.Add(this.shelf_life);
             this.groupGoods.Controls.Add(this.label2);
@@ -119,6 +131,15 @@
             this.groupGoods.TabIndex = 0;
             this.groupGoods.TabStop = false;
             this.groupGoods.Text = "Информация";
+            // 
+            // categoryBox
+            // 
+            this.categoryBox.FormattingEnabled = true;
+            this.categoryBox.Location = new System.Drawing.Point(68, 51);
+            this.categoryBox.Name = "categoryBox";
+            this.categoryBox.Size = new System.Drawing.Size(223, 21);
+            this.categoryBox.TabIndex = 14;
+            this.categoryBox.SelectedIndexChanged += new System.EventHandler(this.categoryBox_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -147,7 +168,7 @@
             // status
             // 
             this.status.FormattingEnabled = true;
-            this.status.Location = new System.Drawing.Point(10, 284);
+            this.status.Location = new System.Drawing.Point(10, 343);
             this.status.Name = "status";
             this.status.Size = new System.Drawing.Size(281, 21);
             this.status.TabIndex = 10;
@@ -156,7 +177,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(13, 259);
+            this.label5.Location = new System.Drawing.Point(13, 318);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 13);
             this.label5.TabIndex = 8;
@@ -166,7 +187,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(13, 203);
+            this.label6.Location = new System.Drawing.Point(13, 262);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(59, 13);
             this.label6.TabIndex = 9;
@@ -174,7 +195,7 @@
             // 
             // code
             // 
-            this.code.Location = new System.Drawing.Point(10, 228);
+            this.code.Location = new System.Drawing.Point(10, 287);
             this.code.Name = "code";
             this.code.Size = new System.Drawing.Size(281, 20);
             this.code.TabIndex = 7;
@@ -342,14 +363,58 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(320, 25);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
-            // categoryBox
+            // price
             // 
-            this.categoryBox.FormattingEnabled = true;
-            this.categoryBox.Location = new System.Drawing.Point(68, 51);
-            this.categoryBox.Name = "categoryBox";
-            this.categoryBox.Size = new System.Drawing.Size(223, 21);
-            this.categoryBox.TabIndex = 14;
-            this.categoryBox.SelectedIndexChanged += new System.EventHandler(this.categoryBox_SelectedIndexChanged);
+            this.price.Location = new System.Drawing.Point(10, 228);
+            this.price.Name = "price";
+            this.price.Size = new System.Drawing.Size(84, 20);
+            this.price.TabIndex = 15;
+            this.price.Text = "0";
+            // 
+            // discont
+            // 
+            this.discont.Location = new System.Drawing.Point(123, 228);
+            this.discont.Name = "discont";
+            this.discont.Size = new System.Drawing.Size(68, 20);
+            this.discont.TabIndex = 15;
+            this.discont.Text = "0";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.Location = new System.Drawing.Point(13, 202);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(45, 13);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "Цена р.";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label9.Location = new System.Drawing.Point(121, 202);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(55, 13);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "Скидка %";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label10.Location = new System.Drawing.Point(219, 202);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(76, 13);
+            this.label10.TabIndex = 5;
+            this.label10.Text = "Единица изм.";
+            // 
+            // measurement
+            // 
+            this.measurement.Location = new System.Drawing.Point(221, 228);
+            this.measurement.Name = "measurement";
+            this.measurement.Size = new System.Drawing.Size(68, 20);
+            this.measurement.TabIndex = 15;
             // 
             // AddGoods
             // 
@@ -401,5 +466,11 @@
         private System.Windows.Forms.TextBox id;
         private System.Windows.Forms.DateTimePicker date_create;
         private System.Windows.Forms.ComboBox categoryBox;
+        private System.Windows.Forms.TextBox discont;
+        private System.Windows.Forms.TextBox price;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox measurement;
+        private System.Windows.Forms.Label label10;
     }
 }

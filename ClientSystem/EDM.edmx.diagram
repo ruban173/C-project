@@ -6,15 +6,15 @@
     <edmx:Diagrams>
       <Diagram DiagramId="a37b9f3322fa44bdac8453187cc64b09" Name="Diagram1">
         <EntityTypeShape EntityType="PAOModel.Employees" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="PAOModel.Goods" Width="1.5" PointX="4.625" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PAOModel.Subsidiary_companies" Width="1.5" PointX="0.625" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="PAOModel.Subsidiary_companies_region" Width="1.5" PointX="2.5" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PAOModel.User_access" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
         <AssociationConnector Association="PAOModel.FK_Employees_User_access1" ManuallyRouted="false" />
-        <AssociationConnector Association="PAOModel.FK_Goods_Subsidiary_companies_region" ManuallyRouted="false" />
         <AssociationConnector Association="PAOModel.FK_Subsidiary_companies_region_Subsidiary_companies" ManuallyRouted="false" />
         <EntityTypeShape EntityType="PAOModel.Goods_category" Width="1.5" PointX="7" PointY="1.5" />
+        <EntityTypeShape EntityType="PAOModel.Goods" Width="1.5" PointX="4.625" PointY="0.625" />
         <AssociationConnector Association="PAOModel.FK_Goods_Goods_category" />
+        <AssociationConnector Association="PAOModel.FK_Goods_Subsidiary_companies_region" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

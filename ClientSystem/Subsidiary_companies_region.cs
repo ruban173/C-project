@@ -30,8 +30,8 @@ namespace ClientSystem
         public Nullable<int> number { get; set; }
         public Nullable<int> structure { get; set; }
     
+        public virtual Subsidiary_companies Subsidiary_companies { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Goods> Goods { get; set; }
-        public virtual Subsidiary_companies Subsidiary_companies { get; set; }
     }
 }

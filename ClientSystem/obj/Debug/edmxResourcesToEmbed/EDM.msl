@@ -21,20 +21,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Goods">
-      <EntityTypeMapping TypeName="PAOModel.Goods">
-        <MappingFragment StoreEntitySet="Goods">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="title" ColumnName="title" />
-          <ScalarProperty Name="id_goods_category" ColumnName="id_goods_category" />
-          <ScalarProperty Name="id_subsidiary_companies_region" ColumnName="id_subsidiary_companies_region" />
-          <ScalarProperty Name="shelf_life" ColumnName="shelf_life" />
-          <ScalarProperty Name="date_create" ColumnName="date_create" />
-          <ScalarProperty Name="code" ColumnName="code" />
-          <ScalarProperty Name="status" ColumnName="status" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Subsidiary_companies">
       <EntityTypeMapping TypeName="PAOModel.Subsidiary_companies">
         <MappingFragment StoreEntitySet="Subsidiary_companies">
@@ -78,6 +64,23 @@
       <EntityTypeMapping TypeName="PAOModel.Goods_category">
         <MappingFragment StoreEntitySet="Goods_category">
           <ScalarProperty Name="date_up" ColumnName="date_up" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Goods">
+      <EntityTypeMapping TypeName="PAOModel.Goods">
+        <MappingFragment StoreEntitySet="Goods">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="measurement" ColumnName="measurement" />
+          <ScalarProperty Name="discont" ColumnName="discont" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="date_create" ColumnName="date_create" />
+          <ScalarProperty Name="shelf_life" ColumnName="shelf_life" />
+          <ScalarProperty Name="id_subsidiary_companies_region" ColumnName="id_subsidiary_companies_region" />
+          <ScalarProperty Name="id_goods_category" ColumnName="id_goods_category" />
           <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>

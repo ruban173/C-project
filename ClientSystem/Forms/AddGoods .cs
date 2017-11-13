@@ -46,6 +46,9 @@ namespace ClientSystem.Forms
                 gridGoods.Columns["id_subsidiary_companies_region"].Visible = false;
                 gridGoods.Columns["status"].Visible = false;
                 gridGoods.Columns["Subsidiary_companies_region"].Visible = false;
+                gridGoods.Columns["price"].Visible = false;
+                gridGoods.Columns["discont"].Visible = false;
+                gridGoods.Columns["measurement"].Visible = false;
                 gridGoods.Columns["Goods_category"].Visible = false;
             }
             gridGoods.Refresh();
@@ -91,6 +94,9 @@ namespace ClientSystem.Forms
             title.Text = currentGoods.title;
             shelf_life.Text = currentGoods.shelf_life.ToString();
             date_create.Value = currentGoods.date_create.Value;
+            price.Text = currentGoods.price.ToString();
+            discont.Text = currentGoods.discont.ToString();
+            measurement.Text = currentGoods.measurement;
             code.Text = currentGoods.code;
             status.SelectedText  = currentGoods.status;
 
@@ -156,6 +162,9 @@ namespace ClientSystem.Forms
                 id_subsidiary_companies_region = (int)(new ConfigJson()).SubsidiaryCompaniesRegion(),
                 shelf_life = Convert.ToInt32(shelf_life.Text),
                 date_create = DateTime.Now,
+                price =Convert.ToDecimal( price.Text),
+                discont=Convert.ToDouble(discont.Text),
+                measurement= measurement.Text,
                 code = code.Text,
                 status = status.Text
 
@@ -178,6 +187,9 @@ namespace ClientSystem.Forms
             currentGoods.title = title.Text;
             currentGoods.shelf_life = Convert.ToInt32(shelf_life.Text);
             currentGoods.date_create = date_create.Value;
+            currentGoods.price = (price.Text!="")?Convert.ToDecimal(price.Text):0;
+            currentGoods.discont = (discont.Text != "") ? Convert.ToDouble(discont.Text) : 0;
+            currentGoods.measurement = measurement.Text;
             currentGoods.code = code.Text;
             currentGoods.status = status.Text;
 
