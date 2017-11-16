@@ -72,6 +72,8 @@
     <EntitySetMapping Name="Goods">
       <EntityTypeMapping TypeName="PAOModel.Goods">
         <MappingFragment StoreEntitySet="Goods">
+          <ScalarProperty Name="basket" ColumnName="basket" />
+          <ScalarProperty Name="description" ColumnName="description" />
           <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="code" ColumnName="code" />
           <ScalarProperty Name="measurement" ColumnName="measurement" />
@@ -82,6 +84,28 @@
           <ScalarProperty Name="id_subsidiary_companies_region" ColumnName="id_subsidiary_companies_region" />
           <ScalarProperty Name="id_goods_category" ColumnName="id_goods_category" />
           <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sale">
+      <EntityTypeMapping TypeName="PAOModel.Sale">
+        <MappingFragment StoreEntitySet="Sale">
+          <ScalarProperty Name="date_up" ColumnName="date_up" />
+          <ScalarProperty Name="id_subsidiary_companies_region" ColumnName="id_subsidiary_companies_region" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="payment" ColumnName="payment" />
+          <ScalarProperty Name="discont" ColumnName="discont" />
+          <ScalarProperty Name="id_employess" ColumnName="id_employess" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sale_basket">
+      <EntityTypeMapping TypeName="PAOModel.Sale_basket">
+        <MappingFragment StoreEntitySet="Sale_basket">
+          <ScalarProperty Name="id_sale" ColumnName="id_sale" />
+          <ScalarProperty Name="id_goods" ColumnName="id_goods" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

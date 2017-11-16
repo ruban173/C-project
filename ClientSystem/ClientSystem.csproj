@@ -80,6 +80,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SeeSale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SeeSale.Designer.cs">
+      <DependentUpon>SeeSale.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AddGoods .cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +137,12 @@
     <Compile Include="Lib\ConfigJson.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sale.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sale_basket.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
     <Compile Include="Subsidiary_companies.cs">
       <DependentUpon>EDM.tt</DependentUpon>
     </Compile>
@@ -142,6 +154,9 @@
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SeeSale.resx">
+      <DependentUpon>SeeSale.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddGoods .resx">
       <DependentUpon>AddGoods .cs</DependentUpon>

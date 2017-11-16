@@ -33,17 +33,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.price_all = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.discont = new System.Windows.Forms.TextBox();
+            this.discont_all = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.payment = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.sale = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.labelPrice = new System.Windows.Forms.Label();
+            this.labelTitle = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.button_search = new System.Windows.Forms.Button();
-            this.button_return = new System.Windows.Forms.Button();
+            this.button_sales = new System.Windows.Forms.Button();
             this.button_cash = new System.Windows.Forms.Button();
             this.button_payment_card = new System.Windows.Forms.Button();
             this.gridSeller = new System.Windows.Forms.DataGridView();
@@ -91,10 +91,10 @@
             this.flowLayoutPanel2.Controls.Add(this.label1);
             this.flowLayoutPanel2.Controls.Add(this.price_all);
             this.flowLayoutPanel2.Controls.Add(this.label2);
-            this.flowLayoutPanel2.Controls.Add(this.discont);
+            this.flowLayoutPanel2.Controls.Add(this.discont_all);
             this.flowLayoutPanel2.Controls.Add(this.label3);
             this.flowLayoutPanel2.Controls.Add(this.payment);
-            this.flowLayoutPanel2.Controls.Add(this.button2);
+            this.flowLayoutPanel2.Controls.Add(this.sale);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(654, 4);
@@ -132,14 +132,14 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Скидка";
             // 
-            // discont
+            // discont_all
             // 
-            this.discont.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.discont.ForeColor = System.Drawing.Color.Red;
-            this.discont.Location = new System.Drawing.Point(3, 66);
-            this.discont.Name = "discont";
-            this.discont.Size = new System.Drawing.Size(196, 22);
-            this.discont.TabIndex = 3;
+            this.discont_all.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.discont_all.ForeColor = System.Drawing.Color.Red;
+            this.discont_all.Location = new System.Drawing.Point(3, 66);
+            this.discont_all.Name = "discont_all";
+            this.discont_all.Size = new System.Drawing.Size(196, 22);
+            this.discont_all.TabIndex = 3;
             // 
             // label3
             // 
@@ -160,16 +160,17 @@
             this.payment.Size = new System.Drawing.Size(196, 22);
             this.payment.TabIndex = 5;
             // 
-            // button2
+            // sale
             // 
-            this.button2.BackColor = System.Drawing.Color.RosyBrown;
-            this.button2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button2.Location = new System.Drawing.Point(102, 138);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(97, 37);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Продать";
-            this.button2.UseVisualStyleBackColor = false;
+            this.sale.BackColor = System.Drawing.Color.LightGray;
+            this.sale.Dock = System.Windows.Forms.DockStyle.Right;
+            this.sale.Location = new System.Drawing.Point(102, 138);
+            this.sale.Name = "sale";
+            this.sale.Size = new System.Drawing.Size(97, 37);
+            this.sale.TabIndex = 6;
+            this.sale.Text = "Продать";
+            this.sale.UseVisualStyleBackColor = false;
+            this.sale.Click += new System.EventHandler(this.button2_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -193,8 +194,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.labelPrice);
+            this.groupBox1.Controls.Add(this.labelTitle);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(3, 54);
             this.groupBox1.Name = "groupBox1";
@@ -203,36 +204,32 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Товар";
             // 
-            // label5
+            // labelPrice
             // 
-            this.label5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.label5.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.label5.Location = new System.Drawing.Point(131, 71);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(503, 47);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "1200.00 *12 -15%=1600.26 р.";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelPrice.Dock = System.Windows.Forms.DockStyle.Right;
+            this.labelPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelPrice.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.labelPrice.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.labelPrice.Location = new System.Drawing.Point(131, 71);
+            this.labelPrice.Name = "labelPrice";
+            this.labelPrice.Size = new System.Drawing.Size(503, 47);
+            this.labelPrice.TabIndex = 1;
+            this.labelPrice.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label4
+            // labelTitle
             // 
-            this.label4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(3, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(631, 55);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "1111Ремень 46819Ремень генератора \"luzar\" ltb 01081 ваз 2108-21099, 2110-2115 с к" +
-    "арбюраторным и 8-ми клапанным инжекторным двигателем; ваз (сеаз) 1111 «ока», 210" +
-    "8-1006040 - 4607085246819";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelTitle.Location = new System.Drawing.Point(3, 16);
+            this.labelTitle.Name = "labelTitle";
+            this.labelTitle.Size = new System.Drawing.Size(631, 55);
+            this.labelTitle.TabIndex = 0;
+            this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.button_search);
-            this.flowLayoutPanel1.Controls.Add(this.button_return);
+            this.flowLayoutPanel1.Controls.Add(this.button_sales);
             this.flowLayoutPanel1.Controls.Add(this.button_cash);
             this.flowLayoutPanel1.Controls.Add(this.button_payment_card);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -250,14 +247,15 @@
             this.button_search.Text = "Поиск";
             this.button_search.UseVisualStyleBackColor = true;
             // 
-            // button_return
+            // button_sales
             // 
-            this.button_return.Location = new System.Drawing.Point(84, 3);
-            this.button_return.Name = "button_return";
-            this.button_return.Size = new System.Drawing.Size(75, 36);
-            this.button_return.TabIndex = 5;
-            this.button_return.Text = "Возврат";
-            this.button_return.UseVisualStyleBackColor = true;
+            this.button_sales.Location = new System.Drawing.Point(84, 3);
+            this.button_sales.Name = "button_sales";
+            this.button_sales.Size = new System.Drawing.Size(75, 36);
+            this.button_sales.TabIndex = 5;
+            this.button_sales.Text = "Продажи";
+            this.button_sales.UseVisualStyleBackColor = true;
+            this.button_sales.Click += new System.EventHandler(this.button_sales_Click);
             // 
             // button_cash
             // 
@@ -265,8 +263,9 @@
             this.button_cash.Name = "button_cash";
             this.button_cash.Size = new System.Drawing.Size(75, 36);
             this.button_cash.TabIndex = 6;
-            this.button_cash.Text = "Наличные";
+            this.button_cash.Text = "Удалить из корзины";
             this.button_cash.UseVisualStyleBackColor = true;
+            this.button_cash.Click += new System.EventHandler(this.button_cash_Click);
             // 
             // button_payment_card
             // 
@@ -274,17 +273,22 @@
             this.button_payment_card.Name = "button_payment_card";
             this.button_payment_card.Size = new System.Drawing.Size(99, 36);
             this.button_payment_card.TabIndex = 7;
-            this.button_payment_card.Text = "Плата картой";
+            this.button_payment_card.Text = "Очистить корзину";
             this.button_payment_card.UseVisualStyleBackColor = true;
+            this.button_payment_card.Click += new System.EventHandler(this.button_payment_card_Click);
             // 
             // gridSeller
             // 
+            this.gridSeller.AllowUserToAddRows = false;
+            this.gridSeller.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridSeller.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridSeller.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridSeller.Location = new System.Drawing.Point(4, 193);
             this.gridSeller.Name = "gridSeller";
             this.gridSeller.Size = new System.Drawing.Size(643, 251);
             this.gridSeller.TabIndex = 3;
+            this.gridSeller.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridSeller_CellClick);
+            this.gridSeller.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.gridSeller_RowsRemoved);
             // 
             // tableLayoutPanel3
             // 
@@ -410,18 +414,18 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label labelPrice;
+        private System.Windows.Forms.Label labelTitle;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button button_search;
-        private System.Windows.Forms.Button button_return;
+        private System.Windows.Forms.Button button_sales;
         private System.Windows.Forms.Button button_cash;
         private System.Windows.Forms.Button button_payment_card;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox price_all;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox discont;
+        private System.Windows.Forms.TextBox discont_all;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox payment;
         private System.Windows.Forms.DataGridView gridSeller;
@@ -434,6 +438,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button sale;
     }
 }

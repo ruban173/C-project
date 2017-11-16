@@ -33,7 +33,7 @@ namespace ClientSystem.Forms
             {
 
                 var currentCategory = gridCategoryGoods.CurrentRow.DataBoundItem as Goods_category;
-                if (currentCategory != null) gridGoods.DataSource = currentCategory.Goods.ToList();
+                if (currentCategory != null) gridGoods.DataSource = currentCategory.Goods.Where(g=>g.basket!="продано").ToList();
 
                 gridGoods.Columns["id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
 
@@ -50,6 +50,8 @@ namespace ClientSystem.Forms
                 gridGoods.Columns["discont"].Visible = false;
                 gridGoods.Columns["measurement"].Visible = false;
                 gridGoods.Columns["Goods_category"].Visible = false;
+                gridGoods.Columns["description"].Visible = false;
+                gridGoods.Columns["basket"].Visible = false;
             }
             gridGoods.Refresh();
            // FillGoodsTextBoxes();
@@ -97,6 +99,7 @@ namespace ClientSystem.Forms
             price.Text = currentGoods.price.ToString();
             discont.Text = currentGoods.discont.ToString();
             measurement.Text = currentGoods.measurement;
+            description.Text = currentGoods.description;
             code.Text = currentGoods.code;
             status.SelectedText  = currentGoods.status;
 
@@ -123,6 +126,7 @@ namespace ClientSystem.Forms
             gridCategoryGoods.Columns["title"].HeaderText = "Название";
             gridCategoryGoods.Columns["date_up"].Visible = false;
             gridCategoryGoods.Columns["Goods"].Visible = false;
+          
             status.Items.AddRange(new string[] { "Без деформации", "Деформирован","" });
 
             
@@ -162,9 +166,10 @@ namespace ClientSystem.Forms
                 id_subsidiary_companies_region = (int)(new ConfigJson()).SubsidiaryCompaniesRegion(),
                 shelf_life = Convert.ToInt32(shelf_life.Text),
                 date_create = DateTime.Now,
-                price =Convert.ToDecimal( price.Text),
-                discont=Convert.ToDouble(discont.Text),
-                measurement= measurement.Text,
+                price = Convert.ToDecimal(price.Text),
+                discont = Convert.ToDouble(discont.Text),
+                measurement = measurement.Text,
+                description = description.Text,
                 code = code.Text,
                 status = status.Text
 
@@ -190,6 +195,7 @@ namespace ClientSystem.Forms
             currentGoods.price = (price.Text!="")?Convert.ToDecimal(price.Text):0;
             currentGoods.discont = (discont.Text != "") ? Convert.ToDouble(discont.Text) : 0;
             currentGoods.measurement = measurement.Text;
+            currentGoods.description = description.Text;
             currentGoods.code = code.Text;
             currentGoods.status = status.Text;
 

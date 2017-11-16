@@ -31,5 +31,7 @@ namespace ClientSystem
         public virtual DbSet<User_access> User_access { get; set; }
         public virtual DbSet<Goods_category> Goods_category { get; set; }
         public virtual DbSet<Goods> Goods { get; set; }
+        public virtual DbSet<Sale> Sale { get; set; }
+        public virtual DbSet<Sale_basket> Sale_basket { get; set; }
     }
 }
