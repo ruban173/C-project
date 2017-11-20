@@ -38,7 +38,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button_category_goods = new System.Windows.Forms.Button();
             this.button_goods = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.gridStorage = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -53,7 +53,7 @@
             this.groupBox1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridStorage)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
@@ -66,7 +66,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.42342F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.57658F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.gridStorage, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -113,8 +113,9 @@
             this.button_add.Name = "button_add";
             this.button_add.Size = new System.Drawing.Size(75, 36);
             this.button_add.TabIndex = 5;
-            this.button_add.Text = "Добавить";
+            this.button_add.Text = "Анализ количества товара";
             this.button_add.UseVisualStyleBackColor = true;
+            this.button_add.Click += new System.EventHandler(this.button_add_Click);
             // 
             // button_payment_card
             // 
@@ -122,7 +123,7 @@
             this.button_payment_card.Name = "button_payment_card";
             this.button_payment_card.Size = new System.Drawing.Size(99, 36);
             this.button_payment_card.TabIndex = 7;
-            this.button_payment_card.Text = "Обновить";
+            this.button_payment_card.Text = "Анализ срока годности товара";
             this.button_payment_card.UseVisualStyleBackColor = true;
             // 
             // button_cash
@@ -174,14 +175,14 @@
             this.button_goods.UseVisualStyleBackColor = true;
             this.button_goods.Click += new System.EventHandler(this.button_goods_Click);
             // 
-            // dataGridView1
+            // gridStorage
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(4, 166);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(643, 298);
-            this.dataGridView1.TabIndex = 3;
+            this.gridStorage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridStorage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridStorage.Location = new System.Drawing.Point(4, 166);
+            this.gridStorage.Name = "gridStorage";
+            this.gridStorage.Size = new System.Drawing.Size(643, 298);
+            this.gridStorage.TabIndex = 3;
             // 
             // tableLayoutPanel3
             // 
@@ -292,7 +293,7 @@
             this.groupBox1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridStorage)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.flowLayoutPanel3.ResumeLayout(false);
@@ -306,7 +307,7 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView gridStorage;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;

@@ -87,9 +87,9 @@
             // 
             this.delete.Location = new System.Drawing.Point(3, 3);
             this.delete.Name = "delete";
-            this.delete.Size = new System.Drawing.Size(70, 33);
+            this.delete.Size = new System.Drawing.Size(137, 32);
             this.delete.TabIndex = 3;
-            this.delete.Text = "Удалить";
+            this.delete.Text = "Оформить возврат";
             this.delete.UseVisualStyleBackColor = true;
             this.delete.Click += new System.EventHandler(this.delete_Click);
             // 

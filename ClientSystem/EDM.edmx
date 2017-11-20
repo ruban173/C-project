@@ -30,6 +30,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="title" Type="nvarchar" MaxLength="50" />
+          <Property Name="manufacturer" Type="nvarchar" MaxLength="100" />
           <Property Name="description" Type="nvarchar" MaxLength="1000" />
           <Property Name="id_goods_category" Type="int" />
           <Property Name="id_subsidiary_companies_region" Type="int" />
@@ -38,6 +39,7 @@
           <Property Name="price" Type="decimal" Precision="18" Scale="0" />
           <Property Name="discont" Type="float" />
           <Property Name="measurement" Type="nvarchar" MaxLength="50" />
+          <Property Name="count" Type="int" />
           <Property Name="code" Type="nvarchar" MaxLength="30" />
           <Property Name="basket" Type="nvarchar" MaxLength="50" />
           <Property Name="status" Type="nvarchar" MaxLength="15" />
@@ -48,7 +50,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="title" Type="nvarchar" MaxLength="50" />
-          <Property Name="date_up" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="date_up" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="Sale">
           <Key>
@@ -60,7 +62,7 @@
           <Property Name="payment" Type="decimal" Precision="18" Scale="0" />
           <Property Name="price" Type="decimal" Precision="18" Scale="0" />
           <Property Name="id_subsidiary_companies_region" Type="int" />
-          <Property Name="date_up" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="date_up" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Sale_basket">
           <Key>
@@ -155,7 +157,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Sale_basket_Sale">
-          <End Role="Sale" Type="Self.Sale" Multiplicity="0..1" />
+          <End Role="Sale" Type="Self.Sale" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Sale_basket" Type="Self.Sale_basket" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Sale">
@@ -340,12 +344,12 @@
             <End Role="Subsidiary_companies_region" EntitySet="Subsidiary_companies_region" />
             <End Role="Goods" EntitySet="Goods" />
           </AssociationSet>
-          <EntitySet Name="Sale" EntityType="PAOModel.Sale" />
           <EntitySet Name="Sale_basket" EntityType="PAOModel.Sale_basket" />
           <AssociationSet Name="FK_Sale_basket_Goods" Association="PAOModel.FK_Sale_basket_Goods">
             <End Role="Goods" EntitySet="Goods" />
             <End Role="Sale_basket" EntitySet="Sale_basket" />
           </AssociationSet>
+          <EntitySet Name="Sale" EntityType="PAOModel.Sale" />
           <AssociationSet Name="FK_Sale_basket_Sale" Association="PAOModel.FK_Sale_basket_Sale">
             <End Role="Sale" EntitySet="Sale" />
             <End Role="Sale_basket" EntitySet="Sale_basket" />
@@ -354,7 +358,7 @@
             <End Role="Subsidiary_companies_region" EntitySet="Subsidiary_companies_region" />
             <End Role="Sale" EntitySet="Sale" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="Goods_category">
           <Key>
             <PropertyRef Name="id" />
@@ -384,6 +388,8 @@
           <Property Name="description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="basket" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Sale_basket" Relationship="PAOModel.FK_Sale_basket_Goods" FromRole="Goods" ToRole="Sale_basket" />
+          <Property Name="manufacturer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="count" Type="Int32" />
         </EntityType>
         <Association Name="FK_Goods_Goods_category">
           <End Type="PAOModel.Goods_category" Role="Goods_category" Multiplicity="0..1" />
@@ -409,20 +415,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Sale">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_employess" Type="Int32" />
-          <Property Name="discont" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="payment" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="price" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="id_subsidiary_companies_region" Type="Int32" />
-          <Property Name="date_up" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
-          <NavigationProperty Name="Sale_basket" Relationship="PAOModel.FK_Sale_basket_Sale" FromRole="Sale" ToRole="Sale_basket" />
-          <NavigationProperty Name="Subsidiary_companies_region" Relationship="PAOModel.FK_Sale_Subsidiary_companies_region" FromRole="Sale" ToRole="Subsidiary_companies_region" />
-        </EntityType>
         <EntityType Name="Sale_basket">
           <Key>
             <PropertyRef Name="id" />
@@ -445,8 +437,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Sale">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_employess" Type="Int32" />
+          <Property Name="discont" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="payment" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="id_subsidiary_companies_region" Type="Int32" />
+          <Property Name="date_up" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Sale_basket" Relationship="PAOModel.FK_Sale_basket_Sale" FromRole="Sale" ToRole="Sale_basket" />
+          <NavigationProperty Name="Subsidiary_companies_region" Relationship="PAOModel.FK_Sale_Subsidiary_companies_region" FromRole="Sale" ToRole="Subsidiary_companies_region" />
+        </EntityType>
         <Association Name="FK_Sale_basket_Sale">
-          <End Type="PAOModel.Sale" Role="Sale" Multiplicity="0..1" />
+          <End Type="PAOModel.Sale" Role="Sale" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="PAOModel.Sale_basket" Role="Sale_basket" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Sale">
@@ -469,7 +477,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -546,6 +554,8 @@
           <EntitySetMapping Name="Goods">
             <EntityTypeMapping TypeName="PAOModel.Goods">
               <MappingFragment StoreEntitySet="Goods">
+                <ScalarProperty Name="count" ColumnName="count" />
+                <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
                 <ScalarProperty Name="basket" ColumnName="basket" />
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="status" ColumnName="status" />
@@ -562,6 +572,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Sale_basket">
+            <EntityTypeMapping TypeName="PAOModel.Sale_basket">
+              <MappingFragment StoreEntitySet="Sale_basket">
+                <ScalarProperty Name="id_sale" ColumnName="id_sale" />
+                <ScalarProperty Name="id_goods" ColumnName="id_goods" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Sale">
             <EntityTypeMapping TypeName="PAOModel.Sale">
               <MappingFragment StoreEntitySet="Sale">
@@ -571,15 +590,6 @@
                 <ScalarProperty Name="payment" ColumnName="payment" />
                 <ScalarProperty Name="discont" ColumnName="discont" />
                 <ScalarProperty Name="id_employess" ColumnName="id_employess" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Sale_basket">
-            <EntityTypeMapping TypeName="PAOModel.Sale_basket">
-              <MappingFragment StoreEntitySet="Sale_basket">
-                <ScalarProperty Name="id_sale" ColumnName="id_sale" />
-                <ScalarProperty Name="id_goods" ColumnName="id_goods" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

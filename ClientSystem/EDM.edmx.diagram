@@ -15,12 +15,12 @@
         <EntityTypeShape EntityType="PAOModel.Goods" Width="1.5" PointX="4.625" PointY="0.625" />
         <AssociationConnector Association="PAOModel.FK_Goods_Goods_category" />
         <AssociationConnector Association="PAOModel.FK_Goods_Subsidiary_companies_region" />
-        <EntityTypeShape EntityType="PAOModel.Sale" Width="1.5" PointX="5.125" PointY="7" />
         <EntityTypeShape EntityType="PAOModel.Sale_basket" Width="1.5" PointX="8.25" PointY="4.875" />
         <AssociationConnector Association="PAOModel.FK_Sale_basket_Goods" />
+        <EntityTypeShape EntityType="PAOModel.Sale" Width="1.5" PointX="4.75" PointY="9" />
         <AssociationConnector Association="PAOModel.FK_Sale_basket_Sale" />
         <AssociationConnector Association="PAOModel.FK_Sale_Subsidiary_companies_region" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

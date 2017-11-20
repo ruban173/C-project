@@ -76,6 +76,8 @@ namespace ClientSystem.Forms
             var sale = db.Sale.ToList();
             gridSale.DataSource = sale;
             gridSale.Columns["id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            gridSale.Columns["date_up"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+
             gridSale.Columns["price"].HeaderText = "Цена без скидки";
             gridSale.Columns["discont"].HeaderText = "Скидка";
             gridSale.Columns["payment"].HeaderText = "Оплачено";
@@ -84,7 +86,9 @@ namespace ClientSystem.Forms
             gridSale.Columns["id_employess"].Visible = false;
             gridSale.Columns["id_subsidiary_companies_region"].Visible = false;
             gridSale.Columns["Sale_basket"].Visible = false; 
-            gridSale.Columns["Subsidiary_companies_region"].Visible = false; 
+            gridSale.Columns["Subsidiary_companies_region"].Visible = false;
+            gridSale.Columns["date_up"].DisplayIndex = 0;
+            gridSale.Columns["date_up"].DefaultCellStyle.Format = "yyyy-MM-dd HH:mm: ss";
 
 
 
@@ -127,5 +131,7 @@ namespace ClientSystem.Forms
             }
             RefreshModels();
         }
+
+       
     }
 }

@@ -37,3 +37,4 @@ C:\Users\Axandr\Documents\Visual Studio 2015\Projects\ClientSystem\ClientSystem\
 C:\Users\Axandr\Documents\Visual Studio 2015\Projects\ClientSystem\ClientSystem\obj\Debug\ClientSystem.Forms.AddCategoryGoods.resources
 C:\Users\Axandr\Documents\Visual Studio 2015\Projects\ClientSystem\ClientSystem\obj\Debug\ClientSystem.Forms.AddGoods.resources
 C:\Users\Axandr\Documents\Visual Studio 2015\Projects\ClientSystem\ClientSystem\obj\Debug\ClientSystem.Forms.SeeSale.resources
+C:\Users\Axandr\Documents\Visual Studio 2015\Projects\ClientSystem\ClientSystem\obj\Debug\ClientSystem.Forms.SearchGoods.resources

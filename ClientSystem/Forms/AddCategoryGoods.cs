@@ -14,7 +14,7 @@ namespace ClientSystem.Forms
     public partial class AddCategoryGoods : Form
     {
         ConnectContext db;
-        
+
         public AddCategoryGoods()
         {
             InitializeComponent();
@@ -22,7 +22,7 @@ namespace ClientSystem.Forms
             db.Goods_category.Local.CollectionChanged += Local_CollectionChanged;
 
         }
-       
+
         void Local_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             RefreshModels();
@@ -30,8 +30,8 @@ namespace ClientSystem.Forms
         }
         private void RefreshModels()
         {
-         var cat = from c in db.Goods_category
-                    select c;
+            var cat = from c in db.Goods_category
+                      select c;
             gridCategoryGoods.DataSource = cat.ToList();
 
         }
@@ -41,10 +41,10 @@ namespace ClientSystem.Forms
 
             gridCategoryGoods.Columns["title"].HeaderText = "Название";
             gridCategoryGoods.Columns["date_up"].HeaderText = "Дата обновления";
-            gridCategoryGoods.Columns["Goods"].Visible=false;
+            gridCategoryGoods.Columns["Goods"].Visible = false;
 
         }
-        
+
         private void gridCategoryGoods_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (gridCategoryGoods.CurrentRow != null)
@@ -54,7 +54,7 @@ namespace ClientSystem.Forms
                 gridCategoryGoods.CurrentCell = gridCategoryGoods.SelectedRows[0].Cells[0];
                 var currentCategory = gridCategoryGoods.CurrentRow.DataBoundItem as Goods_category;
                 titleCategory.Text = currentCategory.title;
-                     
+
 
             }
         }
@@ -66,9 +66,11 @@ namespace ClientSystem.Forms
 
         private void Add_Click(object sender, EventArgs e)
         {
-           
-            Goods_category newCategory = new Goods_category {
+
+            Goods_category newCategory = new Goods_category
+            {
                 title = titleCategory.Text,
+                date_up = DateTime.Now
             };
             db.Goods_category.Add(newCategory);
             db.SaveChanges();
@@ -80,6 +82,7 @@ namespace ClientSystem.Forms
         {
             var currentCategory = gridCategoryGoods.CurrentRow.DataBoundItem as Goods_category;
             currentCategory.title = titleCategory.Text;
+            currentCategory.date_up = DateTime.Now;
             db.SaveChanges();
             RefreshModels();
 

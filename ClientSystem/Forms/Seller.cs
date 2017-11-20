@@ -100,6 +100,7 @@ namespace ClientSystem.Forms
         {
             labelTitle.Text = "";
             labelPrice.Text = "";
+           
         }
         private void gridSeller_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -140,6 +141,7 @@ namespace ClientSystem.Forms
                 price = Convert.ToDecimal(price_all.Text),
                 payment = Convert.ToDecimal(payment.Text),
                 id_subsidiary_companies_region = (int)(new ConfigJson()).SubsidiaryCompaniesRegion(),
+                date_up = DateTime.Now
 
             };
             db.Sale.Add(sale);
@@ -170,12 +172,30 @@ namespace ClientSystem.Forms
             {
                 saleBasket();
                 ClearDescriptionGoods();
+                gridSeller.Rows.Clear();
             }
+
         }
 
         private void button_sales_Click(object sender, EventArgs e)
         {
             (new SeeSale()).Show();
+        }
+
+        private void button_search_Click(object sender, EventArgs e)
+        {
+            (new SearchGoods(ref gridSeller)).Show();
+        }
+
+        private void gridSeller_ColumnAdded(object sender, DataGridViewColumnEventArgs e)
+        {
+            sellerPrice();
+        }
+
+        private void gridSeller_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            sellerPrice();
+
         }
     }
 }

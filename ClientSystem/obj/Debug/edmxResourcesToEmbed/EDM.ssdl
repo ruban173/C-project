@@ -25,6 +25,7 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="manufacturer" Type="nvarchar" MaxLength="100" />
     <Property Name="description" Type="nvarchar" MaxLength="1000" />
     <Property Name="id_goods_category" Type="int" />
     <Property Name="id_subsidiary_companies_region" Type="int" />
@@ -33,6 +34,7 @@
     <Property Name="price" Type="decimal" Precision="18" Scale="0" />
     <Property Name="discont" Type="float" />
     <Property Name="measurement" Type="nvarchar" MaxLength="50" />
+    <Property Name="count" Type="int" />
     <Property Name="code" Type="nvarchar" MaxLength="30" />
     <Property Name="basket" Type="nvarchar" MaxLength="50" />
     <Property Name="status" Type="nvarchar" MaxLength="15" />
@@ -43,7 +45,7 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="title" Type="nvarchar" MaxLength="50" />
-    <Property Name="date_up" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="date_up" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
   </EntityType>
   <EntityType Name="Sale">
     <Key>
@@ -55,7 +57,7 @@
     <Property Name="payment" Type="decimal" Precision="18" Scale="0" />
     <Property Name="price" Type="decimal" Precision="18" Scale="0" />
     <Property Name="id_subsidiary_companies_region" Type="int" />
-    <Property Name="date_up" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="date_up" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Sale_basket">
     <Key>
@@ -150,7 +152,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Sale_basket_Sale">
-    <End Role="Sale" Type="Self.Sale" Multiplicity="0..1" />
+    <End Role="Sale" Type="Self.Sale" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Sale_basket" Type="Self.Sale_basket" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Sale">

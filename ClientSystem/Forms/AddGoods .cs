@@ -41,6 +41,8 @@ namespace ClientSystem.Forms
                 gridGoods.Columns["shelf_life"].HeaderText = "Срок годности";
                 gridGoods.Columns["date_create"].HeaderText = "Дата производства";
                 gridGoods.Columns["code"].HeaderText = "Штрих код";
+                gridGoods.Columns["manufacturer"].HeaderText = "Производитель";
+                gridGoods.Columns["count"].HeaderText = "Количество";
 
                 gridGoods.Columns["id_goods_category"].Visible = false;
                 gridGoods.Columns["id_subsidiary_companies_region"].Visible = false;
@@ -52,6 +54,8 @@ namespace ClientSystem.Forms
                 gridGoods.Columns["Goods_category"].Visible = false;
                 gridGoods.Columns["description"].Visible = false;
                 gridGoods.Columns["basket"].Visible = false;
+                gridGoods.Columns["Sale_basket"].Visible = false;
+
             }
             gridGoods.Refresh();
            // FillGoodsTextBoxes();
@@ -102,6 +106,8 @@ namespace ClientSystem.Forms
             description.Text = currentGoods.description;
             code.Text = currentGoods.code;
             status.SelectedText  = currentGoods.status;
+            manufacturer.Text = currentGoods.manufacturer;
+            count.Text = currentGoods.count.ToString();
 
             gridGoods.ClearSelection();
             gridGoods.Rows[gridGoods.CurrentRow.Index].Selected = true;
@@ -126,7 +132,7 @@ namespace ClientSystem.Forms
             gridCategoryGoods.Columns["title"].HeaderText = "Название";
             gridCategoryGoods.Columns["date_up"].Visible = false;
             gridCategoryGoods.Columns["Goods"].Visible = false;
-          
+           
             status.Items.AddRange(new string[] { "Без деформации", "Деформирован","" });
 
             
@@ -170,7 +176,9 @@ namespace ClientSystem.Forms
                 discont = Convert.ToDouble(discont.Text),
                 measurement = measurement.Text,
                 description = description.Text,
+                count= Convert.ToInt32(count.Text),
                 code = code.Text,
+                manufacturer=manufacturer.Text,
                 status = status.Text
 
             };
@@ -197,6 +205,8 @@ namespace ClientSystem.Forms
             currentGoods.measurement = measurement.Text;
             currentGoods.description = description.Text;
             currentGoods.code = code.Text;
+            currentGoods.count = Convert.ToInt32(count.Text);
+            currentGoods.manufacturer = manufacturer.Text;
             currentGoods.status = status.Text;
 
             db.SaveChanges();

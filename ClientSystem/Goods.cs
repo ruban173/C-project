@@ -35,6 +35,8 @@ namespace ClientSystem
         public string status { get; set; }
         public string description { get; set; }
         public string basket { get; set; }
+        public string manufacturer { get; set; }
+        public Nullable<int> count { get; set; }
     
         public virtual Goods_category Goods_category { get; set; }
         public virtual Subsidiary_companies_region Subsidiary_companies_region { get; set; }

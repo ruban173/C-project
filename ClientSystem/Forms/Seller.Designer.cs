@@ -48,14 +48,10 @@
             this.button_payment_card = new System.Windows.Forms.Button();
             this.gridSeller = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.searchCode = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -115,18 +111,18 @@
             // 
             // price_all
             // 
-            this.price_all.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.price_all.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.price_all.ForeColor = System.Drawing.Color.RoyalBlue;
             this.price_all.Location = new System.Drawing.Point(3, 22);
             this.price_all.Name = "price_all";
-            this.price_all.Size = new System.Drawing.Size(196, 22);
+            this.price_all.Size = new System.Drawing.Size(196, 21);
             this.price_all.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(3, 47);
+            this.label2.Location = new System.Drawing.Point(3, 46);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 16);
             this.label2.TabIndex = 2;
@@ -134,18 +130,18 @@
             // 
             // discont_all
             // 
-            this.discont_all.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.discont_all.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.discont_all.ForeColor = System.Drawing.Color.Red;
-            this.discont_all.Location = new System.Drawing.Point(3, 66);
+            this.discont_all.Location = new System.Drawing.Point(3, 65);
             this.discont_all.Name = "discont_all";
-            this.discont_all.Size = new System.Drawing.Size(196, 22);
+            this.discont_all.Size = new System.Drawing.Size(196, 21);
             this.discont_all.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(3, 91);
+            this.label3.Location = new System.Drawing.Point(3, 89);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 16);
             this.label3.TabIndex = 4;
@@ -153,18 +149,18 @@
             // 
             // payment
             // 
-            this.payment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.payment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.payment.ForeColor = System.Drawing.Color.SeaGreen;
-            this.payment.Location = new System.Drawing.Point(3, 110);
+            this.payment.Location = new System.Drawing.Point(3, 108);
             this.payment.Name = "payment";
-            this.payment.Size = new System.Drawing.Size(196, 22);
+            this.payment.Size = new System.Drawing.Size(196, 21);
             this.payment.TabIndex = 5;
             // 
             // sale
             // 
             this.sale.BackColor = System.Drawing.Color.LightGray;
             this.sale.Dock = System.Windows.Forms.DockStyle.Right;
-            this.sale.Location = new System.Drawing.Point(102, 138);
+            this.sale.Location = new System.Drawing.Point(102, 135);
             this.sale.Name = "sale";
             this.sale.Size = new System.Drawing.Size(97, 37);
             this.sale.TabIndex = 6;
@@ -246,6 +242,7 @@
             this.button_search.TabIndex = 4;
             this.button_search.Text = "Поиск";
             this.button_search.UseVisualStyleBackColor = true;
+            this.button_search.Click += new System.EventHandler(this.button_search_Click);
             // 
             // button_sales
             // 
@@ -288,18 +285,16 @@
             this.gridSeller.Size = new System.Drawing.Size(643, 251);
             this.gridSeller.TabIndex = 3;
             this.gridSeller.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridSeller_CellClick);
+            this.gridSeller.ColumnAdded += new System.Windows.Forms.DataGridViewColumnEventHandler(this.gridSeller_ColumnAdded);
+            this.gridSeller.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.gridSeller_RowsAdded);
             this.gridSeller.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.gridSeller_RowsRemoved);
             // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Controls.Add(this.listBox2, 0, 5);
-            this.tableLayoutPanel3.Controls.Add(this.label8, 0, 4);
             this.tableLayoutPanel3.Controls.Add(this.label6, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.flowLayoutPanel3, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.label7, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.listBox1, 0, 3);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(654, 193);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -312,24 +307,6 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(230, 251);
             this.tableLayoutPanel3.TabIndex = 4;
-            // 
-            // listBox2
-            // 
-            this.listBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(3, 166);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(224, 82);
-            this.listBox2.TabIndex = 8;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 150);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(46, 13);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Товары";
             // 
             // label6
             // 
@@ -366,32 +343,16 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 50);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(60, 13);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "Категории";
-            // 
-            // listBox1
-            // 
-            this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(3, 66);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(224, 81);
-            this.listBox1.TabIndex = 6;
-            // 
             // Seller
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(888, 448);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Seller";
             this.Text = "Рабочее место продавца";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Seller_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
@@ -428,16 +389,12 @@
         private System.Windows.Forms.TextBox discont_all;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox payment;
-        private System.Windows.Forms.DataGridView gridSeller;
+        private System.Windows.Forms.Button sale;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.TextBox searchCode;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button sale;
+        public System.Windows.Forms.DataGridView gridSeller;
     }
 }
