@@ -57,13 +57,17 @@ namespace ClientSystem.Forms
                                
                                  group g by new {
                                      g.Goods_category,
-                                     g.title,g.manufacturer} into s
+                                     g.title,
+                                     g.manufacturer
+                                 } into s
                                 // where s.Count()<5
                                 
                                  select new { //cat=s.Key.Goods_category.title,
                                             title =s.Key.title,
                                             manufacturer =s.Key.manufacturer,
-                                            count = string.IsNullOrEmpty(s.Count().ToString())?0: s.Count()
+                                           // count = string.IsNullOrEmpty(s.Count().ToString())?0: s.Count()
+                                            count = s.Count(),
+                                            summ=s.Sum(x=>x.count)
                                  };
                 
                     gridStorage.DataSource = countGoods.ToList();
@@ -73,6 +77,29 @@ namespace ClientSystem.Forms
 
             }
             
+        }
+
+        private void gridStorage_Paint(object sender, PaintEventArgs e)
+        {
+            foreach (DataGridViewRow row in gridStorage.Rows)
+            {
+                int cursor = (int)row.Cells["summ"].Value;
+                if (cursor < 10)
+                {
+                    row.DefaultCellStyle.BackColor = Color.Red;
+                }
+                else {
+                    if (cursor>=100)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.Green;
+                    }
+                    else
+                    {
+                        row.DefaultCellStyle.BackColor = Color.LightBlue;
+                    }
+                }
+
+            }
         }
     }
 }

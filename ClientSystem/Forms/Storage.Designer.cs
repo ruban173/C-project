@@ -183,6 +183,7 @@
             this.gridStorage.Name = "gridStorage";
             this.gridStorage.Size = new System.Drawing.Size(643, 298);
             this.gridStorage.TabIndex = 3;
+            this.gridStorage.Paint += new System.Windows.Forms.PaintEventHandler(this.gridStorage_Paint);
             // 
             // tableLayoutPanel3
             // 

@@ -59,7 +59,7 @@ namespace ClientSystem.Forms
             ClearDescriptionGoods();
 
 
-            IEnumerable<Goods> result = goods.Where(g => (g.code == searchCode.Text && g.basket != "продано")).ToList();
+            IEnumerable<Goods> result = goods.Where(g => (g.code == searchCode.Text && g.basket != "продано" && g.count != 0)).ToList();
 
             if (result.Count() != 0)
             {
@@ -100,7 +100,7 @@ namespace ClientSystem.Forms
         {
             labelTitle.Text = "";
             labelPrice.Text = "";
-           
+
         }
         private void gridSeller_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -150,8 +150,12 @@ namespace ClientSystem.Forms
                 int? id = Convert.ToInt32(row.Cells["id"].Value);
 
                 var goodsBasket = db.Goods.FirstOrDefault(g => g.id == id);
-                goodsBasket.basket = "продано";
-
+                if (goodsBasket.count-- == 0)
+                {
+                    goodsBasket.basket = "продано";
+                    
+                }
+               
                 Sale_basket sale_basket = new Sale_basket()
                 {
                     id_goods = goodsBasket.id,
@@ -164,6 +168,7 @@ namespace ClientSystem.Forms
             }
 
             db.SaveChanges();
+
 
         }
         private void button2_Click(object sender, EventArgs e)

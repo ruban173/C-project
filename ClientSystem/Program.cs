@@ -19,9 +19,9 @@ namespace ClientSystem
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //  Application.Run(new Autorization());
-         // Application.Run(new Storage());
-           // Application.Run(new AddGoods());
-       Application.Run(new Seller());
+         Application.Run(new Storage());
+        //    Application.Run(new AddGoods());
+      // Application.Run(new Seller());
           //  Application.Run(new SearchGoods());
 
             //  Application.Run(new SeeSale());

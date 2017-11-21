@@ -41,7 +41,7 @@ namespace ClientSystem.Forms
             {
 
                 var currentCategory = gridCategoryGoods.CurrentRow.DataBoundItem as Goods_category;
-                if (currentCategory != null) gridGoods.DataSource = currentCategory.Goods.Where(g=>g.basket!="продано").ToList();
+                if (currentCategory != null) gridGoods.DataSource = currentCategory.Goods.Where(g=>g.basket!="продано" && g.count != 0).ToList();
 
                 gridGoods.Columns["id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
 

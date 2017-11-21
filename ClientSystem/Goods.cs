@@ -17,13 +17,13 @@ namespace ClientSystem
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Goods()
         {
-            this.price = 0m;
-            this.discont = 0D;
             this.Sale_basket = new HashSet<Sale_basket>();
         }
     
         public int id { get; set; }
         public string title { get; set; }
+        public string manufacturer { get; set; }
+        public string description { get; set; }
         public Nullable<int> id_goods_category { get; set; }
         public Nullable<int> id_subsidiary_companies_region { get; set; }
         public Nullable<int> shelf_life { get; set; }
@@ -31,12 +31,10 @@ namespace ClientSystem
         public Nullable<decimal> price { get; set; }
         public Nullable<double> discont { get; set; }
         public string measurement { get; set; }
-        public string code { get; set; }
-        public string status { get; set; }
-        public string description { get; set; }
-        public string basket { get; set; }
-        public string manufacturer { get; set; }
         public Nullable<int> count { get; set; }
+        public string code { get; set; }
+        public string basket { get; set; }
+        public string status { get; set; }
     
         public virtual Goods_category Goods_category { get; set; }
         public virtual Subsidiary_companies_region Subsidiary_companies_region { get; set; }

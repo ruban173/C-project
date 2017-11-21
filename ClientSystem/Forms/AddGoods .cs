@@ -164,26 +164,35 @@ namespace ClientSystem.Forms
 
         private void Add_Click(object sender, EventArgs e)
         {
-            Goods newGoods = new Goods
+           
+            try
             {
+                Goods newGoods = new Goods
+                {
 
-                title = title.Text,
-                id_goods_category = (int)categoryBox.SelectedValue,
-                id_subsidiary_companies_region = (int)(new ConfigJson()).SubsidiaryCompaniesRegion(),
-                shelf_life = Convert.ToInt32(shelf_life.Text),
-                date_create = DateTime.Now,
-                price = Convert.ToDecimal(price.Text),
-                discont = Convert.ToDouble(discont.Text),
-                measurement = measurement.Text,
-                description = description.Text,
-                count= Convert.ToInt32(count.Text),
-                code = code.Text,
-                manufacturer=manufacturer.Text,
-                status = status.Text
+                    title = title.Text,
+                    id_goods_category = (int)categoryBox.SelectedValue,
+                    id_subsidiary_companies_region = (int)(new ConfigJson()).SubsidiaryCompaniesRegion(),
+                    shelf_life = Convert.ToInt32(shelf_life.Text),
+                    date_create = DateTime.Now,
+                    price = (price.Text != "") ? Convert.ToDecimal(price.Text) : 0,
+                    discont = (discont.Text != "") ? Convert.ToDouble(discont.Text) : 0,
+                    measurement = measurement.Text,
+                    description = description.Text,
+                    count = (count.Text != "") ? Convert.ToInt32(count.Text) : 0,
+                    code = code.Text,
+                    manufacturer = manufacturer.Text,
+                    status = status.Text
 
-            };
-            db.Goods.Add(newGoods);
-            db.SaveChanges();
+                };
+                db.Goods.Add(newGoods);
+                db.SaveChanges();
+
+            }
+            catch
+            {
+                MessageBox.Show("Не все поля заполнены");
+            }
             RefreshModels();
 
         }
@@ -205,7 +214,7 @@ namespace ClientSystem.Forms
             currentGoods.measurement = measurement.Text;
             currentGoods.description = description.Text;
             currentGoods.code = code.Text;
-            currentGoods.count = Convert.ToInt32(count.Text);
+            currentGoods.count = (count.Text!="")?Convert.ToInt32(count.Text):0;
             currentGoods.manufacturer = manufacturer.Text;
             currentGoods.status = status.Text;
 

@@ -18,7 +18,7 @@ namespace ClientSystem
         public Nullable<int> id_goods { get; set; }
         public Nullable<int> id_sale { get; set; }
     
-        public virtual Goods Goods { get; set; }
         public virtual Sale Sale { get; set; }
+        public virtual Goods Goods { get; set; }
     }
 }

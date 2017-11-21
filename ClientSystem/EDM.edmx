@@ -281,8 +281,8 @@
           <Property Name="number" Type="Int32" />
           <Property Name="structure" Type="Int32" />
           <NavigationProperty Name="Subsidiary_companies" Relationship="Self.FK_Subsidiary_companies_region_Subsidiary_companies" FromRole="Subsidiary_companies_region" ToRole="Subsidiary_companies" />
-          <NavigationProperty Name="Goods" Relationship="PAOModel.FK_Goods_Subsidiary_companies_region" FromRole="Subsidiary_companies_region" ToRole="Goods" />
           <NavigationProperty Name="Sale" Relationship="PAOModel.FK_Sale_Subsidiary_companies_region" FromRole="Subsidiary_companies_region" ToRole="Sale" />
+          <NavigationProperty Name="Goods" Relationship="PAOModel.FK_Goods_Subsidiary_companies_region" FromRole="Subsidiary_companies_region" ToRole="Goods" />
         </EntityType>
         <EntityType Name="User_access">
           <Key>
@@ -335,6 +335,16 @@
             <End Role="Subsidiary_companies_region" EntitySet="Subsidiary_companies_region" />
           </AssociationSet>
           <EntitySet Name="Goods_category" EntityType="PAOModel.Goods_category" />
+          <EntitySet Name="Sale_basket" EntityType="PAOModel.Sale_basket" />
+          <EntitySet Name="Sale" EntityType="PAOModel.Sale" />
+          <AssociationSet Name="FK_Sale_basket_Sale" Association="PAOModel.FK_Sale_basket_Sale">
+            <End Role="Sale" EntitySet="Sale" />
+            <End Role="Sale_basket" EntitySet="Sale_basket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sale_Subsidiary_companies_region" Association="PAOModel.FK_Sale_Subsidiary_companies_region">
+            <End Role="Subsidiary_companies_region" EntitySet="Subsidiary_companies_region" />
+            <End Role="Sale" EntitySet="Sale" />
+          </AssociationSet>
           <EntitySet Name="Goods" EntityType="PAOModel.Goods" />
           <AssociationSet Name="FK_Goods_Goods_category" Association="PAOModel.FK_Goods_Goods_category">
             <End Role="Goods_category" EntitySet="Goods_category" />
@@ -344,19 +354,9 @@
             <End Role="Subsidiary_companies_region" EntitySet="Subsidiary_companies_region" />
             <End Role="Goods" EntitySet="Goods" />
           </AssociationSet>
-          <EntitySet Name="Sale_basket" EntityType="PAOModel.Sale_basket" />
           <AssociationSet Name="FK_Sale_basket_Goods" Association="PAOModel.FK_Sale_basket_Goods">
             <End Role="Goods" EntitySet="Goods" />
             <End Role="Sale_basket" EntitySet="Sale_basket" />
-          </AssociationSet>
-          <EntitySet Name="Sale" EntityType="PAOModel.Sale" />
-          <AssociationSet Name="FK_Sale_basket_Sale" Association="PAOModel.FK_Sale_basket_Sale">
-            <End Role="Sale" EntitySet="Sale" />
-            <End Role="Sale_basket" EntitySet="Sale_basket" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Sale_Subsidiary_companies_region" Association="PAOModel.FK_Sale_Subsidiary_companies_region">
-            <End Role="Subsidiary_companies_region" EntitySet="Subsidiary_companies_region" />
-            <End Role="Sale" EntitySet="Sale" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Goods_category">
@@ -368,53 +368,6 @@
           <Property Name="date_up" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
           <NavigationProperty Name="Goods" Relationship="PAOModel.FK_Goods_Goods_category" FromRole="Goods_category" ToRole="Goods" />
         </EntityType>
-        <EntityType Name="Goods">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="id_goods_category" Type="Int32" />
-          <Property Name="id_subsidiary_companies_region" Type="Int32" />
-          <Property Name="shelf_life" Type="Int32" />
-          <Property Name="date_create" Type="DateTime" Precision="0" />
-          <Property Name="price" Type="Decimal" Precision="18" Scale="0" Nullable="true" DefaultValue="0" />
-          <Property Name="discont" Type="Double" Nullable="true" DefaultValue="0" />
-          <Property Name="measurement" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="true" />
-          <Property Name="code" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="status" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Goods_category" Relationship="PAOModel.FK_Goods_Goods_category" FromRole="Goods" ToRole="Goods_category" />
-          <NavigationProperty Name="Subsidiary_companies_region" Relationship="PAOModel.FK_Goods_Subsidiary_companies_region" FromRole="Goods" ToRole="Subsidiary_companies_region" />
-          <Property Name="description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="basket" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Sale_basket" Relationship="PAOModel.FK_Sale_basket_Goods" FromRole="Goods" ToRole="Sale_basket" />
-          <Property Name="manufacturer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="count" Type="Int32" />
-        </EntityType>
-        <Association Name="FK_Goods_Goods_category">
-          <End Type="PAOModel.Goods_category" Role="Goods_category" Multiplicity="0..1" />
-          <End Type="PAOModel.Goods" Role="Goods" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Goods_category">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Goods">
-              <PropertyRef Name="id_goods_category" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Goods_Subsidiary_companies_region">
-          <End Type="PAOModel.Subsidiary_companies_region" Role="Subsidiary_companies_region" Multiplicity="0..1" />
-          <End Type="PAOModel.Goods" Role="Goods" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Subsidiary_companies_region">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Goods">
-              <PropertyRef Name="id_subsidiary_companies_region" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Sale_basket">
           <Key>
             <PropertyRef Name="id" />
@@ -422,21 +375,9 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_goods" Type="Int32" />
           <Property Name="id_sale" Type="Int32" />
-          <NavigationProperty Name="Goods" Relationship="PAOModel.FK_Sale_basket_Goods" FromRole="Sale_basket" ToRole="Goods" />
           <NavigationProperty Name="Sale" Relationship="PAOModel.FK_Sale_basket_Sale" FromRole="Sale_basket" ToRole="Sale" />
+          <NavigationProperty Name="Goods" Relationship="PAOModel.FK_Sale_basket_Goods" FromRole="Sale_basket" ToRole="Goods" />
         </EntityType>
-        <Association Name="FK_Sale_basket_Goods">
-          <End Type="PAOModel.Goods" Role="Goods" Multiplicity="0..1" />
-          <End Type="PAOModel.Sale_basket" Role="Sale_basket" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Goods">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Sale_basket">
-              <PropertyRef Name="id_goods" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Sale">
           <Key>
             <PropertyRef Name="id" />
@@ -474,6 +415,65 @@
             </Principal>
             <Dependent Role="Sale">
               <PropertyRef Name="id_subsidiary_companies_region" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Goods">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="manufacturer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="id_goods_category" Type="Int32" />
+          <Property Name="id_subsidiary_companies_region" Type="Int32" />
+          <Property Name="shelf_life" Type="Int32" />
+          <Property Name="date_create" Type="DateTime" Precision="0" />
+          <Property Name="price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="discont" Type="Double" />
+          <Property Name="measurement" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="count" Type="Int32" />
+          <Property Name="code" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="basket" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Goods_category" Relationship="PAOModel.FK_Goods_Goods_category" FromRole="Goods" ToRole="Goods_category" />
+          <NavigationProperty Name="Subsidiary_companies_region" Relationship="PAOModel.FK_Goods_Subsidiary_companies_region" FromRole="Goods" ToRole="Subsidiary_companies_region" />
+          <NavigationProperty Name="Sale_basket" Relationship="PAOModel.FK_Sale_basket_Goods" FromRole="Goods" ToRole="Sale_basket" />
+        </EntityType>
+        <Association Name="FK_Goods_Goods_category">
+          <End Type="PAOModel.Goods_category" Role="Goods_category" Multiplicity="0..1" />
+          <End Type="PAOModel.Goods" Role="Goods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goods_category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Goods">
+              <PropertyRef Name="id_goods_category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Goods_Subsidiary_companies_region">
+          <End Type="PAOModel.Subsidiary_companies_region" Role="Subsidiary_companies_region" Multiplicity="0..1" />
+          <End Type="PAOModel.Goods" Role="Goods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subsidiary_companies_region">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Goods">
+              <PropertyRef Name="id_subsidiary_companies_region" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sale_basket_Goods">
+          <End Type="PAOModel.Goods" Role="Goods" Multiplicity="0..1" />
+          <End Type="PAOModel.Sale_basket" Role="Sale_basket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goods">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Sale_basket">
+              <PropertyRef Name="id_goods" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -551,27 +551,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Goods">
-            <EntityTypeMapping TypeName="PAOModel.Goods">
-              <MappingFragment StoreEntitySet="Goods">
-                <ScalarProperty Name="count" ColumnName="count" />
-                <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
-                <ScalarProperty Name="basket" ColumnName="basket" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="code" ColumnName="code" />
-                <ScalarProperty Name="measurement" ColumnName="measurement" />
-                <ScalarProperty Name="discont" ColumnName="discont" />
-                <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="date_create" ColumnName="date_create" />
-                <ScalarProperty Name="shelf_life" ColumnName="shelf_life" />
-                <ScalarProperty Name="id_subsidiary_companies_region" ColumnName="id_subsidiary_companies_region" />
-                <ScalarProperty Name="id_goods_category" ColumnName="id_goods_category" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Sale_basket">
             <EntityTypeMapping TypeName="PAOModel.Sale_basket">
               <MappingFragment StoreEntitySet="Sale_basket">
@@ -590,6 +569,27 @@
                 <ScalarProperty Name="payment" ColumnName="payment" />
                 <ScalarProperty Name="discont" ColumnName="discont" />
                 <ScalarProperty Name="id_employess" ColumnName="id_employess" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Goods">
+            <EntityTypeMapping TypeName="PAOModel.Goods">
+              <MappingFragment StoreEntitySet="Goods">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="basket" ColumnName="basket" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="count" ColumnName="count" />
+                <ScalarProperty Name="measurement" ColumnName="measurement" />
+                <ScalarProperty Name="discont" ColumnName="discont" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="date_create" ColumnName="date_create" />
+                <ScalarProperty Name="shelf_life" ColumnName="shelf_life" />
+                <ScalarProperty Name="id_subsidiary_companies_region" ColumnName="id_subsidiary_companies_region" />
+                <ScalarProperty Name="id_goods_category" ColumnName="id_goods_category" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
+                <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
