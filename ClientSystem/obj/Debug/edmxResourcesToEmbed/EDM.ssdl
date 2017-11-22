@@ -31,6 +31,7 @@
     <Property Name="id_subsidiary_companies_region" Type="int" />
     <Property Name="shelf_life" Type="int" />
     <Property Name="date_create" Type="date" />
+    <Property Name="date_end" Type="date" />
     <Property Name="price" Type="decimal" Precision="18" Scale="0" />
     <Property Name="discont" Type="float" />
     <Property Name="measurement" Type="nvarchar" MaxLength="50" />

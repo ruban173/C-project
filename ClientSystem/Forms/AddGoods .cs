@@ -174,7 +174,8 @@ namespace ClientSystem.Forms
                     id_goods_category = (int)categoryBox.SelectedValue,
                     id_subsidiary_companies_region = (int)(new ConfigJson()).SubsidiaryCompaniesRegion(),
                     shelf_life = Convert.ToInt32(shelf_life.Text),
-                    date_create = DateTime.Now,
+                    date_create = date_create.Value,
+                    date_end= date_create.Value.AddDays(Convert.ToInt32(shelf_life.Text)),
                     price = (price.Text != "") ? Convert.ToDecimal(price.Text) : 0,
                     discont = (discont.Text != "") ? Convert.ToDouble(discont.Text) : 0,
                     measurement = measurement.Text,
@@ -209,6 +210,7 @@ namespace ClientSystem.Forms
             currentGoods.title = title.Text;
             currentGoods.shelf_life = Convert.ToInt32(shelf_life.Text);
             currentGoods.date_create = date_create.Value;
+            currentGoods.date_end = date_create.Value.AddDays(Convert.ToInt32(shelf_life.Text));
             currentGoods.price = (price.Text!="")?Convert.ToDecimal(price.Text):0;
             currentGoods.discont = (discont.Text != "") ? Convert.ToDouble(discont.Text) : 0;
             currentGoods.measurement = measurement.Text;

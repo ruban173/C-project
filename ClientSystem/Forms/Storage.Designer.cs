@@ -48,6 +48,13 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.red = new System.Windows.Forms.Label();
+            this.redBox = new System.Windows.Forms.TextBox();
+            this.blueBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.greenBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -56,6 +63,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridStorage)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -96,6 +104,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.button_add);
             this.groupBox1.Controls.Add(this.button_payment_card);
             this.groupBox1.Controls.Add(this.button_cash);
@@ -125,6 +134,7 @@
             this.button_payment_card.TabIndex = 7;
             this.button_payment_card.Text = "Анализ срока годности товара";
             this.button_payment_card.UseVisualStyleBackColor = true;
+            this.button_payment_card.Click += new System.EventHandler(this.button_payment_card_Click);
             // 
             // button_cash
             // 
@@ -150,7 +160,7 @@
             this.groupBox2.Controls.Add(this.button_goods);
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(555, 64);
+            this.groupBox2.Size = new System.Drawing.Size(237, 64);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Управление";
@@ -177,6 +187,7 @@
             // 
             // gridStorage
             // 
+            this.gridStorage.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridStorage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridStorage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridStorage.Location = new System.Drawing.Point(4, 166);
@@ -279,6 +290,67 @@
             this.listBox1.Size = new System.Drawing.Size(224, 105);
             this.listBox1.TabIndex = 6;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.greenBox);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.blueBox);
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.redBox);
+            this.groupBox3.Controls.Add(this.red);
+            this.groupBox3.Location = new System.Drawing.Point(310, 12);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(321, 54);
+            this.groupBox3.TabIndex = 8;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Критерии (Меньше)";
+            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
+            // 
+            // red
+            // 
+            this.red.BackColor = System.Drawing.Color.Red;
+            this.red.Location = new System.Drawing.Point(17, 18);
+            this.red.Name = "red";
+            this.red.Size = new System.Drawing.Size(20, 20);
+            this.red.TabIndex = 0;
+            // 
+            // redBox
+            // 
+            this.redBox.Location = new System.Drawing.Point(43, 18);
+            this.redBox.Name = "redBox";
+            this.redBox.Size = new System.Drawing.Size(46, 20);
+            this.redBox.TabIndex = 1;
+            // 
+            // blueBox
+            // 
+            this.blueBox.Location = new System.Drawing.Point(150, 17);
+            this.blueBox.Name = "blueBox";
+            this.blueBox.Size = new System.Drawing.Size(46, 20);
+            this.blueBox.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.LightBlue;
+            this.label1.Location = new System.Drawing.Point(124, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(20, 20);
+            this.label1.TabIndex = 2;
+            // 
+            // greenBox
+            // 
+            this.greenBox.Location = new System.Drawing.Point(251, 16);
+            this.greenBox.Name = "greenBox";
+            this.greenBox.Size = new System.Drawing.Size(46, 20);
+            this.greenBox.TabIndex = 5;
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.Green;
+            this.label2.Location = new System.Drawing.Point(225, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(20, 20);
+            this.label2.TabIndex = 4;
+            // 
             // Storage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -299,6 +371,8 @@
             this.tableLayoutPanel3.PerformLayout();
             this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel3.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -326,5 +400,12 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button_category_goods;
         private System.Windows.Forms.Button button_goods;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox greenBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox blueBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox redBox;
+        private System.Windows.Forms.Label red;
     }
 }

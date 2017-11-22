@@ -36,6 +36,7 @@
           <Property Name="id_subsidiary_companies_region" Type="int" />
           <Property Name="shelf_life" Type="int" />
           <Property Name="date_create" Type="date" />
+          <Property Name="date_end" Type="date" />
           <Property Name="price" Type="decimal" Precision="18" Scale="0" />
           <Property Name="discont" Type="float" />
           <Property Name="measurement" Type="nvarchar" MaxLength="50" />
@@ -440,6 +441,7 @@
           <NavigationProperty Name="Goods_category" Relationship="PAOModel.FK_Goods_Goods_category" FromRole="Goods" ToRole="Goods_category" />
           <NavigationProperty Name="Subsidiary_companies_region" Relationship="PAOModel.FK_Goods_Subsidiary_companies_region" FromRole="Goods" ToRole="Subsidiary_companies_region" />
           <NavigationProperty Name="Sale_basket" Relationship="PAOModel.FK_Sale_basket_Goods" FromRole="Goods" ToRole="Sale_basket" />
+          <Property Name="date_end" Type="DateTime" Precision="0" />
         </EntityType>
         <Association Name="FK_Goods_Goods_category">
           <End Type="PAOModel.Goods_category" Role="Goods_category" Multiplicity="0..1" />
@@ -576,6 +578,7 @@
           <EntitySetMapping Name="Goods">
             <EntityTypeMapping TypeName="PAOModel.Goods">
               <MappingFragment StoreEntitySet="Goods">
+                <ScalarProperty Name="date_end" ColumnName="date_end" />
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="basket" ColumnName="basket" />
                 <ScalarProperty Name="code" ColumnName="code" />

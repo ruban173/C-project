@@ -204,6 +204,7 @@
     <NavigationProperty Name="Goods_category" Relationship="PAOModel.FK_Goods_Goods_category" FromRole="Goods" ToRole="Goods_category" />
     <NavigationProperty Name="Subsidiary_companies_region" Relationship="PAOModel.FK_Goods_Subsidiary_companies_region" FromRole="Goods" ToRole="Subsidiary_companies_region" />
     <NavigationProperty Name="Sale_basket" Relationship="PAOModel.FK_Sale_basket_Goods" FromRole="Goods" ToRole="Sale_basket" />
+    <Property Name="date_end" Type="DateTime" Precision="0" />
   </EntityType>
   <Association Name="FK_Goods_Goods_category">
     <End Type="PAOModel.Goods_category" Role="Goods_category" Multiplicity="0..1" />

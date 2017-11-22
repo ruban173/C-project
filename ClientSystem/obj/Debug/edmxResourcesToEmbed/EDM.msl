@@ -94,6 +94,7 @@
     <EntitySetMapping Name="Goods">
       <EntityTypeMapping TypeName="PAOModel.Goods">
         <MappingFragment StoreEntitySet="Goods">
+          <ScalarProperty Name="date_end" ColumnName="date_end" />
           <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="basket" ColumnName="basket" />
           <ScalarProperty Name="code" ColumnName="code" />

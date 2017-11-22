@@ -35,6 +35,7 @@ namespace ClientSystem
         public string code { get; set; }
         public string basket { get; set; }
         public string status { get; set; }
+        public Nullable<System.DateTime> date_end { get; set; }
     
         public virtual Goods_category Goods_category { get; set; }
         public virtual Subsidiary_companies_region Subsidiary_companies_region { get; set; }
