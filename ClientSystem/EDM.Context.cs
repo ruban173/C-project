@@ -18,6 +18,7 @@ namespace ClientSystem
         public PAOEntities()
             : base("name=PAOEntities")
         {
+            
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

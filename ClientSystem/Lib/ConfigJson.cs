@@ -2,6 +2,9 @@
 using System.IO;
 using System.Runtime.Serialization.Json;
 using System.Runtime.Serialization;
+using System.Data.EntityClient;
+using System.Data.SqlClient;
+
 
 namespace ClientSystem.Lib
 {
@@ -38,7 +41,7 @@ namespace ClientSystem.Lib
         {
             DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(ConfigJson));
 
-            using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream(path, FileMode.Truncate))
             {
                 jsonFormatter.WriteObject(fs, this);
             }
@@ -61,10 +64,10 @@ namespace ClientSystem.Lib
             else return null;
 
         }
-        
 
 
-         public string StringConnecting()
+
+       public string StringConnecting()
         {
 
             ConfigJson res = (new ConfigJson()).jsonRead();
@@ -72,9 +75,34 @@ namespace ClientSystem.Lib
             this.user = res.user;
             this.password = res.password;
             this.db = res.db;
-            string strConnect = "Data Source=" + this.server + ";Initial Catalog=" + this.db + ";User ID=" + this.user + ";Password=" + this.password;
+            string strConnect = @"data source=" + this.server + ";initial catalog=" + this.db + ";user id=" + this.user + ";password=" + this.password+"; MultipleActiveResultSets=True;App=EntityFramework";
             return strConnect;
         }
+       /* public EntityConnectionStringBuilder StringConnecting()
+        {
+            ConfigJson res = (new ConfigJson()).jsonRead();
+            
+            var sqlBuilder = new SqlConnectionStringBuilder
+            {
+                DataSource = res.server,
+                InitialCatalog= res.db,
+                UserID = res.user,
+                Password = res.password,
+                
+            };
+
+            string providerString = sqlBuilder.ToString();
+            EntityConnectionStringBuilder entityBuilder = new EntityConnectionStringBuilder
+            {
+                Provider = "System.Data.SqlClient",
+                ProviderConnectionString = providerString,
+              
+            };
+            return entityBuilder;
+        }
+      */
+
+
         // написать метод
         public int SubsidiaryCompaniesRegion()
         {

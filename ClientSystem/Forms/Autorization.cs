@@ -20,9 +20,8 @@ namespace ClientSystem.Forms
         public Autorization()
         {
             InitializeComponent();
-             db = new ConnectContext((new ConfigJson()).StringConnecting());
-            user = db.User_access.Where(u => (u.login == login.Text && u.password == password.Text));
-            user.ToList();
+           
+           
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -32,11 +31,10 @@ namespace ClientSystem.Forms
                 {
                     foreach (User_access u in user)
                     {
-                        MessageBox.Show(u.type);
-                        switch (u.type)
+                       switch (u.type)
                         {
-                            case "склад": new Storage().Show(); break;
-                            case "продавец": new Seller().Show(); break;
+                            case "склад": new Storage(u).Show(); break;
+                            case "продавец": new Seller(u).Show(); break;
                             case "администратор": break;
 
                         }
@@ -49,10 +47,26 @@ namespace ClientSystem.Forms
                 }
 
         }
+        private void настройкиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            (new Configuration()).Show();
+        }
 
         private void Autorization_Load(object sender, EventArgs e)
         {
+            try
+            {
+                db = new ConnectContext((new ConfigJson()).StringConnecting());
+                user = db.User_access.Where(u => (u.login == login.Text && u.password == password.Text));
+                user.ToList();
+            }
+            catch
+            {
 
+                MessageBox.Show("Проверьте настройки подключения к серверу БД");
+                (new Configuration()).Show();
+
+            }
         }
     }
 }

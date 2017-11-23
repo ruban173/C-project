@@ -31,6 +31,13 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.greenBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.blueBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.redBox = new System.Windows.Forms.TextBox();
+            this.red = new System.Windows.Forms.Label();
             this.button_add = new System.Windows.Forms.Button();
             this.button_payment_card = new System.Windows.Forms.Button();
             this.button_cash = new System.Windows.Forms.Button();
@@ -48,22 +55,15 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.red = new System.Windows.Forms.Label();
-            this.redBox = new System.Windows.Forms.TextBox();
-            this.blueBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.greenBox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridStorage)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -115,6 +115,67 @@
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Товар";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.greenBox);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.blueBox);
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.redBox);
+            this.groupBox3.Controls.Add(this.red);
+            this.groupBox3.Location = new System.Drawing.Point(310, 12);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(321, 54);
+            this.groupBox3.TabIndex = 8;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Критерии (Меньше)";
+            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
+            // 
+            // greenBox
+            // 
+            this.greenBox.Location = new System.Drawing.Point(251, 16);
+            this.greenBox.Name = "greenBox";
+            this.greenBox.Size = new System.Drawing.Size(46, 20);
+            this.greenBox.TabIndex = 5;
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.Green;
+            this.label2.Location = new System.Drawing.Point(225, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(20, 20);
+            this.label2.TabIndex = 4;
+            // 
+            // blueBox
+            // 
+            this.blueBox.Location = new System.Drawing.Point(150, 17);
+            this.blueBox.Name = "blueBox";
+            this.blueBox.Size = new System.Drawing.Size(46, 20);
+            this.blueBox.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.LightBlue;
+            this.label1.Location = new System.Drawing.Point(124, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(20, 20);
+            this.label1.TabIndex = 2;
+            // 
+            // redBox
+            // 
+            this.redBox.Location = new System.Drawing.Point(43, 18);
+            this.redBox.Name = "redBox";
+            this.redBox.Size = new System.Drawing.Size(46, 20);
+            this.redBox.TabIndex = 1;
+            // 
+            // red
+            // 
+            this.red.BackColor = System.Drawing.Color.Red;
+            this.red.Location = new System.Drawing.Point(17, 18);
+            this.red.Name = "red";
+            this.red.Size = new System.Drawing.Size(20, 20);
+            this.red.TabIndex = 0;
             // 
             // button_add
             // 
@@ -290,67 +351,6 @@
             this.listBox1.Size = new System.Drawing.Size(224, 105);
             this.listBox1.TabIndex = 6;
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.greenBox);
-            this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.blueBox);
-            this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.redBox);
-            this.groupBox3.Controls.Add(this.red);
-            this.groupBox3.Location = new System.Drawing.Point(310, 12);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(321, 54);
-            this.groupBox3.TabIndex = 8;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Критерии (Меньше)";
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
-            // 
-            // red
-            // 
-            this.red.BackColor = System.Drawing.Color.Red;
-            this.red.Location = new System.Drawing.Point(17, 18);
-            this.red.Name = "red";
-            this.red.Size = new System.Drawing.Size(20, 20);
-            this.red.TabIndex = 0;
-            // 
-            // redBox
-            // 
-            this.redBox.Location = new System.Drawing.Point(43, 18);
-            this.redBox.Name = "redBox";
-            this.redBox.Size = new System.Drawing.Size(46, 20);
-            this.redBox.TabIndex = 1;
-            // 
-            // blueBox
-            // 
-            this.blueBox.Location = new System.Drawing.Point(150, 17);
-            this.blueBox.Name = "blueBox";
-            this.blueBox.Size = new System.Drawing.Size(46, 20);
-            this.blueBox.TabIndex = 3;
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.LightBlue;
-            this.label1.Location = new System.Drawing.Point(124, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(20, 20);
-            this.label1.TabIndex = 2;
-            // 
-            // greenBox
-            // 
-            this.greenBox.Location = new System.Drawing.Point(251, 16);
-            this.greenBox.Name = "greenBox";
-            this.greenBox.Size = new System.Drawing.Size(46, 20);
-            this.greenBox.TabIndex = 5;
-            // 
-            // label2
-            // 
-            this.label2.BackColor = System.Drawing.Color.Green;
-            this.label2.Location = new System.Drawing.Point(225, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(20, 20);
-            this.label2.TabIndex = 4;
-            // 
             // Storage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -361,9 +361,12 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Склад";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Storage_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridStorage)).EndInit();
@@ -371,8 +374,6 @@
             this.tableLayoutPanel3.PerformLayout();
             this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel3.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

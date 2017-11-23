@@ -17,17 +17,31 @@ namespace ClientSystem.Forms
         int userID = 1;
         ConnectContext db;
         List<Goods> goods;
+        User_access user;
 
         public Seller()
         {
             InitializeComponent();
             db = new ConnectContext((new ConfigJson()).StringConnecting());
+           
+
+        }
+        public Seller(User_access user)
+        {
+            InitializeComponent();
+            db = new ConnectContext((new ConfigJson()).StringConnecting());
+            this.user = user;
+
         }
 
 
 
         private void Seller_Load(object sender, EventArgs e)
         {
+            
+            IEnumerable<Employees> emp = this.user.Employees.ToList();
+            this.Text += "  ( "+emp.First().first_name.ToString() + " " + emp.First().middle__name.ToString() + " " + emp.First().last_name.ToString()+" )";
+
             gridSeller.Columns.Add("id", "id");
             gridSeller.Columns.Add("title", "Название");
             gridSeller.Columns.Add("price", "Цена");

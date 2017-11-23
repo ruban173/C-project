@@ -14,9 +14,16 @@ namespace ClientSystem.Forms
 {
     public partial class Storage : Form
     {
+        User_access user;
         public Storage()
         {
             InitializeComponent();
+        }
+        public Storage(User_access user)
+        {
+            InitializeComponent();
+            this.user = user;
+
         }
 
         private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
@@ -158,6 +165,12 @@ namespace ClientSystem.Forms
                 gridStorage.Columns["date_create"].HeaderText = "Дата производства";
 
             }
+        }
+
+        private void Storage_Load(object sender, EventArgs e)
+        {
+           IEnumerable<Employees> emp=   this.user.Employees.ToList();
+            this.Text += "  ( "+emp.First().first_name.ToString()+" "+emp.First().middle__name.ToString()+" "+emp.First().last_name.ToString()+" )";
         }
     }
 }

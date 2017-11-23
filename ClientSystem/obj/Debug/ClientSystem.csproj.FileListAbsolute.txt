@@ -25,7 +25,6 @@ C:\Users\Axandr\Documents\Visual Studio 2015\Projects\ClientSystem\ClientSystem\
 C:\Users\Axandr\Documents\Visual Studio 2015\Projects\ClientSystem\ClientSystem\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Axandr\Documents\Visual Studio 2015\Projects\ClientSystem\ClientSystem\bin\Debug\EntityFramework.xml
 C:\Users\Axandr\Documents\Visual Studio 2015\Projects\ClientSystem\ClientSystem\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Axandr\Documents\Visual Studio 2015\Projects\ClientSystem\ClientSystem\obj\Debug\ClientSystem.csprojResolveAssemblyReference.cache
 C:\Users\Axandr\Documents\Visual Studio 2015\Projects\ClientSystem\ClientSystem\obj\Debug\ClientSystem.Form1.resources
 C:\Users\Axandr\Documents\Visual Studio 2015\Projects\ClientSystem\ClientSystem\obj\Debug\ClientSystem.Forms.Autorization.resources
 C:\Users\Axandr\Documents\Visual Studio 2015\Projects\ClientSystem\ClientSystem\obj\Debug\ClientSystem.Forms.Configuration.resources
@@ -38,3 +37,4 @@ C:\Users\Axandr\Documents\Visual Studio 2015\Projects\ClientSystem\ClientSystem\
 C:\Users\Axandr\Documents\Visual Studio 2015\Projects\ClientSystem\ClientSystem\obj\Debug\ClientSystem.Forms.AddGoods.resources
 C:\Users\Axandr\Documents\Visual Studio 2015\Projects\ClientSystem\ClientSystem\obj\Debug\ClientSystem.Forms.SeeSale.resources
 C:\Users\Axandr\Documents\Visual Studio 2015\Projects\ClientSystem\ClientSystem\obj\Debug\ClientSystem.Forms.SearchGoods.resources
+C:\Users\Axandr\Documents\Visual Studio 2015\Projects\ClientSystem\ClientSystem\obj\Debug\ClientSystem.csprojResolveAssemblyReference.cache
