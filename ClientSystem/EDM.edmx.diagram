@@ -5,11 +5,8 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="a37b9f3322fa44bdac8453187cc64b09" Name="Diagram1" ZoomLevel="86">
-        <EntityTypeShape EntityType="PAOModel.Employees" Width="1.5" PointX="2.875" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="PAOModel.Subsidiary_companies" Width="1.5" PointX="0.625" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="PAOModel.Subsidiary_companies_region" Width="1.5" PointX="2.5" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PAOModel.User_access" Width="1.5" PointX="0.625" PointY="5" IsExpanded="true" />
-        <AssociationConnector Association="PAOModel.FK_Employees_User_access1" ManuallyRouted="false" />
         <AssociationConnector Association="PAOModel.FK_Subsidiary_companies_region_Subsidiary_companies" ManuallyRouted="false" />
         <EntityTypeShape EntityType="PAOModel.Goods_category" Width="1.5" PointX="7" PointY="1.5" />
         <EntityTypeShape EntityType="PAOModel.Sale_basket" Width="1.5" PointX="8.25" PointY="4.875" />
@@ -20,6 +17,11 @@
         <AssociationConnector Association="PAOModel.FK_Goods_Goods_category" />
         <AssociationConnector Association="PAOModel.FK_Goods_Subsidiary_companies_region" />
         <AssociationConnector Association="PAOModel.FK_Sale_basket_Goods" />
+        <EntityTypeShape EntityType="PAOModel.Employees_education" Width="1.5" PointX="5.625" PointY="12.75" />
+        <EntityTypeShape EntityType="PAOModel.Employees" Width="1.5" PointX="7.875" PointY="8.375" />
+        <AssociationConnector Association="PAOModel.FK_Employees_Employees_education" />
+        <EntityTypeShape EntityType="PAOModel.User_access" Width="1.5" PointX="5.625" PointY="17" />
+        <AssociationConnector Association="PAOModel.FK_Employees_User_access" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

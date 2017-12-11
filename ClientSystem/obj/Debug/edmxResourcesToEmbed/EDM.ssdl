@@ -6,18 +6,31 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="first_name" Type="nvarchar" MaxLength="50" />
-    <Property Name="middle__name" Type="nvarchar" MaxLength="50" />
+    <Property Name="middle_name" Type="nvarchar" MaxLength="50" />
     <Property Name="last_name" Type="nvarchar" MaxLength="50" />
     <Property Name="id_user_access" Type="int" />
     <Property Name="birthday" Type="date" />
     <Property Name="position" Type="nvarchar" MaxLength="50" />
     <Property Name="id_subsidiary_companies_region" Type="int" />
     <Property Name="id_education" Type="int" />
-    <Property Name="foto" Type="image" />
     <Property Name="expiriens" Type="nvarchar" MaxLength="10" />
     <Property Name="date_begin" Type="date" />
-    <Property Name="date_up" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="date_up" Type="datetime" Nullable="false" />
     <Property Name="date_end" Type="date" />
+  </EntityType>
+  <EntityType Name="Employees_education">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_employees" Type="int" />
+    <Property Name="type" Type="nvarchar" MaxLength="50" />
+    <Property Name="organization" Type="nvarchar" MaxLength="500" />
+    <Property Name="date_create" Type="date" />
+    <Property Name="number" Type="int" />
+    <Property Name="qualification" Type="nvarchar" MaxLength="100" />
+    <Property Name="specialty" Type="nvarchar" MaxLength="100" />
+    <Property Name="date_up" Type="datetime" />
   </EntityType>
   <EntityType Name="Goods">
     <Key>
@@ -101,10 +114,22 @@
     <Property Name="password" Type="nvarchar" MaxLength="128" />
     <Property Name="type" Type="nvarchar" MaxLength="20" />
     <Property Name="id_subsidiary_companies_region" Type="int" />
-    <Property Name="date_up" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
-    <Property Name="status" Type="nvarchar" MaxLength="10" />
+    <Property Name="date_up" Type="datetime" />
+    <Property Name="status" Type="nvarchar" MaxLength="15" />
   </EntityType>
-  <Association Name="FK_Employees_User_access1">
+  <Association Name="FK_Employees_Employees_education">
+    <End Role="Employees_education" Type="Self.Employees_education" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees_education">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="id_education" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employees_User_access">
     <End Role="User_access" Type="Self.User_access" Multiplicity="0..1" />
     <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
     <ReferentialConstraint>
@@ -192,6 +217,7 @@
   </Association>
   <EntityContainer Name="Хранилище PAOModelContainer">
     <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employees_education" EntityType="Self.Employees_education" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Goods" EntityType="Self.Goods" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Goods_category" EntityType="Self.Goods_category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Sale" EntityType="Self.Sale" Schema="dbo" store:Type="Tables" />
@@ -199,7 +225,11 @@
     <EntitySet Name="Subsidiary_companies" EntityType="Self.Subsidiary_companies" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Subsidiary_companies_region" EntityType="Self.Subsidiary_companies_region" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User_access" EntityType="Self.User_access" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_Employees_User_access1" Association="Self.FK_Employees_User_access1">
+    <AssociationSet Name="FK_Employees_Employees_education" Association="Self.FK_Employees_Employees_education">
+      <End Role="Employees_education" EntitySet="Employees_education" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_User_access" Association="Self.FK_Employees_User_access">
       <End Role="User_access" EntitySet="User_access" />
       <End Role="Employees" EntitySet="Employees" />
     </AssociationSet>

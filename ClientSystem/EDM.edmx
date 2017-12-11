@@ -11,18 +11,31 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="first_name" Type="nvarchar" MaxLength="50" />
-          <Property Name="middle__name" Type="nvarchar" MaxLength="50" />
+          <Property Name="middle_name" Type="nvarchar" MaxLength="50" />
           <Property Name="last_name" Type="nvarchar" MaxLength="50" />
           <Property Name="id_user_access" Type="int" />
           <Property Name="birthday" Type="date" />
           <Property Name="position" Type="nvarchar" MaxLength="50" />
           <Property Name="id_subsidiary_companies_region" Type="int" />
           <Property Name="id_education" Type="int" />
-          <Property Name="foto" Type="image" />
           <Property Name="expiriens" Type="nvarchar" MaxLength="10" />
           <Property Name="date_begin" Type="date" />
-          <Property Name="date_up" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="date_up" Type="datetime" Nullable="false" />
           <Property Name="date_end" Type="date" />
+        </EntityType>
+        <EntityType Name="Employees_education">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_employees" Type="int" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" />
+          <Property Name="organization" Type="nvarchar" MaxLength="500" />
+          <Property Name="date_create" Type="date" />
+          <Property Name="number" Type="int" />
+          <Property Name="qualification" Type="nvarchar" MaxLength="100" />
+          <Property Name="specialty" Type="nvarchar" MaxLength="100" />
+          <Property Name="date_up" Type="datetime" />
         </EntityType>
         <EntityType Name="Goods">
           <Key>
@@ -106,10 +119,22 @@
           <Property Name="password" Type="nvarchar" MaxLength="128" />
           <Property Name="type" Type="nvarchar" MaxLength="20" />
           <Property Name="id_subsidiary_companies_region" Type="int" />
-          <Property Name="date_up" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
-          <Property Name="status" Type="nvarchar" MaxLength="10" />
+          <Property Name="date_up" Type="datetime" />
+          <Property Name="status" Type="nvarchar" MaxLength="15" />
         </EntityType>
-        <Association Name="FK_Employees_User_access1">
+        <Association Name="FK_Employees_Employees_education">
+          <End Role="Employees_education" Type="Self.Employees_education" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees_education">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="id_education" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_User_access">
           <End Role="User_access" Type="Self.User_access" Multiplicity="0..1" />
           <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
           <ReferentialConstraint>
@@ -197,6 +222,7 @@
         </Association>
         <EntityContainer Name="Хранилище PAOModelContainer">
           <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees_education" EntityType="Self.Employees_education" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Goods" EntityType="Self.Goods" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Goods_category" EntityType="Self.Goods_category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sale" EntityType="Self.Sale" Schema="dbo" store:Type="Tables" />
@@ -204,7 +230,11 @@
           <EntitySet Name="Subsidiary_companies" EntityType="Self.Subsidiary_companies" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Subsidiary_companies_region" EntityType="Self.Subsidiary_companies_region" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User_access" EntityType="Self.User_access" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Employees_User_access1" Association="Self.FK_Employees_User_access1">
+          <AssociationSet Name="FK_Employees_Employees_education" Association="Self.FK_Employees_Employees_education">
+            <End Role="Employees_education" EntitySet="Employees_education" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_User_access" Association="Self.FK_Employees_User_access">
             <End Role="User_access" EntitySet="User_access" />
             <End Role="Employees" EntitySet="Employees" />
           </AssociationSet>
@@ -237,26 +267,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PAOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Employees">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="middle__name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="id_user_access" Type="Int32" />
-          <Property Name="birthday" Type="DateTime" Precision="0" />
-          <Property Name="position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="id_subsidiary_companies_region" Type="Int32" />
-          <Property Name="id_education" Type="Int32" />
-          <Property Name="foto" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="expiriens" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="date_begin" Type="DateTime" Precision="0" />
-          <Property Name="date_up" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
-          <Property Name="date_end" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="User_access" Relationship="Self.FK_Employees_User_access1" FromRole="Employees" ToRole="User_access" />
-        </EntityType>
         <EntityType Name="Subsidiary_companies">
           <Key>
             <PropertyRef Name="id" />
@@ -285,31 +295,6 @@
           <NavigationProperty Name="Sale" Relationship="PAOModel.FK_Sale_Subsidiary_companies_region" FromRole="Subsidiary_companies_region" ToRole="Sale" />
           <NavigationProperty Name="Goods" Relationship="PAOModel.FK_Goods_Subsidiary_companies_region" FromRole="Subsidiary_companies_region" ToRole="Goods" />
         </EntityType>
-        <EntityType Name="User_access">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="login" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="password" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="id_subsidiary_companies_region" Type="Int32" />
-          <Property Name="date_up" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
-          <Property Name="status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_User_access1" FromRole="User_access" ToRole="Employees" />
-        </EntityType>
-        <Association Name="FK_Employees_User_access1">
-          <End Role="User_access" Type="Self.User_access" Multiplicity="0..1" />
-          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User_access">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Employees">
-              <PropertyRef Name="id_user_access" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Subsidiary_companies_region_Subsidiary_companies">
           <End Role="Subsidiary_companies" Type="Self.Subsidiary_companies" Multiplicity="0..1" />
           <End Role="Subsidiary_companies_region" Type="Self.Subsidiary_companies_region" Multiplicity="*" />
@@ -323,14 +308,8 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="PAOEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Employees" EntityType="Self.Employees" />
           <EntitySet Name="Subsidiary_companies" EntityType="Self.Subsidiary_companies" />
           <EntitySet Name="Subsidiary_companies_region" EntityType="Self.Subsidiary_companies_region" />
-          <EntitySet Name="User_access" EntityType="Self.User_access" />
-          <AssociationSet Name="FK_Employees_User_access1" Association="Self.FK_Employees_User_access1">
-            <End Role="User_access" EntitySet="User_access" />
-            <End Role="Employees" EntitySet="Employees" />
-          </AssociationSet>
           <AssociationSet Name="FK_Subsidiary_companies_region_Subsidiary_companies" Association="Self.FK_Subsidiary_companies_region_Subsidiary_companies">
             <End Role="Subsidiary_companies" EntitySet="Subsidiary_companies" />
             <End Role="Subsidiary_companies_region" EntitySet="Subsidiary_companies_region" />
@@ -358,6 +337,17 @@
           <AssociationSet Name="FK_Sale_basket_Goods" Association="PAOModel.FK_Sale_basket_Goods">
             <End Role="Goods" EntitySet="Goods" />
             <End Role="Sale_basket" EntitySet="Sale_basket" />
+          </AssociationSet>
+          <EntitySet Name="Employees_education" EntityType="PAOModel.Employees_education" />
+          <EntitySet Name="Employees" EntityType="PAOModel.Employees" />
+          <AssociationSet Name="FK_Employees_Employees_education" Association="PAOModel.FK_Employees_Employees_education">
+            <End Role="Employees_education" EntitySet="Employees_education" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <EntitySet Name="User_access" EntityType="PAOModel.User_access" />
+          <AssociationSet Name="FK_Employees_User_access" Association="PAOModel.FK_Employees_User_access">
+            <End Role="User_access" EntitySet="User_access" />
+            <End Role="Employees" EntitySet="Employees" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Goods_category">
@@ -479,32 +469,84 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Employees_education">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_employees" Type="Int32" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="organization" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="date_create" Type="DateTime" Precision="0" />
+          <Property Name="number" Type="Int32" />
+          <Property Name="qualification" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="specialty" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="date_up" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Employees" Relationship="PAOModel.FK_Employees_Employees_education" FromRole="Employees_education" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="middle_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_user_access" Type="Int32" />
+          <Property Name="birthday" Type="DateTime" Precision="0" />
+          <Property Name="position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_subsidiary_companies_region" Type="Int32" />
+          <Property Name="id_education" Type="Int32" />
+          <Property Name="expiriens" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="date_begin" Type="DateTime" Precision="0" />
+          <Property Name="date_up" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="date_end" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Employees_education" Relationship="PAOModel.FK_Employees_Employees_education" FromRole="Employees" ToRole="Employees_education" />
+          <NavigationProperty Name="User_access" Relationship="PAOModel.FK_Employees_User_access" FromRole="Employees" ToRole="User_access" />
+        </EntityType>
+        <Association Name="FK_Employees_Employees_education">
+          <End Type="PAOModel.Employees_education" Role="Employees_education" Multiplicity="0..1" />
+          <End Type="PAOModel.Employees" Role="Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees_education">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="id_education" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="User_access">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="id_subsidiary_companies_region" Type="Int32" />
+          <Property Name="date_up" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employees" Relationship="PAOModel.FK_Employees_User_access" FromRole="User_access" ToRole="Employees" />
+        </EntityType>
+        <Association Name="FK_Employees_User_access">
+          <End Type="PAOModel.User_access" Role="User_access" Multiplicity="0..1" />
+          <End Type="PAOModel.Employees" Role="Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_access">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="id_user_access" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище PAOModelContainer" CdmEntityContainer="PAOEntities">
-          <EntitySetMapping Name="Employees">
-            <EntityTypeMapping TypeName="PAOModel.Employees">
-              <MappingFragment StoreEntitySet="Employees">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="first_name" ColumnName="first_name" />
-                <ScalarProperty Name="middle__name" ColumnName="middle__name" />
-                <ScalarProperty Name="last_name" ColumnName="last_name" />
-                <ScalarProperty Name="id_user_access" ColumnName="id_user_access" />
-                <ScalarProperty Name="birthday" ColumnName="birthday" />
-                <ScalarProperty Name="position" ColumnName="position" />
-                <ScalarProperty Name="id_subsidiary_companies_region" ColumnName="id_subsidiary_companies_region" />
-                <ScalarProperty Name="id_education" ColumnName="id_education" />
-                <ScalarProperty Name="foto" ColumnName="foto" />
-                <ScalarProperty Name="expiriens" ColumnName="expiriens" />
-                <ScalarProperty Name="date_begin" ColumnName="date_begin" />
-                <ScalarProperty Name="date_up" ColumnName="date_up" />
-                <ScalarProperty Name="date_end" ColumnName="date_end" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Subsidiary_companies">
             <EntityTypeMapping TypeName="PAOModel.Subsidiary_companies">
               <MappingFragment StoreEntitySet="Subsidiary_companies">
@@ -528,19 +570,6 @@
                 <ScalarProperty Name="home" ColumnName="home" />
                 <ScalarProperty Name="number" ColumnName="number" />
                 <ScalarProperty Name="structure" ColumnName="structure" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="User_access">
-            <EntityTypeMapping TypeName="PAOModel.User_access">
-              <MappingFragment StoreEntitySet="User_access">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="login" ColumnName="login" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="type" ColumnName="type" />
-                <ScalarProperty Name="id_subsidiary_companies_region" ColumnName="id_subsidiary_companies_region" />
-                <ScalarProperty Name="date_up" ColumnName="date_up" />
-                <ScalarProperty Name="status" ColumnName="status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -593,6 +622,53 @@
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
                 <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees_education">
+            <EntityTypeMapping TypeName="PAOModel.Employees_education">
+              <MappingFragment StoreEntitySet="Employees_education">
+                <ScalarProperty Name="date_up" ColumnName="date_up" />
+                <ScalarProperty Name="specialty" ColumnName="specialty" />
+                <ScalarProperty Name="qualification" ColumnName="qualification" />
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="date_create" ColumnName="date_create" />
+                <ScalarProperty Name="organization" ColumnName="organization" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="id_employees" ColumnName="id_employees" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="PAOModel.Employees">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="date_end" ColumnName="date_end" />
+                <ScalarProperty Name="date_up" ColumnName="date_up" />
+                <ScalarProperty Name="date_begin" ColumnName="date_begin" />
+                <ScalarProperty Name="expiriens" ColumnName="expiriens" />
+                <ScalarProperty Name="id_education" ColumnName="id_education" />
+                <ScalarProperty Name="id_subsidiary_companies_region" ColumnName="id_subsidiary_companies_region" />
+                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="birthday" ColumnName="birthday" />
+                <ScalarProperty Name="id_user_access" ColumnName="id_user_access" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="middle_name" ColumnName="middle_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_access">
+            <EntityTypeMapping TypeName="PAOModel.User_access">
+              <MappingFragment StoreEntitySet="User_access">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="date_up" ColumnName="date_up" />
+                <ScalarProperty Name="id_subsidiary_companies_region" ColumnName="id_subsidiary_companies_region" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="login" ColumnName="login" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

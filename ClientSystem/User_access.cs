@@ -25,7 +25,7 @@ namespace ClientSystem
         public string password { get; set; }
         public string type { get; set; }
         public Nullable<int> id_subsidiary_companies_region { get; set; }
-        public System.DateTime date_up { get; set; }
+        public Nullable<System.DateTime> date_up { get; set; }
         public string status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -35,7 +35,7 @@ namespace ClientSystem.Forms
                         {
                             case "склад": new Storage(u).Show(); break;
                             case "продавец": new Seller(u).Show(); break;
-                            case "администратор": break;
+                            case "администратор": new Admin(u).Show(); break;
 
                         }
 

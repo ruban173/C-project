@@ -40,7 +40,7 @@ namespace ClientSystem.Forms
         {
             
             IEnumerable<Employees> emp = this.user.Employees.ToList();
-            this.Text += "  ( "+emp.First().first_name.ToString() + " " + emp.First().middle__name.ToString() + " " + emp.First().last_name.ToString()+" )";
+            this.Text += "  ( "+emp.First().first_name.ToString() + " " + emp.First().middle_name.ToString() + " " + emp.First().last_name.ToString()+" )";
 
             gridSeller.Columns.Add("id", "id");
             gridSeller.Columns.Add("title", "Название");

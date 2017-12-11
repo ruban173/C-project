@@ -141,6 +141,7 @@
             this.Controls.Add(this.server);
             this.Controls.Add(this.label1);
             this.Name = "Configuration";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Настройка подключения";
             this.Load += new System.EventHandler(this.Configuration_Load);
             this.ResumeLayout(false);

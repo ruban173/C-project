@@ -1,25 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="PAOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="Employees">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="middle__name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="id_user_access" Type="Int32" />
-    <Property Name="birthday" Type="DateTime" Precision="0" />
-    <Property Name="position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="id_subsidiary_companies_region" Type="Int32" />
-    <Property Name="id_education" Type="Int32" />
-    <Property Name="foto" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <Property Name="expiriens" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-    <Property Name="date_begin" Type="DateTime" Precision="0" />
-    <Property Name="date_up" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
-    <Property Name="date_end" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="User_access" Relationship="Self.FK_Employees_User_access1" FromRole="Employees" ToRole="User_access" />
-  </EntityType>
   <EntityType Name="Subsidiary_companies">
     <Key>
       <PropertyRef Name="id" />
@@ -48,31 +28,6 @@
     <NavigationProperty Name="Sale" Relationship="PAOModel.FK_Sale_Subsidiary_companies_region" FromRole="Subsidiary_companies_region" ToRole="Sale" />
     <NavigationProperty Name="Goods" Relationship="PAOModel.FK_Goods_Subsidiary_companies_region" FromRole="Subsidiary_companies_region" ToRole="Goods" />
   </EntityType>
-  <EntityType Name="User_access">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="login" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
-    <Property Name="password" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="id_subsidiary_companies_region" Type="Int32" />
-    <Property Name="date_up" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
-    <Property Name="status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_User_access1" FromRole="User_access" ToRole="Employees" />
-  </EntityType>
-  <Association Name="FK_Employees_User_access1">
-    <End Role="User_access" Type="Self.User_access" Multiplicity="0..1" />
-    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User_access">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Employees">
-        <PropertyRef Name="id_user_access" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Subsidiary_companies_region_Subsidiary_companies">
     <End Role="Subsidiary_companies" Type="Self.Subsidiary_companies" Multiplicity="0..1" />
     <End Role="Subsidiary_companies_region" Type="Self.Subsidiary_companies_region" Multiplicity="*" />
@@ -86,14 +41,8 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="PAOEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Employees" EntityType="Self.Employees" />
     <EntitySet Name="Subsidiary_companies" EntityType="Self.Subsidiary_companies" />
     <EntitySet Name="Subsidiary_companies_region" EntityType="Self.Subsidiary_companies_region" />
-    <EntitySet Name="User_access" EntityType="Self.User_access" />
-    <AssociationSet Name="FK_Employees_User_access1" Association="Self.FK_Employees_User_access1">
-      <End Role="User_access" EntitySet="User_access" />
-      <End Role="Employees" EntitySet="Employees" />
-    </AssociationSet>
     <AssociationSet Name="FK_Subsidiary_companies_region_Subsidiary_companies" Association="Self.FK_Subsidiary_companies_region_Subsidiary_companies">
       <End Role="Subsidiary_companies" EntitySet="Subsidiary_companies" />
       <End Role="Subsidiary_companies_region" EntitySet="Subsidiary_companies_region" />
@@ -121,6 +70,17 @@
     <AssociationSet Name="FK_Sale_basket_Goods" Association="PAOModel.FK_Sale_basket_Goods">
       <End Role="Goods" EntitySet="Goods" />
       <End Role="Sale_basket" EntitySet="Sale_basket" />
+    </AssociationSet>
+    <EntitySet Name="Employees_education" EntityType="PAOModel.Employees_education" />
+    <EntitySet Name="Employees" EntityType="PAOModel.Employees" />
+    <AssociationSet Name="FK_Employees_Employees_education" Association="PAOModel.FK_Employees_Employees_education">
+      <End Role="Employees_education" EntitySet="Employees_education" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <EntitySet Name="User_access" EntityType="PAOModel.User_access" />
+    <AssociationSet Name="FK_Employees_User_access" Association="PAOModel.FK_Employees_User_access">
+      <End Role="User_access" EntitySet="User_access" />
+      <End Role="Employees" EntitySet="Employees" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Goods_category">
@@ -239,6 +199,78 @@
       </Principal>
       <Dependent Role="Sale_basket">
         <PropertyRef Name="id_goods" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Employees_education">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_employees" Type="Int32" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="organization" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="date_create" Type="DateTime" Precision="0" />
+    <Property Name="number" Type="Int32" />
+    <Property Name="qualification" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="specialty" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="date_up" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Employees" Relationship="PAOModel.FK_Employees_Employees_education" FromRole="Employees_education" ToRole="Employees" />
+  </EntityType>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="middle_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="id_user_access" Type="Int32" />
+    <Property Name="birthday" Type="DateTime" Precision="0" />
+    <Property Name="position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="id_subsidiary_companies_region" Type="Int32" />
+    <Property Name="id_education" Type="Int32" />
+    <Property Name="expiriens" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="date_begin" Type="DateTime" Precision="0" />
+    <Property Name="date_up" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="date_end" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Employees_education" Relationship="PAOModel.FK_Employees_Employees_education" FromRole="Employees" ToRole="Employees_education" />
+    <NavigationProperty Name="User_access" Relationship="PAOModel.FK_Employees_User_access" FromRole="Employees" ToRole="User_access" />
+  </EntityType>
+  <Association Name="FK_Employees_Employees_education">
+    <End Type="PAOModel.Employees_education" Role="Employees_education" Multiplicity="0..1" />
+    <End Type="PAOModel.Employees" Role="Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees_education">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="id_education" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="User_access">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="login" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="id_subsidiary_companies_region" Type="Int32" />
+    <Property Name="date_up" Type="DateTime" Precision="3" />
+    <Property Name="status" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Employees" Relationship="PAOModel.FK_Employees_User_access" FromRole="User_access" ToRole="Employees" />
+  </EntityType>
+  <Association Name="FK_Employees_User_access">
+    <End Type="PAOModel.User_access" Role="User_access" Multiplicity="0..1" />
+    <End Type="PAOModel.Employees" Role="Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_access">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="id_user_access" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

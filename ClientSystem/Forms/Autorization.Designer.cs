@@ -40,9 +40,10 @@
             // 
             // login
             // 
+            this.login.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.login.Location = new System.Drawing.Point(30, 52);
             this.login.Name = "login";
-            this.login.Size = new System.Drawing.Size(205, 20);
+            this.login.Size = new System.Drawing.Size(205, 26);
             this.login.TabIndex = 0;
             // 
             // label1
@@ -65,10 +66,11 @@
             // 
             // password
             // 
+            this.password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.password.Location = new System.Drawing.Point(30, 122);
             this.password.Name = "password";
             this.password.PasswordChar = '*';
-            this.password.Size = new System.Drawing.Size(205, 20);
+            this.password.Size = new System.Drawing.Size(205, 26);
             this.password.TabIndex = 3;
             // 
             // button_login
@@ -113,6 +115,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Autorization";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Авторизация";
             this.Load += new System.EventHandler(this.Autorization_Load);
             this.menuStrip1.ResumeLayout(false);
