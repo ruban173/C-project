@@ -43,6 +43,7 @@ namespace ClientSystem.Forms
                 gridGoods.Columns["code"].HeaderText = "Штрих код";
                 gridGoods.Columns["manufacturer"].HeaderText = "Производитель";
                 gridGoods.Columns["count"].HeaderText = "Количество";
+                gridGoods.Columns["date_end"].HeaderText = "Годен до";
 
                 gridGoods.Columns["id_goods_category"].Visible = false;
                 gridGoods.Columns["id_subsidiary_companies_region"].Visible = false;
@@ -242,22 +243,18 @@ namespace ClientSystem.Forms
             RefreshModels();
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        
 
         private void gridGoods_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            gridGoods.ClearSelection();
-            gridGoods.Rows[gridGoods.CurrentRow.Index].Selected = true;
-            gridGoods.CurrentCell = gridGoods.SelectedRows[0].Cells[0];
-            FillGoodsTextBoxes();
+            if (gridGoods.CurrentRow != null)
+            {
+                gridGoods.ClearSelection();
+                gridGoods.Rows[gridGoods.CurrentRow.Index].Selected = true;
+                gridGoods.CurrentCell = gridGoods.SelectedRows[0].Cells[0];
+                FillGoodsTextBoxes();
+            }
+            
         }
 
         private void categoryBox_SelectedIndexChanged(object sender, EventArgs e)

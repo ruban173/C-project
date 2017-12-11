@@ -32,7 +32,7 @@ namespace ClientSystem
         public virtual DbSet<Employees_education> Employees_education { get; set; }
         public virtual DbSet<Employees> Employees { get; set; }
         public virtual DbSet<User_access> User_access { get; set; }
-        public virtual DbSet<Subsidiary_companies_region> Subsidiary_companies_region { get; set; }
         public virtual DbSet<Goods_category> Goods_category { get; set; }
+        public virtual DbSet<Subsidiary_companies_region> Subsidiary_companies_region { get; set; }
     }
 }

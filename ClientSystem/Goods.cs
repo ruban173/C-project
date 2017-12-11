@@ -39,7 +39,7 @@ namespace ClientSystem
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sale_basket> Sale_basket { get; set; }
-        public virtual Subsidiary_companies_region Subsidiary_companies_region { get; set; }
         public virtual Goods_category Goods_category { get; set; }
+        public virtual Subsidiary_companies_region Subsidiary_companies_region { get; set; }
     }
 }

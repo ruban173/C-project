@@ -9,14 +9,14 @@
     <Property Name="middle_name" Type="nvarchar" MaxLength="50" />
     <Property Name="last_name" Type="nvarchar" MaxLength="50" />
     <Property Name="id_user_access" Type="int" />
-    <Property Name="birthday" Type="datetime" />
+    <Property Name="birthday" Type="date" />
     <Property Name="position" Type="nvarchar" MaxLength="50" />
     <Property Name="id_subsidiary_companies_region" Type="int" />
     <Property Name="id_education" Type="int" />
     <Property Name="expiriens" Type="nvarchar" MaxLength="10" />
-    <Property Name="date_begin" Type="datetime" />
+    <Property Name="date_begin" Type="date" />
     <Property Name="date_up" Type="datetime" Nullable="false" />
-    <Property Name="date_end" Type="datetime" />
+    <Property Name="date_end" Type="date" />
   </EntityType>
   <EntityType Name="Employees_education">
     <Key>
@@ -26,7 +26,7 @@
     <Property Name="id_employees" Type="int" />
     <Property Name="type" Type="nvarchar" MaxLength="50" />
     <Property Name="organization" Type="nvarchar" MaxLength="500" />
-    <Property Name="date_create" Type="datetime" />
+    <Property Name="date_create" Type="date" />
     <Property Name="number" Type="int" />
     <Property Name="qualification" Type="nvarchar" MaxLength="100" />
     <Property Name="specialty" Type="nvarchar" MaxLength="100" />
@@ -43,7 +43,8 @@
     <Property Name="id_goods_category" Type="int" />
     <Property Name="id_subsidiary_companies_region" Type="int" />
     <Property Name="shelf_life" Type="int" />
-    <Property Name="date_create" Type="datetime" />
+    <Property Name="date_create" Type="date" />
+    <Property Name="date_end" Type="date" />
     <Property Name="price" Type="decimal" Precision="18" Scale="0" />
     <Property Name="discont" Type="float" />
     <Property Name="measurement" Type="nvarchar" MaxLength="50" />
@@ -51,7 +52,6 @@
     <Property Name="code" Type="nvarchar" MaxLength="30" />
     <Property Name="basket" Type="nvarchar" MaxLength="50" />
     <Property Name="status" Type="nvarchar" MaxLength="15" />
-    <Property Name="date_end" Type="datetime" />
   </EntityType>
   <EntityType Name="Goods_category">
     <Key>
@@ -59,7 +59,7 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="title" Type="nvarchar" MaxLength="50" />
-    <Property Name="date_up" Type="datetime" />
+    <Property Name="date_up" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Sale">
     <Key>
@@ -87,9 +87,9 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="title" Type="nvarchar" MaxLength="100" />
-    <Property Name="description" Type="varchar(max)" />
+    <Property Name="description" Type="text" />
     <Property Name="activity" Type="nvarchar" MaxLength="150" />
-    <Property Name="date_up" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="date_up" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
   </EntityType>
   <EntityType Name="Subsidiary_companies_region">
     <Key>
@@ -97,9 +97,10 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="id_subsidiary_companies" Type="int" />
-    <Property Name="country" Type="nvarchar" MaxLength="15" />
-    <Property Name="region" Type="nvarchar" MaxLength="30" />
-    <Property Name="adress" Type="nvarchar" MaxLength="500" />
+    <Property Name="city" Type="nvarchar" MaxLength="50" />
+    <Property Name="adress" Type="nvarchar" MaxLength="300" />
+    <Property Name="latitude" Type="nvarchar" MaxLength="50" />
+    <Property Name="longitude" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="User_access">
     <Key>
@@ -188,7 +189,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Sale_Subsidiary_companies_region">
-    <End Role="Subsidiary_companies_region" Type="Self.Subsidiary_companies_region" Multiplicity="0..1" />
+    <End Role="Subsidiary_companies_region" Type="Self.Subsidiary_companies_region" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Subsidiary_companies_region">

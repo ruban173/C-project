@@ -35,6 +35,11 @@
       <End Role="User_access" EntitySet="User_access" />
       <End Role="Employees" EntitySet="Employees" />
     </AssociationSet>
+    <EntitySet Name="Goods_category" EntityType="PAOModel.Goods_category" />
+    <AssociationSet Name="FK_Goods_Goods_category" Association="PAOModel.FK_Goods_Goods_category">
+      <End Role="Goods_category" EntitySet="Goods_category" />
+      <End Role="Goods" EntitySet="Goods" />
+    </AssociationSet>
     <EntitySet Name="Subsidiary_companies_region" EntityType="PAOModel.Subsidiary_companies_region" />
     <AssociationSet Name="FK_Goods_Subsidiary_companies_region" Association="PAOModel.FK_Goods_Subsidiary_companies_region">
       <End Role="Subsidiary_companies_region" EntitySet="Subsidiary_companies_region" />
@@ -47,11 +52,6 @@
     <AssociationSet Name="FK_Subsidiary_companies_region_Subsidiary_companies" Association="PAOModel.FK_Subsidiary_companies_region_Subsidiary_companies">
       <End Role="Subsidiary_companies" EntitySet="Subsidiary_companies" />
       <End Role="Subsidiary_companies_region" EntitySet="Subsidiary_companies_region" />
-    </AssociationSet>
-    <EntitySet Name="Goods_category" EntityType="PAOModel.Goods_category" />
-    <AssociationSet Name="FK_Goods_Goods_category" Association="PAOModel.FK_Goods_Goods_category">
-      <End Role="Goods_category" EntitySet="Goods_category" />
-      <End Role="Goods" EntitySet="Goods" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Sale_basket">
@@ -103,7 +103,7 @@
     <Property Name="id_goods_category" Type="Int32" />
     <Property Name="id_subsidiary_companies_region" Type="Int32" />
     <Property Name="shelf_life" Type="Int32" />
-    <Property Name="date_create" Type="DateTime" Precision="3" />
+    <Property Name="date_create" Type="DateTime" Precision="0" />
     <Property Name="price" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="discont" Type="Double" />
     <Property Name="measurement" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -112,9 +112,9 @@
     <Property Name="basket" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="status" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Sale_basket" Relationship="PAOModel.FK_Sale_basket_Goods" FromRole="Goods" ToRole="Sale_basket" />
-    <Property Name="date_end" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="Subsidiary_companies_region" Relationship="PAOModel.FK_Goods_Subsidiary_companies_region" FromRole="Goods" ToRole="Subsidiary_companies_region" />
+    <Property Name="date_end" Type="DateTime" Precision="0" />
     <NavigationProperty Name="Goods_category" Relationship="PAOModel.FK_Goods_Goods_category" FromRole="Goods" ToRole="Goods_category" />
+    <NavigationProperty Name="Subsidiary_companies_region" Relationship="PAOModel.FK_Goods_Subsidiary_companies_region" FromRole="Goods" ToRole="Subsidiary_companies_region" />
   </EntityType>
   <Association Name="FK_Sale_basket_Goods">
     <End Type="PAOModel.Goods" Role="Goods" Multiplicity="0..1" />
@@ -136,7 +136,7 @@
     <Property Name="id_employees" Type="Int32" />
     <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="organization" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="date_create" Type="DateTime" Precision="3" />
+    <Property Name="date_create" Type="DateTime" Precision="0" />
     <Property Name="number" Type="Int32" />
     <Property Name="qualification" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="specialty" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -152,14 +152,14 @@
     <Property Name="middle_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="id_user_access" Type="Int32" />
-    <Property Name="birthday" Type="DateTime" Precision="3" />
+    <Property Name="birthday" Type="DateTime" Precision="0" />
     <Property Name="position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="id_subsidiary_companies_region" Type="Int32" />
     <Property Name="id_education" Type="Int32" />
     <Property Name="expiriens" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-    <Property Name="date_begin" Type="DateTime" Precision="3" />
+    <Property Name="date_begin" Type="DateTime" Precision="0" />
     <Property Name="date_up" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="date_end" Type="DateTime" Precision="3" />
+    <Property Name="date_end" Type="DateTime" Precision="0" />
     <NavigationProperty Name="Employees_education" Relationship="PAOModel.FK_Employees_Employees_education" FromRole="Employees" ToRole="Employees_education" />
     <NavigationProperty Name="User_access" Relationship="PAOModel.FK_Employees_User_access" FromRole="Employees" ToRole="User_access" />
   </EntityType>
@@ -200,15 +200,37 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="Goods_category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="date_up" Type="DateTime" Precision="3" Nullable="false" />
+    <NavigationProperty Name="Goods" Relationship="PAOModel.FK_Goods_Goods_category" FromRole="Goods_category" ToRole="Goods" />
+  </EntityType>
+  <Association Name="FK_Goods_Goods_category">
+    <End Type="PAOModel.Goods_category" Role="Goods_category" Multiplicity="0..1" />
+    <End Type="PAOModel.Goods" Role="Goods" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Goods_category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Goods">
+        <PropertyRef Name="id_goods_category" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityType Name="Subsidiary_companies_region">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="id_subsidiary_companies" Type="Int32" />
-    <Property Name="country" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-    <Property Name="region" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-    <Property Name="adress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="adress" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Goods" Relationship="PAOModel.FK_Goods_Subsidiary_companies_region" FromRole="Subsidiary_companies_region" ToRole="Goods" />
     <NavigationProperty Name="Sale" Relationship="PAOModel.FK_Sale_Subsidiary_companies_region" FromRole="Subsidiary_companies_region" ToRole="Sale" />
     <NavigationProperty Name="Subsidiary_companies" Relationship="PAOModel.FK_Subsidiary_companies_region_Subsidiary_companies" FromRole="Subsidiary_companies_region" ToRole="Subsidiary_companies" />
@@ -226,7 +248,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Sale_Subsidiary_companies_region">
-    <End Type="PAOModel.Subsidiary_companies_region" Role="Subsidiary_companies_region" Multiplicity="0..1" />
+    <End Type="PAOModel.Subsidiary_companies_region" Role="Subsidiary_companies_region" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Type="PAOModel.Sale" Role="Sale" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Subsidiary_companies_region">
@@ -246,27 +270,6 @@
       </Principal>
       <Dependent Role="Subsidiary_companies_region">
         <PropertyRef Name="id_subsidiary_companies" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityType Name="Goods_category">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="date_up" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="Goods" Relationship="PAOModel.FK_Goods_Goods_category" FromRole="Goods_category" ToRole="Goods" />
-  </EntityType>
-  <Association Name="FK_Goods_Goods_category">
-    <End Type="PAOModel.Goods_category" Role="Goods_category" Multiplicity="0..1" />
-    <End Type="PAOModel.Goods" Role="Goods" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Goods_category">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Goods">
-        <PropertyRef Name="id_goods_category" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

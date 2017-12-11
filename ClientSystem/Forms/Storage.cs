@@ -26,26 +26,6 @@ namespace ClientSystem.Forms
 
         }
 
-        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button3_Click(object sender, EventArgs e)
         {
             (new AddCategoryGoods()).Show();
@@ -86,18 +66,20 @@ namespace ClientSystem.Forms
                 gridStorage.Columns["sum"].HeaderText = "Общее количество товара";
 
             }
+            ColorRows("sum");
         }
-
-        private void gridStorage_Paint(object sender, PaintEventArgs e)
-        {
-        /*    try
+        private void ColorRows(string nameRow) {
+            try
             {
                 gridStorage.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 gridStorage.ClearSelection();
 
+
                 foreach (DataGridViewRow row in gridStorage.Rows)
                 {
-                    int cursor = (int)row.Cells["sum"].Value;
+
+                    int cursor = (int)row.Cells[nameRow].Value;
+
 
                     int? valRed = (redBox.Text != "") ? Convert.ToInt32(redBox.Text) : -1;
                     int? valBlue = (blueBox.Text != "") ? Convert.ToInt32(blueBox.Text) : -1;
@@ -116,19 +98,57 @@ namespace ClientSystem.Forms
                         row.DefaultCellStyle.BackColor = Color.Red;
                     }
                 }
+
+
             }
             catch
             {
                 MessageBox.Show("Введены некорректные параметры ");
             }
-            */
         }
-
-        private void groupBox3_Enter(object sender, EventArgs e)
+        private void ColorRowsDate()
         {
+            try
+            {
+                gridStorage.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                gridStorage.ClearSelection();
 
+
+                foreach (DataGridViewRow row in gridStorage.Rows)
+                {
+
+                    DateTime date_end = (DateTime) row.Cells["date_end"].Value;
+                    DateTime now =DateTime.Now;
+                    TimeSpan res = date_end-now;
+
+                    int day = Convert.ToInt32(res.Days);
+
+
+                    int? valRed = (redBox.Text != "") ? Convert.ToInt32(redBox.Text) : -1;
+                    int? valBlue = (blueBox.Text != "") ? Convert.ToInt32(blueBox.Text) : -1;
+                    int? valGreen = (greenBox.Text != "") ? Convert.ToInt32(greenBox.Text) : -1;
+
+                    if (day <= valGreen && valGreen != -1)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.Green;
+                    }
+                    if (day <= valBlue && valBlue != -1)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.LightBlue;
+                    }
+                    if (day <=valRed && valRed != -1)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.Red;
+                    } 
+                }
+
+
+            }
+            catch
+            {
+                MessageBox.Show("Введены некорректные параметры ");
+            }
         }
-
         private string dayAdd(DateTime d)
         {
             return d.ToString();
@@ -137,12 +157,8 @@ namespace ClientSystem.Forms
         {
             using (ConnectContext db = new ConnectContext((new ConfigJson()).StringConnecting()))
             {
-                DateTime today = DateTime.Now;
-                DateTime answer = today.AddDays(36);
-                var countGoods = from g in db.Goods
+               var countGoods = from g in db.Goods
                                  join cat in db.Goods_category on g.id_goods_category equals cat.id
-                              
-                           
                                  select new
                                  {   category=g.Goods_category.title,
                                      title =g.title,
@@ -150,7 +166,7 @@ namespace ClientSystem.Forms
                                      date_create = g.date_create,
                                      date_end=g.date_end,
                                      shelf_life = g.shelf_life,
-                                     count =g.count
+                                     count =g.count,
                                     
                                  };
 
@@ -165,6 +181,7 @@ namespace ClientSystem.Forms
                 gridStorage.Columns["date_create"].HeaderText = "Дата производства";
 
             }
+            ColorRowsDate();
         }
 
         private void Storage_Load(object sender, EventArgs e)
@@ -172,5 +189,7 @@ namespace ClientSystem.Forms
            IEnumerable<Employees> emp=   this.user.Employees.ToList();
             this.Text += "  ( "+emp.First().first_name.ToString()+" "+emp.First().middle_name.ToString()+" "+emp.First().last_name.ToString()+" )";
         }
+
+       
     }
 }

@@ -14,14 +14,23 @@ namespace ClientSystem.Forms
     public partial class SeeSale : Form
     {
         ConnectContext db;
-
+        User_access user;
+       IEnumerable< Employees> employees;
         public SeeSale()
         {
             InitializeComponent();
             db = new ConnectContext((new ConfigJson()).StringConnecting());
             db.Sale.Local.CollectionChanged += Local_CollectionChanged;
         }
+        public SeeSale(User_access user)
+        {
+            InitializeComponent();
+            db = new ConnectContext((new ConfigJson()).StringConnecting());
+            db.Sale.Local.CollectionChanged += Local_CollectionChanged;
+            this.user = user;
+            this.employees = db.Employees.Where(em=>em.id_user_access==user.id).ToList();
 
+        }
         void Local_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             RefreshModels();
@@ -73,7 +82,7 @@ namespace ClientSystem.Forms
 
         private void SeeSale_Load(object sender, EventArgs e)
         {
-            var sale = db.Sale.ToList();
+            var sale = db.Sale.Where(s=>s.id_employess==this.user.id).ToList();
             gridSale.DataSource = sale;
             gridSale.Columns["id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             gridSale.Columns["date_up"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;

@@ -71,30 +71,31 @@ namespace ClientSystem.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-           /*
+          
              if (!allEmp.Checked)
             {
-                var Sale1 = from s in db.Sale
-                            select s;
+              
 
                 for (int i = 0; i < listEmp.CheckedItems.Count; i++)
                 {
-                   
+                    listEmp.CheckedItems[i].GetType() c = listEmp.CheckedItems[i];
+                   MessageBox.Show( listEmp.CheckedItems[i].GetType().ToString());
                 }
-               
+              
+
             }
-          */
+          
 
-                var Order = from s in db.Sale
-                                     select new { 
-                                          s.id,
-                                          s.date_up,
-                                          s.payment,
-                                          s.price,
-                                          count= s.Sale_basket.Count(),
+            var Order = from s in db.Sale
+                                    select new { 
+                                        s.id,
+                                        s.date_up,
+                                        s.payment,
+                                        s.price,
+                                        count= s.Sale_basket.Count(),
 
-                                      };
-            if (interval.Checked)
+                                    };
+            if (interval.Checked && begin.Value!= end.Value)
             {
                  Order = from s in db.Sale
                            where s.date_up > begin.Value && s.date_up < end.Value
@@ -111,32 +112,29 @@ namespace ClientSystem.Forms
            
 
             var res = Order.ToList();
-            this.Chart.DataSource = res;
-
-            this.Chart.Series[0].XValueMember = "date_up";
-            this.Chart.Series[0].XValueType = ChartValueType.DateTime;
-            this.Chart.Series[0].YValueType = ChartValueType.Double;
-            this.Chart.Series[0].YValueMembers = "payment";
+            if (res.Count() != 0)
+            {
+                this.Chart.DataSource = res;
+                this.Chart.Series[0].XValueMember = "date_up";
+                this.Chart.Series[0].XValueType = ChartValueType.DateTime;
+                this.Chart.Series[0].YValueType = ChartValueType.Double;
+                this.Chart.Series[0].YValueMembers = "payment";
+                this.grid.DataSource = res;
+                this.labRes.Text = "-> Выручка= " + res.Sum(d => d.payment).ToString() +
+                                  "\n -> Количество товаров=" + res.Sum(d => d.count).ToString() +
+                                  "\n ->  Период продаж с " + res.Min(d => d.date_up).ToString() +
+                                  "\n по " + res.Max(d => d.date_up).ToString() +
+                                  "\n ->  Максимальная стоимость сделки " + res.Max(d => d.payment).ToString() +
+                                  "\n ->  Минимальная стоимость сделки " + res.Min(d => d.payment).ToString()
+                                  ;
+            }
+            else MessageBox.Show("По запросу ничего не найдено");
           
-
-
-            this.grid.DataSource = res;
-
-
-
-
-            this.labRes.Text = "-> Выручка= " + res.Sum(d => d.payment).ToString() +
-                              "\n -> Количество товаров=" + res.Sum(d => d.count).ToString() +
-                              "\n ->  Период продаж с " + res.Min(d => d.date_up).ToString() +
-                              "\n по " + res.Max(d => d.date_up).ToString()+
-                              "\n ->  Максимальная стоимость сделки " + res.Max(d => d.payment).ToString()+
-                              "\n ->  Минимальная стоимость сделки " + res.Min(d => d.payment).ToString()
-                              ;
             
         }
     }
 }
-class ListEmp
+class ListEmps
 {
     public int id;
     public string fio;

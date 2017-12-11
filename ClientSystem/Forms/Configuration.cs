@@ -36,20 +36,22 @@ namespace ClientSystem.Forms
          }
         private void LoadOrganization()
         {
+          
             ConnectContext connect = new ConnectContext((new ConfigJson()).StringConnecting());
             try
             {
-                organization_id.DataSource = connect.Subsidiary_companies_region.Select(s => new {
+               organization_id.DataSource = connect.Subsidiary_companies_region.Select(s => new {
                     title = s.Subsidiary_companies.title + " " + s.adress,
                     id = s.id
                 }).ToList();
+              
                 organization_id.DisplayMember = "title";
                 organization_id.ValueMember = "id";
                 organization_id.Refresh();
             }
-            catch
+            catch(Exception ex)
             {
-                MessageBox.Show("Нет подключения!");
+                MessageBox.Show("Нет подключения!"+ex);
             }
            
         }

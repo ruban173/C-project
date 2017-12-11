@@ -20,31 +20,35 @@ namespace ClientSystem.Forms
         public Autorization()
         {
             InitializeComponent();
-           
-           
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-         
-                if (user.Count() == 1)
-                {
-                    foreach (User_access u in user)
-                    {
-                       switch (u.type)
-                        {
-                            case "склад": new Storage(u).Show(); break;
-                            case "продавец": new Seller(u).Show(); break;
-                            case "администратор": new Admin(u).Show(); break;
+            int Subsidiary_companies_region_id = new ConfigJson().SubsidiaryCompaniesRegion();
+            user = db.User_access.Where(u => (u.login == login.Text
+                   && u.password == password.Text
+                   && u.id_subsidiary_companies_region == Subsidiary_companies_region_id
+                   && u.status == "активен")
+               ).ToList();
 
-                        }
+            if (user.Count() == 1)
+            {
+                foreach (User_access u in user)
+                {
+                    switch (u.type)
+                    {
+                        case "склад": new Storage(u).Show(); break;
+                        case "продавец": new Seller(u).Show(); break;
+                        case "администратор": new Admin(u).Show(); break;
 
                     }
+
                 }
-                else
-                {
-                    MessageBox.Show("Пользователь с такими данными не зарегистрирован!");
-                }
+            }
+            else
+            {
+                MessageBox.Show("Пользователь с такими данными не зарегистрирован!");
+            }
 
         }
         private void настройкиToolStripMenuItem_Click(object sender, EventArgs e)
@@ -57,8 +61,7 @@ namespace ClientSystem.Forms
             try
             {
                 db = new ConnectContext((new ConfigJson()).StringConnecting());
-                user = db.User_access.Where(u => (u.login == login.Text && u.password == password.Text));
-                user.ToList();
+
             }
             catch
             {

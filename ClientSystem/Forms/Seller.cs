@@ -14,7 +14,7 @@ namespace ClientSystem.Forms
 {
     public partial class Seller : Form
     {
-        int userID = 1;
+
         ConnectContext db;
         List<Goods> goods;
         User_access user;
@@ -23,8 +23,6 @@ namespace ClientSystem.Forms
         {
             InitializeComponent();
             db = new ConnectContext((new ConfigJson()).StringConnecting());
-           
-
         }
         public Seller(User_access user)
         {
@@ -33,14 +31,11 @@ namespace ClientSystem.Forms
             this.user = user;
 
         }
-
-
-
         private void Seller_Load(object sender, EventArgs e)
         {
-            
+
             IEnumerable<Employees> emp = this.user.Employees.ToList();
-            this.Text += "  ( "+emp.First().first_name.ToString() + " " + emp.First().middle_name.ToString() + " " + emp.First().last_name.ToString()+" )";
+            this.Text += "  ( " + emp.First().first_name.ToString() + " " + emp.First().middle_name.ToString() + " " + emp.First().last_name.ToString() + " )";
 
             gridSeller.Columns.Add("id", "id");
             gridSeller.Columns.Add("title", "Название");
@@ -53,8 +48,6 @@ namespace ClientSystem.Forms
             decimal sum = 0;
             decimal sumPrice = 0;
             decimal sumDiscont = 0;
-
-
             foreach (DataGridViewRow row in gridSeller.Rows)
             {
                 decimal price = Convert.ToDecimal(row.Cells["price"].Value);
@@ -139,10 +132,6 @@ namespace ClientSystem.Forms
                         string.Format("{0}р. - {1}% = {2}р.", item.price.ToString(), item.discont.ToString(), sum.ToString());
 
                 }
-
-
-
-
             }
         }
         private void saleBasket()
@@ -150,7 +139,7 @@ namespace ClientSystem.Forms
 
             Sale sale = new Sale()
             {
-                id_employess = userID,
+                id_employess = this.user.id,
                 discont = Convert.ToDecimal(discont_all.Text),
                 price = Convert.ToDecimal(price_all.Text),
                 payment = Convert.ToDecimal(payment.Text),
@@ -167,9 +156,9 @@ namespace ClientSystem.Forms
                 if (goodsBasket.count-- == 0)
                 {
                     goodsBasket.basket = "продано";
-                    
+
                 }
-               
+
                 Sale_basket sale_basket = new Sale_basket()
                 {
                     id_goods = goodsBasket.id,
@@ -198,7 +187,7 @@ namespace ClientSystem.Forms
 
         private void button_sales_Click(object sender, EventArgs e)
         {
-            (new SeeSale()).Show();
+            (new SeeSale(this.user)).Show();
         }
 
         private void button_search_Click(object sender, EventArgs e)

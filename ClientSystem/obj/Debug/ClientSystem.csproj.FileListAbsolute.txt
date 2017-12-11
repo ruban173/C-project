@@ -68,3 +68,26 @@ C:\C-project\ClientSystem\obj\Debug\ClientSystem.csproj.GenerateResource.Cache
 C:\C-project\ClientSystem\obj\Debug\ClientSystem.csproj.CoreCompileInputs.cache
 C:\C-project\ClientSystem\obj\Debug\ClientSystem.exe
 C:\C-project\ClientSystem\obj\Debug\ClientSystem.pdb
+C:\Users\Axandr\Documents\Visual Studio 2015\C-project\ClientSystem\bin\Debug\ClientSystem.exe.config
+C:\Users\Axandr\Documents\Visual Studio 2015\C-project\ClientSystem\bin\Debug\ClientSystem.exe
+C:\Users\Axandr\Documents\Visual Studio 2015\C-project\ClientSystem\bin\Debug\ClientSystem.pdb
+C:\Users\Axandr\Documents\Visual Studio 2015\C-project\ClientSystem\obj\Debug\ClientSystem.csprojResolveAssemblyReference.cache
+C:\Users\Axandr\Documents\Visual Studio 2015\C-project\ClientSystem\obj\Debug\ClientSystem.Form1.resources
+C:\Users\Axandr\Documents\Visual Studio 2015\C-project\ClientSystem\obj\Debug\ClientSystem.Forms.AdminSaleOrder.resources
+C:\Users\Axandr\Documents\Visual Studio 2015\C-project\ClientSystem\obj\Debug\ClientSystem.Forms.UserAccess.resources
+C:\Users\Axandr\Documents\Visual Studio 2015\C-project\ClientSystem\obj\Debug\ClientSystem.Forms.Admin.resources
+C:\Users\Axandr\Documents\Visual Studio 2015\C-project\ClientSystem\obj\Debug\ClientSystem.Forms.Education.resources
+C:\Users\Axandr\Documents\Visual Studio 2015\C-project\ClientSystem\obj\Debug\ClientSystem.Forms.AddEmployee.resources
+C:\Users\Axandr\Documents\Visual Studio 2015\C-project\ClientSystem\obj\Debug\ClientSystem.Forms.SearchGoods.resources
+C:\Users\Axandr\Documents\Visual Studio 2015\C-project\ClientSystem\obj\Debug\ClientSystem.Forms.SeeSale.resources
+C:\Users\Axandr\Documents\Visual Studio 2015\C-project\ClientSystem\obj\Debug\ClientSystem.Forms.AddGoods.resources
+C:\Users\Axandr\Documents\Visual Studio 2015\C-project\ClientSystem\obj\Debug\ClientSystem.Forms.AddCategoryGoods.resources
+C:\Users\Axandr\Documents\Visual Studio 2015\C-project\ClientSystem\obj\Debug\ClientSystem.Forms.Autorization.resources
+C:\Users\Axandr\Documents\Visual Studio 2015\C-project\ClientSystem\obj\Debug\ClientSystem.Forms.Configuration.resources
+C:\Users\Axandr\Documents\Visual Studio 2015\C-project\ClientSystem\obj\Debug\ClientSystem.Forms.Search_product.resources
+C:\Users\Axandr\Documents\Visual Studio 2015\C-project\ClientSystem\obj\Debug\ClientSystem.Forms.Storage.resources
+C:\Users\Axandr\Documents\Visual Studio 2015\C-project\ClientSystem\obj\Debug\ClientSystem.Forms.Seller.resources
+C:\Users\Axandr\Documents\Visual Studio 2015\C-project\ClientSystem\obj\Debug\ClientSystem.Properties.Resources.resources
+C:\Users\Axandr\Documents\Visual Studio 2015\C-project\ClientSystem\obj\Debug\ClientSystem.csproj.GenerateResource.Cache
+C:\Users\Axandr\Documents\Visual Studio 2015\C-project\ClientSystem\obj\Debug\ClientSystem.exe
+C:\Users\Axandr\Documents\Visual Studio 2015\C-project\ClientSystem\obj\Debug\ClientSystem.pdb

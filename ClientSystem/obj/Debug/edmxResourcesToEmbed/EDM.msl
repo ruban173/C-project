@@ -103,22 +103,23 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Subsidiary_companies_region">
-      <EntityTypeMapping TypeName="PAOModel.Subsidiary_companies_region">
-        <MappingFragment StoreEntitySet="Subsidiary_companies_region">
-          <ScalarProperty Name="adress" ColumnName="adress" />
-          <ScalarProperty Name="region" ColumnName="region" />
-          <ScalarProperty Name="country" ColumnName="country" />
-          <ScalarProperty Name="id_subsidiary_companies" ColumnName="id_subsidiary_companies" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Goods_category">
       <EntityTypeMapping TypeName="PAOModel.Goods_category">
         <MappingFragment StoreEntitySet="Goods_category">
           <ScalarProperty Name="date_up" ColumnName="date_up" />
           <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subsidiary_companies_region">
+      <EntityTypeMapping TypeName="PAOModel.Subsidiary_companies_region">
+        <MappingFragment StoreEntitySet="Subsidiary_companies_region">
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="adress" ColumnName="adress" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="id_subsidiary_companies" ColumnName="id_subsidiary_companies" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
