@@ -64,14 +64,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.first_name = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.lab = new System.Windows.Forms.Label();
             this.colorFalse = new System.Windows.Forms.Label();
             this.colorTrue = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridEmployees)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
@@ -106,6 +106,7 @@
             // 
             this.gridEmployees.AllowUserToAddRows = false;
             this.gridEmployees.AllowUserToDeleteRows = false;
+            this.gridEmployees.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridEmployees.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridEmployees.Location = new System.Drawing.Point(3, 70);
@@ -445,15 +446,6 @@
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(9, 11);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(96, 31);
-            this.button5.TabIndex = 0;
-            this.button5.Text = "Поиск";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label13);
@@ -468,6 +460,23 @@
             this.groupBox3.TabIndex = 27;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Спектр доступа в систему";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(269, 19);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(86, 13);
+            this.label13.TabIndex = 5;
+            this.label13.Text = "Приастановлен";
+            // 
+            // label14
+            // 
+            this.label14.BackColor = System.Drawing.Color.Coral;
+            this.label14.Location = new System.Drawing.Point(247, 17);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(15, 15);
+            this.label14.TabIndex = 4;
             // 
             // label12
             // 
@@ -503,22 +512,14 @@
             this.colorTrue.Size = new System.Drawing.Size(15, 15);
             this.colorTrue.TabIndex = 0;
             // 
-            // label13
+            // button5
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(269, 19);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(86, 13);
-            this.label13.TabIndex = 5;
-            this.label13.Text = "Приастановлен";
-            // 
-            // label14
-            // 
-            this.label14.BackColor = System.Drawing.Color.Coral;
-            this.label14.Location = new System.Drawing.Point(247, 17);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(15, 15);
-            this.label14.TabIndex = 4;
+            this.button5.Location = new System.Drawing.Point(9, 11);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(96, 31);
+            this.button5.TabIndex = 0;
+            this.button5.Text = "Поиск";
+            this.button5.UseVisualStyleBackColor = true;
             // 
             // AddEmployee
             // 

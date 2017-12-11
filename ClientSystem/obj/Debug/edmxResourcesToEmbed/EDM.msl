@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Хранилище PAOModelContainer" CdmEntityContainer="PAOEntities">
+  <EntityContainerMapping StorageEntityContainer="PAOModelStoreContainer" CdmEntityContainer="PAOEntities">
     <EntitySetMapping Name="Subsidiary_companies">
-      <EntityTypeMapping TypeName="PAOModel.Subsidiary_companies">
+      <EntityTypeMapping TypeName="IsTypeOf(PAOModel.Subsidiary_companies)">
         <MappingFragment StoreEntitySet="Subsidiary_companies">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="title" ColumnName="title" />
@@ -12,18 +12,105 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Sale_basket">
+      <EntityTypeMapping TypeName="IsTypeOf(PAOModel.Sale_basket)">
+        <MappingFragment StoreEntitySet="Sale_basket">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_goods" ColumnName="id_goods" />
+          <ScalarProperty Name="id_sale" ColumnName="id_sale" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sale">
+      <EntityTypeMapping TypeName="IsTypeOf(PAOModel.Sale)">
+        <MappingFragment StoreEntitySet="Sale">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_employess" ColumnName="id_employess" />
+          <ScalarProperty Name="discont" ColumnName="discont" />
+          <ScalarProperty Name="payment" ColumnName="payment" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="id_subsidiary_companies_region" ColumnName="id_subsidiary_companies_region" />
+          <ScalarProperty Name="date_up" ColumnName="date_up" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Goods">
+      <EntityTypeMapping TypeName="IsTypeOf(PAOModel.Goods)">
+        <MappingFragment StoreEntitySet="Goods">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="id_goods_category" ColumnName="id_goods_category" />
+          <ScalarProperty Name="id_subsidiary_companies_region" ColumnName="id_subsidiary_companies_region" />
+          <ScalarProperty Name="shelf_life" ColumnName="shelf_life" />
+          <ScalarProperty Name="date_create" ColumnName="date_create" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="discont" ColumnName="discont" />
+          <ScalarProperty Name="measurement" ColumnName="measurement" />
+          <ScalarProperty Name="count" ColumnName="count" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="basket" ColumnName="basket" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="date_end" ColumnName="date_end" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees_education">
+      <EntityTypeMapping TypeName="IsTypeOf(PAOModel.Employees_education)">
+        <MappingFragment StoreEntitySet="Employees_education">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_employees" ColumnName="id_employees" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="organization" ColumnName="organization" />
+          <ScalarProperty Name="date_create" ColumnName="date_create" />
+          <ScalarProperty Name="number" ColumnName="number" />
+          <ScalarProperty Name="qualification" ColumnName="qualification" />
+          <ScalarProperty Name="specialty" ColumnName="specialty" />
+          <ScalarProperty Name="date_up" ColumnName="date_up" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="IsTypeOf(PAOModel.Employees)">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="middle_name" ColumnName="middle_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="id_user_access" ColumnName="id_user_access" />
+          <ScalarProperty Name="birthday" ColumnName="birthday" />
+          <ScalarProperty Name="position" ColumnName="position" />
+          <ScalarProperty Name="id_subsidiary_companies_region" ColumnName="id_subsidiary_companies_region" />
+          <ScalarProperty Name="id_education" ColumnName="id_education" />
+          <ScalarProperty Name="expiriens" ColumnName="expiriens" />
+          <ScalarProperty Name="date_begin" ColumnName="date_begin" />
+          <ScalarProperty Name="date_up" ColumnName="date_up" />
+          <ScalarProperty Name="date_end" ColumnName="date_end" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_access">
+      <EntityTypeMapping TypeName="IsTypeOf(PAOModel.User_access)">
+        <MappingFragment StoreEntitySet="User_access">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="id_subsidiary_companies_region" ColumnName="id_subsidiary_companies_region" />
+          <ScalarProperty Name="date_up" ColumnName="date_up" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Subsidiary_companies_region">
       <EntityTypeMapping TypeName="PAOModel.Subsidiary_companies_region">
         <MappingFragment StoreEntitySet="Subsidiary_companies_region">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="id_subsidiary_companies" ColumnName="id_subsidiary_companies" />
-          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="adress" ColumnName="adress" />
           <ScalarProperty Name="region" ColumnName="region" />
-          <ScalarProperty Name="settlement" ColumnName="settlement" />
-          <ScalarProperty Name="street" ColumnName="street" />
-          <ScalarProperty Name="home" ColumnName="home" />
-          <ScalarProperty Name="number" ColumnName="number" />
-          <ScalarProperty Name="structure" ColumnName="structure" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="id_subsidiary_companies" ColumnName="id_subsidiary_companies" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -32,97 +119,6 @@
         <MappingFragment StoreEntitySet="Goods_category">
           <ScalarProperty Name="date_up" ColumnName="date_up" />
           <ScalarProperty Name="title" ColumnName="title" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Sale_basket">
-      <EntityTypeMapping TypeName="PAOModel.Sale_basket">
-        <MappingFragment StoreEntitySet="Sale_basket">
-          <ScalarProperty Name="id_sale" ColumnName="id_sale" />
-          <ScalarProperty Name="id_goods" ColumnName="id_goods" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Sale">
-      <EntityTypeMapping TypeName="PAOModel.Sale">
-        <MappingFragment StoreEntitySet="Sale">
-          <ScalarProperty Name="date_up" ColumnName="date_up" />
-          <ScalarProperty Name="id_subsidiary_companies_region" ColumnName="id_subsidiary_companies_region" />
-          <ScalarProperty Name="price" ColumnName="price" />
-          <ScalarProperty Name="payment" ColumnName="payment" />
-          <ScalarProperty Name="discont" ColumnName="discont" />
-          <ScalarProperty Name="id_employess" ColumnName="id_employess" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Goods">
-      <EntityTypeMapping TypeName="PAOModel.Goods">
-        <MappingFragment StoreEntitySet="Goods">
-          <ScalarProperty Name="date_end" ColumnName="date_end" />
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="basket" ColumnName="basket" />
-          <ScalarProperty Name="code" ColumnName="code" />
-          <ScalarProperty Name="count" ColumnName="count" />
-          <ScalarProperty Name="measurement" ColumnName="measurement" />
-          <ScalarProperty Name="discont" ColumnName="discont" />
-          <ScalarProperty Name="price" ColumnName="price" />
-          <ScalarProperty Name="date_create" ColumnName="date_create" />
-          <ScalarProperty Name="shelf_life" ColumnName="shelf_life" />
-          <ScalarProperty Name="id_subsidiary_companies_region" ColumnName="id_subsidiary_companies_region" />
-          <ScalarProperty Name="id_goods_category" ColumnName="id_goods_category" />
-          <ScalarProperty Name="description" ColumnName="description" />
-          <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
-          <ScalarProperty Name="title" ColumnName="title" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Employees_education">
-      <EntityTypeMapping TypeName="PAOModel.Employees_education">
-        <MappingFragment StoreEntitySet="Employees_education">
-          <ScalarProperty Name="date_up" ColumnName="date_up" />
-          <ScalarProperty Name="specialty" ColumnName="specialty" />
-          <ScalarProperty Name="qualification" ColumnName="qualification" />
-          <ScalarProperty Name="number" ColumnName="number" />
-          <ScalarProperty Name="date_create" ColumnName="date_create" />
-          <ScalarProperty Name="organization" ColumnName="organization" />
-          <ScalarProperty Name="type" ColumnName="type" />
-          <ScalarProperty Name="id_employees" ColumnName="id_employees" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Employees">
-      <EntityTypeMapping TypeName="PAOModel.Employees">
-        <MappingFragment StoreEntitySet="Employees">
-          <ScalarProperty Name="date_end" ColumnName="date_end" />
-          <ScalarProperty Name="date_up" ColumnName="date_up" />
-          <ScalarProperty Name="date_begin" ColumnName="date_begin" />
-          <ScalarProperty Name="expiriens" ColumnName="expiriens" />
-          <ScalarProperty Name="id_education" ColumnName="id_education" />
-          <ScalarProperty Name="id_subsidiary_companies_region" ColumnName="id_subsidiary_companies_region" />
-          <ScalarProperty Name="position" ColumnName="position" />
-          <ScalarProperty Name="birthday" ColumnName="birthday" />
-          <ScalarProperty Name="id_user_access" ColumnName="id_user_access" />
-          <ScalarProperty Name="last_name" ColumnName="last_name" />
-          <ScalarProperty Name="middle_name" ColumnName="middle_name" />
-          <ScalarProperty Name="first_name" ColumnName="first_name" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="User_access">
-      <EntityTypeMapping TypeName="PAOModel.User_access">
-        <MappingFragment StoreEntitySet="User_access">
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="date_up" ColumnName="date_up" />
-          <ScalarProperty Name="id_subsidiary_companies_region" ColumnName="id_subsidiary_companies_region" />
-          <ScalarProperty Name="type" ColumnName="type" />
-          <ScalarProperty Name="password" ColumnName="password" />
-          <ScalarProperty Name="login" ColumnName="login" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

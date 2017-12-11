@@ -74,7 +74,7 @@ namespace ClientSystem.Forms
                 x=>new
                 {
                     x.id,
-                    title = x.region + " " + x.settlement + " " + x.street + " " + x.number
+                    title = x.Subsidiary_companies.title + " " + x.adress
                 }
                 ).ToList() ;
             subsidiary_companies_region.DisplayMember = "title";

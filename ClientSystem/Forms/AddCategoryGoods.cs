@@ -30,9 +30,8 @@ namespace ClientSystem.Forms
         }
         private void RefreshModels()
         {
-            var cat = from c in db.Goods_category
-                      select c;
-            gridCategoryGoods.DataSource = cat.ToList();
+                               
+            gridCategoryGoods.DataSource = db.Goods_category.ToList();
 
         }
         private void AddCategoryGoods_Load(object sender, EventArgs e)
@@ -67,12 +66,12 @@ namespace ClientSystem.Forms
         private void Add_Click(object sender, EventArgs e)
         {
 
-            Goods_category newCategory = new Goods_category
+            Goods_category newCat = new Goods_category
             {
                 title = titleCategory.Text,
                 date_up = DateTime.Now
             };
-            db.Goods_category.Add(newCategory);
+            db.Goods_category.Add(newCat);
             db.SaveChanges();
             RefreshModels();
             titleCategory.Clear();

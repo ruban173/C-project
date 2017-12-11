@@ -38,6 +38,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.button_test_connection = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.organization_id = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -125,11 +127,30 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button_save);
             // 
+            // organization_id
+            // 
+            this.organization_id.FormattingEnabled = true;
+            this.organization_id.Location = new System.Drawing.Point(15, 262);
+            this.organization_id.Name = "organization_id";
+            this.organization_id.Size = new System.Drawing.Size(316, 21);
+            this.organization_id.TabIndex = 10;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 237);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(121, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Организация (филиал)";
+            // 
             // Configuration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(345, 255);
+            this.ClientSize = new System.Drawing.Size(356, 330);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.organization_id);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button_test_connection);
             this.Controls.Add(this.db);
@@ -161,5 +182,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button_test_connection;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox organization_id;
+        private System.Windows.Forms.Label label5;
     }
 }

@@ -17,24 +17,20 @@ namespace ClientSystem
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Subsidiary_companies_region()
         {
-            this.Sale = new HashSet<Sale>();
             this.Goods = new HashSet<Goods>();
+            this.Sale = new HashSet<Sale>();
         }
     
         public int id { get; set; }
         public Nullable<int> id_subsidiary_companies { get; set; }
         public string country { get; set; }
         public string region { get; set; }
-        public string settlement { get; set; }
-        public string street { get; set; }
-        public Nullable<int> home { get; set; }
-        public Nullable<int> number { get; set; }
-        public Nullable<int> structure { get; set; }
+        public string adress { get; set; }
     
-        public virtual Subsidiary_companies Subsidiary_companies { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sale> Sale { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Goods> Goods { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Sale> Sale { get; set; }
+        public virtual Subsidiary_companies Subsidiary_companies { get; set; }
     }
 }

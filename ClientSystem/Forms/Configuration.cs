@@ -29,24 +29,57 @@ namespace ClientSystem.Forms
                 user.Text = res.user;
                 password.Text = res.password;
                 db.Text = res.db;
+
+                LoadOrganization();
+                organization_id.SelectedValue = res.SubsidiaryCompaniesRegion();
             }
-
+         }
+        private void LoadOrganization()
+        {
+            ConnectContext connect = new ConnectContext((new ConfigJson()).StringConnecting());
+            try
+            {
+                organization_id.DataSource = connect.Subsidiary_companies_region.Select(s => new {
+                    title = s.Subsidiary_companies.title + " " + s.adress,
+                    id = s.id
+                }).ToList();
+                organization_id.DisplayMember = "title";
+                organization_id.ValueMember = "id";
+                organization_id.Refresh();
+            }
+            catch
+            {
+                MessageBox.Show("Нет подключения!");
+            }
+           
         }
-
         private void button_save(object sender, EventArgs e)
         {
+            (new ConfigJson(server.Text,
+                    user.Text,
+                    password.Text, 
+                    db.Text,
+                    (organization_id.SelectedValue==null)?-1:(int)organization_id.SelectedValue)
+                ).jsonWrite();
 
-            (new ConfigJson(server.Text, user.Text, password.Text, db.Text)).jsonWrite();
+           /* if (organization_id.SelectedIndex != -1)
+            {
+                (new ConfigJson(server.Text, user.Text, password.Text, db.Text, (int)organization_id.SelectedValue)).jsonWrite();
+
+            }
+            else
+            {
+                MessageBox.Show("Выберите организацию");
+            }*/
         }
 
         private void button_test_connection_Click(object sender, EventArgs e)
         {
-           // string strConnect = "Data Source=" + server.Text + ";Initial Catalog='" + db.Text + "';User ID=" + user.Text + ";Password=" + password.Text;
+           
             try
             {
 
                 ConnectContext connect = new ConnectContext((new ConfigJson()).StringConnecting());
-                
                 connect.Database.Connection.Open();
                 MessageBox.Show("Подключение установлено");
                 connect.Database.Connection.Close();

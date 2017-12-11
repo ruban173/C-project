@@ -42,3 +42,29 @@ C:\Users\Axandr\Documents\Visual Studio 2015\Projects\ClientSystem\ClientSystem\
 C:\Users\Axandr\Documents\Visual Studio 2015\Projects\ClientSystem\ClientSystem\obj\Debug\ClientSystem.Forms.Education.resources
 C:\Users\Axandr\Documents\Visual Studio 2015\Projects\ClientSystem\ClientSystem\obj\Debug\ClientSystem.Forms.AddEmployee.resources
 C:\Users\Axandr\Documents\Visual Studio 2015\Projects\ClientSystem\ClientSystem\obj\Debug\ClientSystem.Forms.AdminSaleOrder.resources
+C:\C-project\ClientSystem\bin\Debug\ClientSystem.exe.config
+C:\C-project\ClientSystem\bin\Debug\ClientSystem.exe
+C:\C-project\ClientSystem\bin\Debug\ClientSystem.pdb
+C:\C-project\ClientSystem\bin\Debug\EntityFramework.xml
+C:\C-project\ClientSystem\bin\Debug\EntityFramework.SqlServer.xml
+C:\C-project\ClientSystem\obj\Debug\ClientSystem.csprojResolveAssemblyReference.cache
+C:\C-project\ClientSystem\obj\Debug\ClientSystem.Form1.resources
+C:\C-project\ClientSystem\obj\Debug\ClientSystem.Forms.AdminSaleOrder.resources
+C:\C-project\ClientSystem\obj\Debug\ClientSystem.Forms.UserAccess.resources
+C:\C-project\ClientSystem\obj\Debug\ClientSystem.Forms.Admin.resources
+C:\C-project\ClientSystem\obj\Debug\ClientSystem.Forms.Education.resources
+C:\C-project\ClientSystem\obj\Debug\ClientSystem.Forms.AddEmployee.resources
+C:\C-project\ClientSystem\obj\Debug\ClientSystem.Forms.SearchGoods.resources
+C:\C-project\ClientSystem\obj\Debug\ClientSystem.Forms.SeeSale.resources
+C:\C-project\ClientSystem\obj\Debug\ClientSystem.Forms.AddGoods.resources
+C:\C-project\ClientSystem\obj\Debug\ClientSystem.Forms.AddCategoryGoods.resources
+C:\C-project\ClientSystem\obj\Debug\ClientSystem.Forms.Autorization.resources
+C:\C-project\ClientSystem\obj\Debug\ClientSystem.Forms.Configuration.resources
+C:\C-project\ClientSystem\obj\Debug\ClientSystem.Forms.Search_product.resources
+C:\C-project\ClientSystem\obj\Debug\ClientSystem.Forms.Storage.resources
+C:\C-project\ClientSystem\obj\Debug\ClientSystem.Forms.Seller.resources
+C:\C-project\ClientSystem\obj\Debug\ClientSystem.Properties.Resources.resources
+C:\C-project\ClientSystem\obj\Debug\ClientSystem.csproj.GenerateResource.Cache
+C:\C-project\ClientSystem\obj\Debug\ClientSystem.csproj.CoreCompileInputs.cache
+C:\C-project\ClientSystem\obj\Debug\ClientSystem.exe
+C:\C-project\ClientSystem\obj\Debug\ClientSystem.pdb
