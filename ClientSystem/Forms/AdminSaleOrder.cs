@@ -40,7 +40,7 @@ namespace ClientSystem.Forms
             listEmp.DisplayMember = "fio";
             listEmp.ValueMember = "id";
 
-            listGoods.DataSource = db.Goods.ToList();
+            listGoods.DataSource = db.Goods.Select(g=>new {id = g.id,title = g.Goods_category.title+" / "+g.title }).ToList();
             listGoods.DisplayMember = "title";
             listGoods.ValueMember = "id";
 
@@ -69,32 +69,52 @@ namespace ClientSystem.Forms
             else listGoods.Enabled = false;
         }
 
+        private List<int?> ReturnCheckedItemsList(CheckedListBox list)
+        {
+         List<int?> idList = new List<int?>();
+            for (int i = 0; i < list.CheckedItems.Count; i++)
+            {
+                string[] a = list.CheckedItems[i].ToString().Replace('{', ' ').Split(',');
+                int id = Convert.ToInt32(a[0].Split('=')[1].Trim());
+                idList.Add(id);
+            }
+            return idList;
+        }
+
+
         private void button1_Click(object sender, EventArgs e)
         {
-          
-             if (!allEmp.Checked)
-            {
-              
-
-                for (int i = 0; i < listEmp.CheckedItems.Count; i++)
-                {
-                    listEmp.CheckedItems[i].GetType() c = listEmp.CheckedItems[i];
-                   MessageBox.Show( listEmp.CheckedItems[i].GetType().ToString());
-                }
-              
-
-            }
-          
-
+            List<int?> idListEmp = null;
+            List<int?> idListGoods = null; 
+            
+        
             var Order = from s in db.Sale
-                                    select new { 
-                                        s.id,
-                                        s.date_up,
-                                        s.payment,
-                                        s.price,
-                                        count= s.Sale_basket.Count(),
+                        select new { s.id, s.date_up, s.payment, s.price, count = s.Sale_basket.Count() };
+            if (!allEmp.Checked)  {
+                idListEmp = ReturnCheckedItemsList(listEmp);
+                Order = from s in db.Sale
+                         where idListEmp.Contains(s.id_employess)
+                         select new { s.id, s.date_up, s.payment, s.price, count = s.Sale_basket.Count() };
+            }
+            
+            if (!allGoods.Checked)
+            {
+                idListGoods = ReturnCheckedItemsList(listGoods);
+                Order = from s in db.Sale
+                        join b in db.Sale_basket on s.id equals b.id_sale
+                        where idListGoods.Contains(b.id_goods)
+                        where idListGoods.Contains(b.id_goods)
+                        select new { s.id, s.date_up, s.payment, s.price, count = s.Sale_basket.Count() };
+            }
+            if (!allGoods.Checked && !allEmp.Checked){
+                Order = from s in db.Sale
+                        join b in db.Sale_basket on s.id equals b.id_sale
+                        where idListGoods.Contains(b.id_goods)
+                        where idListEmp.Contains(s.id_employess)
+                        select new { s.id, s.date_up, s.payment, s.price, count = s.Sale_basket.Count() };
+            }
+            
 
-                                    };
             if (interval.Checked && begin.Value!= end.Value)
             {
                  Order = from s in db.Sale
@@ -111,7 +131,7 @@ namespace ClientSystem.Forms
             }
            
 
-            var res = Order.ToList();
+            var res =Order.ToList() ;
             if (res.Count() != 0)
             {
                 this.Chart.DataSource = res;
@@ -119,7 +139,7 @@ namespace ClientSystem.Forms
                 this.Chart.Series[0].XValueType = ChartValueType.DateTime;
                 this.Chart.Series[0].YValueType = ChartValueType.Double;
                 this.Chart.Series[0].YValueMembers = "payment";
-                this.grid.DataSource = res;
+                 this.grid.DataSource = res;
                 this.labRes.Text = "-> Выручка= " + res.Sum(d => d.payment).ToString() +
                                   "\n -> Количество товаров=" + res.Sum(d => d.count).ToString() +
                                   "\n ->  Период продаж с " + res.Min(d => d.date_up).ToString() +
@@ -128,7 +148,12 @@ namespace ClientSystem.Forms
                                   "\n ->  Минимальная стоимость сделки " + res.Min(d => d.payment).ToString()
                                   ;
             }
-            else MessageBox.Show("По запросу ничего не найдено");
+            else
+            {
+                grid.DataSource = null;
+              
+                MessageBox.Show("По запросу ничего не найдено");
+            }
           
             
         }
