@@ -15,6 +15,7 @@
     <EntitySetMapping Name="Sale_basket">
       <EntityTypeMapping TypeName="IsTypeOf(PAOModel.Sale_basket)">
         <MappingFragment StoreEntitySet="Sale_basket">
+          <ScalarProperty Name="subsidiary_companies_region" ColumnName="Subsidiary_companies_region" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="id_goods" ColumnName="id_goods" />
           <ScalarProperty Name="id_sale" ColumnName="id_sale" />
@@ -59,6 +60,7 @@
     <EntitySetMapping Name="Employees_education">
       <EntityTypeMapping TypeName="IsTypeOf(PAOModel.Employees_education)">
         <MappingFragment StoreEntitySet="Employees_education">
+          <ScalarProperty Name="subsidiary_companies_region_id" ColumnName="subsidiary_companies_region_id" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="id_employees" ColumnName="id_employees" />
           <ScalarProperty Name="type" ColumnName="type" />
@@ -106,6 +108,7 @@
     <EntitySetMapping Name="Goods_category">
       <EntityTypeMapping TypeName="PAOModel.Goods_category">
         <MappingFragment StoreEntitySet="Goods_category">
+          <ScalarProperty Name="subsidiary_companies_id" ColumnName="subsidiary_companies_id" />
           <ScalarProperty Name="date_up" ColumnName="date_up" />
           <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="id" ColumnName="id" />

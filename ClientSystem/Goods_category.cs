@@ -23,6 +23,7 @@ namespace ClientSystem
         public int id { get; set; }
         public string title { get; set; }
         public System.DateTime date_up { get; set; }
+        public Nullable<int> subsidiary_companies_id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Goods> Goods { get; set; }

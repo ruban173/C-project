@@ -65,11 +65,14 @@ namespace ClientSystem.Forms
 
         private void Add_Click(object sender, EventArgs e)
         {
+            int? id_region = db.Subsidiary_companies_region.Find((int)new ConfigJson().SubsidiaryCompaniesRegion()).id_subsidiary_companies.Value;
 
             Goods_category newCat = new Goods_category
             {
                 title = titleCategory.Text,
-                date_up = DateTime.Now
+                date_up = DateTime.Now,
+                subsidiary_companies_id =db.Subsidiary_companies.Where(s=>s.id== id_region).First().id
+
             };
             db.Goods_category.Add(newCat);
             db.SaveChanges();

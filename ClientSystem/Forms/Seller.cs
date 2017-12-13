@@ -164,7 +164,9 @@ namespace ClientSystem.Forms
                 Sale_basket sale_basket = new Sale_basket()
                 {
                     id_goods = goodsBasket.id,
-                    id_sale = sale.id
+                    id_sale = sale.id,
+                    subsidiary_companies_region = new ConfigJson().SubsidiaryCompaniesRegion()
+
 
                 };
 

@@ -29,6 +29,7 @@ namespace ClientSystem
         public string qualification { get; set; }
         public string specialty { get; set; }
         public Nullable<System.DateTime> date_up { get; set; }
+        public Nullable<int> subsidiary_companies_region_id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employees> Employees { get; set; }

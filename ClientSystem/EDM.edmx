@@ -36,6 +36,7 @@
           <Property Name="qualification" Type="nvarchar" MaxLength="100" />
           <Property Name="specialty" Type="nvarchar" MaxLength="100" />
           <Property Name="date_up" Type="datetime" />
+          <Property Name="subsidiary_companies_region_id" Type="int" />
         </EntityType>
         <EntityType Name="Goods">
           <Key>
@@ -65,6 +66,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="title" Type="nvarchar" MaxLength="50" />
           <Property Name="date_up" Type="datetime" Nullable="false" />
+          <Property Name="subsidiary_companies_id" Type="int" />
         </EntityType>
         <EntityType Name="Sale">
           <Key>
@@ -85,6 +87,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_goods" Type="int" />
           <Property Name="id_sale" Type="int" />
+          <Property Name="Subsidiary_companies_region" Type="int" />
         </EntityType>
         <EntityType Name="Subsidiary_companies">
           <Key>
@@ -329,6 +332,7 @@
           <Property Name="id_sale" Type="Int32" />
           <NavigationProperty Name="Sale" Relationship="PAOModel.FK_Sale_basket_Sale" FromRole="Sale_basket" ToRole="Sale" />
           <NavigationProperty Name="Goods" Relationship="PAOModel.FK_Sale_basket_Goods" FromRole="Sale_basket" ToRole="Goods" />
+          <Property Name="subsidiary_companies_region" Type="Int32" />
         </EntityType>
         <EntityType Name="Sale">
           <Key>
@@ -408,6 +412,7 @@
           <Property Name="specialty" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="date_up" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Employees" Relationship="PAOModel.FK_Employees_Employees_education" FromRole="Employees_education" ToRole="Employees" />
+          <Property Name="subsidiary_companies_region_id" Type="Int32" />
         </EntityType>
         <EntityType Name="Employees">
           <Key>
@@ -474,6 +479,7 @@
           <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="date_up" Type="DateTime" Precision="3" Nullable="false" />
           <NavigationProperty Name="Goods" Relationship="PAOModel.FK_Goods_Goods_category" FromRole="Goods_category" ToRole="Goods" />
+          <Property Name="subsidiary_companies_id" Type="Int32" />
         </EntityType>
         <Association Name="FK_Goods_Goods_category">
           <End Type="PAOModel.Goods_category" Role="Goods_category" Multiplicity="0..1" />
@@ -559,7 +565,8 @@
     <EntitySetMapping Name="Sale_basket">
       <EntityTypeMapping TypeName="IsTypeOf(PAOModel.Sale_basket)">
         <MappingFragment StoreEntitySet="Sale_basket">
-          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="subsidiary_companies_region" ColumnName="Subsidiary_companies_region" />
+                <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="id_goods" ColumnName="id_goods" />
           <ScalarProperty Name="id_sale" ColumnName="id_sale" />
         </MappingFragment>
@@ -603,7 +610,8 @@
     <EntitySetMapping Name="Employees_education">
       <EntityTypeMapping TypeName="IsTypeOf(PAOModel.Employees_education)">
         <MappingFragment StoreEntitySet="Employees_education">
-          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="subsidiary_companies_region_id" ColumnName="subsidiary_companies_region_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="id_employees" ColumnName="id_employees" />
           <ScalarProperty Name="type" ColumnName="type" />
           <ScalarProperty Name="organization" ColumnName="organization" />
@@ -650,6 +658,7 @@
           <EntitySetMapping Name="Goods_category">
             <EntityTypeMapping TypeName="PAOModel.Goods_category">
               <MappingFragment StoreEntitySet="Goods_category">
+                <ScalarProperty Name="subsidiary_companies_id" ColumnName="subsidiary_companies_id" />
                 <ScalarProperty Name="date_up" ColumnName="date_up" />
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="id" ColumnName="id" />

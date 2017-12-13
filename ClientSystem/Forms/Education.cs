@@ -67,7 +67,8 @@ namespace ClientSystem.Forms
                         number = Convert.ToInt32(number.Text),
                         qualification = qualification.Text,
                         specialty = specialty.Text,
-                        date_up = DateTime.Now
+                        date_up = DateTime.Now,
+                        subsidiary_companies_region_id= new ConfigJson().SubsidiaryCompaniesRegion()
                     };
                     db.Employees_education.Add(education);
                     db.SaveChanges();
