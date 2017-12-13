@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,14 +43,14 @@
             this.button2 = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.gridAdmin = new System.Windows.Forms.DataGridView();
-            this.groupInfo = new System.Windows.Forms.GroupBox();
-            this.labRres = new System.Windows.Forms.Label();
-            this.Chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button_column = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
+            this.button_column = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.Chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.groupInfo = new System.Windows.Forms.GroupBox();
+            this.labRres = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -59,10 +59,10 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAdmin)).BeginInit();
-            this.groupInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Chart)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Chart)).BeginInit();
+            this.groupInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -101,34 +101,34 @@
             this.сменитьРежимToolStripMenuItem,
             this.выходToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
             // сменитьРежимToolStripMenuItem
             // 
             this.сменитьРежимToolStripMenuItem.Name = "сменитьРежимToolStripMenuItem";
-            this.сменитьРежимToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.сменитьРежимToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.сменитьРежимToolStripMenuItem.Text = "Сменить режим";
             this.сменитьРежимToolStripMenuItem.Click += new System.EventHandler(this.сменитьРежимToolStripMenuItem_Click);
             // 
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
             // 
             // сотрудникиToolStripMenuItem
             // 
             this.сотрудникиToolStripMenuItem.Name = "сотрудникиToolStripMenuItem";
-            this.сотрудникиToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
+            this.сотрудникиToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
             this.сотрудникиToolStripMenuItem.Text = "Сотрудники";
             this.сотрудникиToolStripMenuItem.Click += new System.EventHandler(this.сотрудникиToolStripMenuItem_Click);
             // 
             // пользователиToolStripMenuItem
             // 
             this.пользователиToolStripMenuItem.Name = "пользователиToolStripMenuItem";
-            this.пользователиToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.пользователиToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.пользователиToolStripMenuItem.Text = "Доступ";
             this.пользователиToolStripMenuItem.Click += new System.EventHandler(this.пользователиToolStripMenuItem_Click);
             // 
@@ -156,9 +156,9 @@
             // 
             this.button2.Location = new System.Drawing.Point(97, 3);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(79, 28);
+            this.button2.Size = new System.Drawing.Size(111, 28);
             this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
+            this.button2.Text = "Лучший продавец";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -189,48 +189,6 @@
             this.gridAdmin.Size = new System.Drawing.Size(439, 358);
             this.gridAdmin.TabIndex = 0;
             // 
-            // groupInfo
-            // 
-            this.groupInfo.Controls.Add(this.labRres);
-            this.groupInfo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupInfo.Location = new System.Drawing.Point(3, 3);
-            this.groupInfo.Name = "groupInfo";
-            this.groupInfo.Size = new System.Drawing.Size(456, 127);
-            this.groupInfo.TabIndex = 2;
-            this.groupInfo.TabStop = false;
-            this.groupInfo.Text = "Информация";
-            // 
-            // labRres
-            // 
-            this.labRres.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labRres.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labRres.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.labRres.Location = new System.Drawing.Point(3, 16);
-            this.labRres.Name = "labRres";
-            this.labRres.Size = new System.Drawing.Size(450, 108);
-            this.labRres.TabIndex = 0;
-            // 
-            // Chart
-            // 
-            chartArea2.Name = "ChartArea1";
-            this.Chart.ChartAreas.Add(chartArea2);
-            this.Chart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend2.Name = "Legend1";
-            this.Chart.Legends.Add(legend2);
-            this.Chart.Location = new System.Drawing.Point(3, 196);
-            this.Chart.Name = "Chart";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Legend = "Legend1";
-            series2.LegendText = "Покупки";
-            series2.Name = "Series1";
-            series2.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
-            this.Chart.Series.Add(series2);
-            this.Chart.Size = new System.Drawing.Size(456, 217);
-            this.Chart.TabIndex = 1;
-            this.Chart.Text = "chart1";
-            this.Chart.Click += new System.EventHandler(this.Chart_Click);
-            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
@@ -247,26 +205,6 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.Size = new System.Drawing.Size(462, 358);
             this.tableLayoutPanel2.TabIndex = 0;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(6, 20);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Линейный";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button_column
-            // 
-            this.button_column.Location = new System.Drawing.Point(87, 20);
-            this.button_column.Name = "button_column";
-            this.button_column.Size = new System.Drawing.Size(75, 23);
-            this.button_column.TabIndex = 1;
-            this.button_column.Text = "Гистограмма";
-            this.button_column.UseVisualStyleBackColor = true;
-            this.button_column.Click += new System.EventHandler(this.button_column_Click);
             // 
             // groupBox1
             // 
@@ -291,6 +229,68 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // button_column
+            // 
+            this.button_column.Location = new System.Drawing.Point(87, 20);
+            this.button_column.Name = "button_column";
+            this.button_column.Size = new System.Drawing.Size(75, 23);
+            this.button_column.TabIndex = 1;
+            this.button_column.Text = "Гистограмма";
+            this.button_column.UseVisualStyleBackColor = true;
+            this.button_column.Click += new System.EventHandler(this.button_column_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(6, 20);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "Линейный";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // Chart
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.Chart.ChartAreas.Add(chartArea1);
+            this.Chart.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend1.Name = "Legend1";
+            this.Chart.Legends.Add(legend1);
+            this.Chart.Location = new System.Drawing.Point(3, 196);
+            this.Chart.Name = "Chart";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Legend = "Legend1";
+            series1.LegendText = "Покупки";
+            series1.Name = "Series1";
+            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
+            this.Chart.Series.Add(series1);
+            this.Chart.Size = new System.Drawing.Size(456, 217);
+            this.Chart.TabIndex = 1;
+            this.Chart.Text = "chart1";
+            this.Chart.Click += new System.EventHandler(this.Chart_Click);
+            // 
+            // groupInfo
+            // 
+            this.groupInfo.Controls.Add(this.labRres);
+            this.groupInfo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupInfo.Location = new System.Drawing.Point(3, 3);
+            this.groupInfo.Name = "groupInfo";
+            this.groupInfo.Size = new System.Drawing.Size(456, 127);
+            this.groupInfo.TabIndex = 2;
+            this.groupInfo.TabStop = false;
+            this.groupInfo.Text = "Информация";
+            // 
+            // labRres
+            // 
+            this.labRres.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labRres.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labRres.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.labRres.Location = new System.Drawing.Point(3, 16);
+            this.labRres.Name = "labRres";
+            this.labRres.Size = new System.Drawing.Size(450, 108);
+            this.labRres.TabIndex = 0;
+            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -312,10 +312,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridAdmin)).EndInit();
-            this.groupInfo.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Chart)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Chart)).EndInit();
+            this.groupInfo.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

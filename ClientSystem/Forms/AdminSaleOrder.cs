@@ -34,9 +34,10 @@ namespace ClientSystem.Forms
 
         private void AdminSaleOrder_Load(object sender, EventArgs e)
         {
-            
-
-            listEmp.DataSource = db.Employees.Select(s=>new {id=s.id,fio=s.first_name+" "+s.middle_name+" "+s.last_name }).ToList();
+            int region = new ConfigJson().SubsidiaryCompaniesRegion();
+            listEmp.DataSource = db.Employees.Where(s=>(s.User_access.type=="продавец" &&
+            s.id_subsidiary_companies_region == region)
+            ).Select(s=>new {id=s.User_access.id,fio=s.first_name+" "+s.middle_name+" "+s.last_name }).ToList();
             listEmp.DisplayMember = "fio";
             listEmp.ValueMember = "id";
 
@@ -102,7 +103,6 @@ namespace ClientSystem.Forms
                 idListGoods = ReturnCheckedItemsList(listGoods);
                 Order = from s in db.Sale
                         join b in db.Sale_basket on s.id equals b.id_sale
-                        where idListGoods.Contains(b.id_goods)
                         where idListGoods.Contains(b.id_goods)
                         select new { s.id, s.date_up, s.payment, s.price, count = s.Sale_basket.Count() };
             }

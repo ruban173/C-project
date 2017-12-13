@@ -21,7 +21,7 @@ namespace ClientSystem.Forms
 
         public Admin()
         {
-            InitializeComponent();
+            InitializeComponent(); db = new ConnectContext((new ConfigJson()).StringConnecting());
         }
         public Admin(User_access user)
         {
@@ -63,8 +63,17 @@ namespace ClientSystem.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Chart.Titles.Add("График покупок");
-          
+            var BestEmp = from s in db.Sale
+                          join p in db.Employees on s.id_employess equals p.id_user_access
+
+                          select new
+                          {
+                              s.id,
+                              fio = p.first_name + " " + p.middle_name + " " + p.last_name,
+                              // s.date_up, s.payment, s.price, count = s.Sale_basket.Count()
+                          };
+            gridAdmin.DataSource = BestEmp.ToList();
+
         }
 
         private void Chart_Click(object sender, EventArgs e)

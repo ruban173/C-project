@@ -33,15 +33,17 @@ namespace ClientSystem.Forms
         }
         private void Seller_Load(object sender, EventArgs e)
         {
-
+            
             IEnumerable<Employees> emp = this.user.Employees.ToList();
-            this.Text += "  ( " + emp.First().first_name.ToString() + " " + emp.First().middle_name.ToString() + " " + emp.First().last_name.ToString() + " )";
+             this.Text += "  ( " + emp.First().first_name.ToString() + " " + emp.First().middle_name.ToString() + " " + emp.First().last_name.ToString() + " )";
 
-            gridSeller.Columns.Add("id", "id");
-            gridSeller.Columns.Add("title", "Название");
-            gridSeller.Columns.Add("price", "Цена");
-            gridSeller.Columns.Add("discont", "Скидка");
-            goods = db.Goods.ToList();
+                gridSeller.Columns.Add("id", "id");
+                gridSeller.Columns.Add("title", "Название");
+                gridSeller.Columns.Add("price", "Цена");
+                gridSeller.Columns.Add("discont", "Скидка");
+                goods = db.Goods.ToList();
+          
+            
         }
         private void sellerPrice()
         {

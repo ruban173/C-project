@@ -33,15 +33,24 @@ namespace ClientSystem.Forms
 
             if (user.Count() == 1)
             {
+               
                 foreach (User_access u in user)
                 {
-                    switch (u.type)
+                    if (u.Employees.Count() == 0)
                     {
-                        case "склад": new Storage(u).Show(); break;
-                        case "продавец": new Seller(u).Show(); break;
-                        case "администратор": new Admin(u).Show(); break;
-
+                        MessageBox.Show("Данная учетная запись не назначена сотруднику.Обратитесь к администратору.");
                     }
+                    else
+                    {
+                        switch (u.type)
+                        {
+                            case "склад": new Storage(u).Show(); break;
+                            case "продавец": new Seller(u).Show(); break;
+                            case "администратор": new Admin(u).Show(); break;
+
+                        }
+                    }
+                   
 
                 }
             }

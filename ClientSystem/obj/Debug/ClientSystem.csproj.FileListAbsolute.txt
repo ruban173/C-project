@@ -45,8 +45,6 @@ C:\Users\Axandr\Documents\Visual Studio 2015\Projects\ClientSystem\ClientSystem\
 C:\C-project\ClientSystem\bin\Debug\ClientSystem.exe.config
 C:\C-project\ClientSystem\bin\Debug\ClientSystem.exe
 C:\C-project\ClientSystem\bin\Debug\ClientSystem.pdb
-C:\C-project\ClientSystem\bin\Debug\EntityFramework.xml
-C:\C-project\ClientSystem\bin\Debug\EntityFramework.SqlServer.xml
 C:\C-project\ClientSystem\obj\Debug\ClientSystem.csprojResolveAssemblyReference.cache
 C:\C-project\ClientSystem\obj\Debug\ClientSystem.Form1.resources
 C:\C-project\ClientSystem\obj\Debug\ClientSystem.Forms.AdminSaleOrder.resources
