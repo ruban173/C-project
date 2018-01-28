@@ -4,19 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a37b9f3322fa44bdac8453187cc64b09" Name="Diagram1" ZoomLevel="80">
-        <EntityTypeShape EntityType="PAOModel.Subsidiary_companies" Width="1.5" PointX="0.625" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PAOModel.Sale_basket" Width="1.5" PointX="8.5" PointY="4.75" />
-        <EntityTypeShape EntityType="PAOModel.Sale" Width="1.5" PointX="4.5" PointY="6.625" />
+      <Diagram DiagramId="a37b9f3322fa44bdac8453187cc64b09" Name="Diagram1" ZoomLevel="67">
+        <EntityTypeShape EntityType="PAOModel.Subsidiary_companies" Width="1.5" PointX="2.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PAOModel.Sale_basket" Width="1.5" PointX="7.75" PointY="6.125" />
+        <EntityTypeShape EntityType="PAOModel.Sale" Width="1.5" PointX="4.5" PointY="6.25" />
         <AssociationConnector Association="PAOModel.FK_Sale_basket_Sale" />
         <EntityTypeShape EntityType="PAOModel.Goods" Width="1.5" PointX="5.125" PointY="1" />
         <AssociationConnector Association="PAOModel.FK_Sale_basket_Goods" />
-        <EntityTypeShape EntityType="PAOModel.Employees_education" Width="1.5" PointX="5.625" PointY="12.75" />
-        <EntityTypeShape EntityType="PAOModel.Employees" Width="1.5" PointX="7.875" PointY="8.375" />
+        <EntityTypeShape EntityType="PAOModel.Employees_education" Width="1.5" PointX="9.75" PointY="5.125" />
+        <EntityTypeShape EntityType="PAOModel.Employees" Width="1.5" PointX="10.25" PointY="0.75" />
         <AssociationConnector Association="PAOModel.FK_Employees_Employees_education" />
-        <EntityTypeShape EntityType="PAOModel.User_access" Width="1.5" PointX="3.125" PointY="11.125" />
+        <EntityTypeShape EntityType="PAOModel.User_access" Width="1.5" PointX="7.75" PointY="3.125" />
         <AssociationConnector Association="PAOModel.FK_Employees_User_access" />
-        <EntityTypeShape EntityType="PAOModel.Goods_category" Width="1.5" PointX="8.25" PointY="1" />
+        <EntityTypeShape EntityType="PAOModel.Goods_category" Width="1.5" PointX="7.625" PointY="0.75" />
         <AssociationConnector Association="PAOModel.FK_Goods_Goods_category" ManuallyRouted="false" >
         </AssociationConnector>
         <EntityTypeShape EntityType="PAOModel.Subsidiary_companies_region" Width="1.5" PointX="2.875" PointY="3.125" />

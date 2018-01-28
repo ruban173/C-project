@@ -1,0 +1,106 @@
+ static  private void addEmp(string _login, string _type,int _reg,string[]fio)
+        {
+            ConnectContext db = new ConnectContext((new ConfigJson()).StringConnecting());
+            int _day = new Random().Next(0, 4000);
+            User_access access = new User_access
+            {
+                login = _login,
+                password = "123",
+                type = _type,
+                status = "Активен",
+                id_subsidiary_companies_region = _reg,
+
+            };
+
+            Employees emp = new Employees
+            {
+                first_name = fio[1],
+                middle_name = fio[2],
+                last_name = fio[0],
+                id_subsidiary_companies_region = _reg,
+                date_begin = DateTime.Now.AddDays(-_day),
+                date_up= DateTime.Now.AddDays(-_day),
+                id_user_access = access.id,
+                expiriens = string.Format("{0} года ", new Random().Next(2, 5)),
+                birthday= DateTime.Now.AddDays(-new Random().Next(0, 4000)).AddYears(-new Random().Next(19, 35)),
+
+            };
+          //  MessageBox.Show(access.login.ToString());
+           db.User_access.Add(access);
+            db.Employees.Add(emp);
+            db.SaveChanges();
+        }
+ string[] f=  File.ReadAllLines("famile.txt");
+           
+          ConnectContext db = new ConnectContext((new ConfigJson()).StringConnecting());
+
+            string _login = "seller";
+            string _type = "продавец";
+            int _reg = 1;
+
+            for (int j = 0; j < f.Length; j++)
+            {
+                
+                if (j < 15)
+                {
+                     _login = "seller";
+                     _type = "продавец";
+                     _reg = 1;
+                };
+            
+                 if(j > 15 && j < 30)
+                        {
+                     _login = "seller";
+                     _type = "продавец";
+                     _reg = 2;
+                        }
+
+
+                if (j > 30 && j < 45)
+                {
+                     _login = "SCLAD";
+                     _type = "склад";
+                     _reg = 1;
+                }
+                if (j > 45 && j < 60)
+                {
+                     _login = "SCLAD";
+                     _type = "склад";
+                     _reg = 2;
+                }
+                if (j > 60 && j < 70)
+                {
+                     _login = "ADMIN";
+                     _type = "администратор";
+                     _reg = 1;
+                }
+                if (j > 70 && j < 80)
+                {
+                     _login = "ADMIN";
+                     _type = "администратор";
+                     _reg = 2;
+                }
+                if (j > 70 && j < 80)
+                {
+                     _login = "ADMIN";
+                     _type = "администратор";
+                     _reg = 2;
+                }
+                if (j > 80 && j < 90)
+                {
+                    _login = "";
+                    _type = "";
+                    _reg = 1;
+                }
+                if (j > 90 && j < 100)
+                {
+                    _login = "";
+                    _type = "";
+                    _reg = 2;
+                }
+
+
+                _login += j.ToString();
+                string[] fio = f[j].Split(' ');
+                addEmp(_login, _type, _reg, fio);
+            }

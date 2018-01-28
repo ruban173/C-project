@@ -80,7 +80,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(913, 432);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(909, 484);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // menuStrip1
@@ -91,7 +91,7 @@
             this.пользователиToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(1, 1);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(911, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(907, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -101,34 +101,34 @@
             this.сменитьРежимToolStripMenuItem,
             this.выходToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
             // сменитьРежимToolStripMenuItem
             // 
             this.сменитьРежимToolStripMenuItem.Name = "сменитьРежимToolStripMenuItem";
-            this.сменитьРежимToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.сменитьРежимToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.сменитьРежимToolStripMenuItem.Text = "Сменить режим";
             this.сменитьРежимToolStripMenuItem.Click += new System.EventHandler(this.сменитьРежимToolStripMenuItem_Click);
             // 
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
             // 
             // сотрудникиToolStripMenuItem
             // 
             this.сотрудникиToolStripMenuItem.Name = "сотрудникиToolStripMenuItem";
-            this.сотрудникиToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
+            this.сотрудникиToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
             this.сотрудникиToolStripMenuItem.Text = "Сотрудники";
             this.сотрудникиToolStripMenuItem.Click += new System.EventHandler(this.сотрудникиToolStripMenuItem_Click);
             // 
             // пользователиToolStripMenuItem
             // 
             this.пользователиToolStripMenuItem.Name = "пользователиToolStripMenuItem";
-            this.пользователиToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.пользователиToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
             this.пользователиToolStripMenuItem.Text = "Доступ";
             this.пользователиToolStripMenuItem.Click += new System.EventHandler(this.пользователиToolStripMenuItem_Click);
             // 
@@ -139,7 +139,7 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(4, 29);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(905, 34);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(901, 34);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // button1
@@ -175,8 +175,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel2);
-            this.splitContainer1.Size = new System.Drawing.Size(905, 358);
-            this.splitContainer1.SplitterDistance = 439;
+            this.splitContainer1.Size = new System.Drawing.Size(901, 410);
+            this.splitContainer1.SplitterDistance = 437;
             this.splitContainer1.TabIndex = 2;
             // 
             // gridAdmin
@@ -186,7 +186,7 @@
             this.gridAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridAdmin.Location = new System.Drawing.Point(0, 0);
             this.gridAdmin.Name = "gridAdmin";
-            this.gridAdmin.Size = new System.Drawing.Size(439, 358);
+            this.gridAdmin.Size = new System.Drawing.Size(437, 410);
             this.gridAdmin.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -203,7 +203,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(462, 358);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(460, 410);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // groupBox1
@@ -214,7 +214,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(3, 136);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(456, 54);
+            this.groupBox1.Size = new System.Drawing.Size(454, 54);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Типы графиков";
@@ -265,7 +265,7 @@
             series1.Name = "Series1";
             series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
             this.Chart.Series.Add(series1);
-            this.Chart.Size = new System.Drawing.Size(456, 217);
+            this.Chart.Size = new System.Drawing.Size(454, 217);
             this.Chart.TabIndex = 1;
             this.Chart.Text = "chart1";
             this.Chart.Click += new System.EventHandler(this.Chart_Click);
@@ -276,7 +276,7 @@
             this.groupInfo.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupInfo.Location = new System.Drawing.Point(3, 3);
             this.groupInfo.Name = "groupInfo";
-            this.groupInfo.Size = new System.Drawing.Size(456, 127);
+            this.groupInfo.Size = new System.Drawing.Size(454, 127);
             this.groupInfo.TabIndex = 2;
             this.groupInfo.TabStop = false;
             this.groupInfo.Text = "Информация";
@@ -288,14 +288,14 @@
             this.labRres.ForeColor = System.Drawing.SystemColors.Highlight;
             this.labRres.Location = new System.Drawing.Point(3, 16);
             this.labRres.Name = "labRres";
-            this.labRres.Size = new System.Drawing.Size(450, 108);
+            this.labRres.Size = new System.Drawing.Size(448, 108);
             this.labRres.TabIndex = 0;
             // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(913, 432);
+            this.ClientSize = new System.Drawing.Size(909, 484);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Admin";
